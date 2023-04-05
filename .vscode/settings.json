@@ -1,0 +1,13 @@
+{
+    "Lua.runtime.version": "Lua 5.1",
+    "Lua.workspace.library": [
+      "C:/MQ2/lua/mq2definitions",
+      "C:/MQ2/lua/imgui"
+    ],
+    "Lua.diagnostics.disable": [
+      "deprecated"
+    ],
+    "[lua]": {
+      "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  }
