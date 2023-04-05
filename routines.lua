@@ -14,28 +14,31 @@ CombatRoutines.minDotsDone = nil
 local burnsActive = false
 ----------------------------------------------------------------------------------------------------
 
-function PetRoutines.PetSetup()
+function PetRoutines.PetSetup(mode)
 	local warriorPet = "Luclin's Conqueror"
 	local roguePet = "Unrelenting Assassin"
 	if not Aliases.inCombat() and not mq.TLO.Me.Invis() and not Aliases.amIDead() then
 		if mq.TLO.Me.Pet() == "NO PET" then
 			print("You have no pet! Summoning one.")
 
-			if config.mode == "Manual Pet Tank" then
-				print("In Pet Tank mode, loading Warrior Pet.")
+			if mode == "Manual Pet Tank" or mode("Auto Pet Tank") then
+				print("In Pet Tank mode, loading Warrior Pet Stuff.")
 				mq.cmdf('/memspell 8 "%s"', warriorPet)
 				while mq.TLO.Me.Gem(8)() ~= warriorPet do
 					mq.delay(50)
 				end
+				mq.cmd('/memspell 7 "Cascading Shadeshield"')
+				while mq.TLO.Me.Gem(8)() ~= warriorPet do
+					mq.delay(50)
+				end
+				mq.cmd('/memspell 9 "Frigid Salubrity"')
 				Aliases.WaitforCast(8)
 				Aliases.castGem(8)
 				Aliases.WaitforCast()
 				print("Turning Pet Taunt on since we are in Pet Tank mode.")
 				mq.cmd("/pet taunt on")
-			end
-
-			if config.mode == "Manual No Pet Tank" then
-				print("In No Pet Tank mode, loading Rogue Pet.")
+			else
+				print("Not in a tank mode, loading Rogue Pet.")
 				mq.cmdf('/memspell 8 "%s"', roguePet)
 				while mq.TLO.Me.Gem(8)() ~= roguePet do
 					mq.delay(50)
@@ -43,7 +46,7 @@ function PetRoutines.PetSetup()
 				Aliases.WaitforCast(8)
 				Aliases.castGem(8)
 				Aliases.WaitforCast()
-				print("Turning Pet Taunt off since we are in No Pet Tank mode.")
+				print("Turning Pet Taunt off since we aren't in a tank mode.")
 				mq.cmd("/pet taunt off")
 			end
 		end
@@ -221,8 +224,10 @@ end
 ----------------------------------------------------------------------------------------------------
 function CombatRoutines.BurnRoutine()
 	if
-	  (config.burnAlways and mq.TLO.Target.Name() ~= nil) or (Aliases.checkBurnAAs() and Aliases.checkDotCount(config.minDotsForBurns) and Aliases.checkBurnItems()) and not Aliases.amIDead() and mq.TLO.Target.PctHPs() > 40
-		
+		(config.burnAlways and mq.TLO.Target.Name() ~= nil)
+		or (Aliases.checkBurnAAs() and Aliases.checkDotCount(config.minDotsForBurns) and Aliases.checkBurnItems())
+			and not Aliases.amIDead()
+			and mq.TLO.Target.PctHPs() > 40
 	then
 		--- Activate all Burn AAs
 		for _, aa in pairs(Abilities.BurnAAs) do
@@ -244,64 +249,75 @@ end
 
 ----------------------------------------------------------------------------------------------------
 
-function PrimaryRoutines.CombatHandler()
-	if Aliases.inCombat() then
-		for i = 1, mq.TLO.Me.XTarget() do
-			if mq.TLO.Me.XTarget(i).TargetType() == "Specific PC" then return end
-			if
-				mq.TLO.Me.XTarget(i).TargetType() == "Auto Hater"
-				or mq.TLO.Me.XTarget(i).TargetType() == "Specific NPC"
-			then
-				if mq.TLO.Target.Name() == nil then
-					mq.cmdf('/tar "%s"', mq.TLO.Me.XTarget(i)())
-				end
-				if mq.TLO.Target.Distance() < config.maxDistanceToEngage then
-					mq.cmd("/pet attack")
-					while Aliases.inCombat() or mq.TLO.Pet.Combat() and mq.TLO.Target.Name() ~= nil do
-						if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
-							if config.mode == "Manual Pet Tank" then
-								PetRoutines.PetTankRoutine()
-							end
-							CombatRoutines.AggroHandler()
-							CombatRoutines.ManaAAHandler()
-							if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
-								CombatRoutines.DebuffMob()
-								if config.burnAlways or Aliases.isNamed then
-									CombatRoutines.BurnRoutine()
-								end
-								CombatRoutines.BloodProcCheck()
-								CombatRoutines.SwarmPetHandler()
-								CombatRoutines.CheckDots()
-							end
+function PrimaryRoutines.AssistHandler()
+	if config.mode == 'Manual' or config.mode == 'Manual Pet Tank' then return end
 
-							if mq.TLO.Me.XTarget() == 0 then
-								return
-							end
-						elseif mq.TLO.Me.PctMana() < config.MindWrackManaMax then
-							CombatRoutines.CheckMindWrack()
-						end
-					end
-				else
-					if mq.TLO.Me.XTarget(i + 1).Name() == nil then
-						while mq.TLO.Target.Distance() > 100 do
-							mq.delay(250)
-						end
-					end
+	if mq.TLO.Group.MainAssist() ~= nil and mq.TLO.Group.MainAssist() ~= mq.TLO.Me.Name() then
+		print('We have a main assist but it is not us.')
+		if mq.TLO.Me.GroupAssistTarget.Distance() < config.maxDistanceToEngage and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() then
+			mq.cmdf("/assist off")
+			mq.delay(100)
+			mq.cmdf("/tar %s", mq.TLO.Group.MainAssist())
+			mq.delay(100)
+			mq.cmdf("/assist")
+		end
+	elseif mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then -- If we are the main assist though... pick a mob any mob(but only if they're in radius)
+		for i = 1, mq.TLO.Me.XTarget() do
+			if
+				mq.TLO.Me.XTarget(i).Distance() < config.maxDistanceToEngage
+				and mq.TLO.Me.XTarget(i).LineOfSight()
+				and mq.TLO.Target.Name() == nil
+			then
+				if mq.TLO.Target.Aggressive() then
+					mq.cmdf('/tar "%s"', mq.TLO.Me.XTarget(i).Name())
 				end
-			else
-				return
 			end
 		end
 	end
 end
 
+function PrimaryRoutines.CombatHandler()
+	while Aliases.inCombat() do
+		PrimaryRoutines.AssistHandler()
+		mq.delay(250)
+if not mq.TLO.Target.LineOfSight() then 
+	mq.cmd('/nav target')
+	while mq.TLO.Navigation.Active() do mq.delay(100) end
+end
+
+		CombatRoutines.AggroHandler()
+		CombatRoutines.ManaAAHandler()
+
+		mq.delay(1000)
+		if not mq.TLO.Pet.Combat() then
+			mq.cmd("/pet attack")
+		end
+
+		if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
+			if config.mode == "Manual Pet Tank" or config.mode == "Auto Pet Tank" then
+				PetRoutines.PetTankRoutine()
+			end
+
+			CombatRoutines.DebuffMob()
+
+			if config.burnAlways or Aliases.isNamed then
+				CombatRoutines.BurnRoutine()
+			end
+
+			CombatRoutines.BloodProcCheck()
+			CombatRoutines.SwarmPetHandler()
+			CombatRoutines.CheckDots()
+		end
+	end
+end
+
 ----------------------------------------------------------------------------------------------------
-function PrimaryRoutines.LoadSpells()
+function PrimaryRoutines.LoadSpells(set)
 	for i = 1, mq.TLO.Me.NumGems() do
 		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(Abilities.Spellbar[i]).RankName() then
 			if not Aliases.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
 				if
-					config.mode == "Manual Pet Tank"
+					set == "Pet Tank"
 					and (
 						Abilities.Spellbar[i] == "Pyre of the Neglected"
 						or Abilities.Spellbar[i] == "Ignite Cognition"

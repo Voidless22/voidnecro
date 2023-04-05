@@ -32,19 +32,27 @@ end
 
 mq.imgui.init("VoidNecro", VNInit)
 
-PetRoutines.PetSetup()
-petsetupdone = true
 PrimaryRoutines.LoadSpells()
+PetRoutines.PetSetup(config.mode)
+petsetupdone = true
 
 while Open do
 	mq.delay(100)
 	if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" then
-		PetRoutines.PetSetup()
+		PetRoutines.PetSetup(config.mode)
+		petsetupdone = true
 	end
 
 	if Aliases.inCombat() or mq.TLO.Pet.Combat() then
 		PrimaryRoutines.CombatHandler()
 	end
+if mq.TLO.Group.MainAssist() ~= nil then
+	if config.mode == "Chase" and mq.TLO.Group.MainAssist.Distance() > config.chaseDistance and not Aliases.inCombat() and not mq.TLO.Me.Casting() then
+		mq.cmdf("/squelch /nav id %i", mq.TLO.Group.MainAssist.ID())
+	while mq.TLO.Navigation.Active() do mq.delay(50) end
+
+	end
+end
 
 	if mq.TLO.Me.Dead() then
 		print("You are dead.")

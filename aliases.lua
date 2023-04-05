@@ -1,5 +1,6 @@
 ---@type Mq
 local mq = require("mq")
+local config = require("config")
 
 Aliases = {}
 
@@ -43,29 +44,42 @@ function Aliases.activateAA(altnumber)
 	end
 end
 
+function Aliases.invis()
+	return mq.TLO.Me.Invis()
+end
+
 function Aliases.inCombat()
-	if mq.TLO.Me.Combat() and mq.TLO.Target.Aggressive() or mq.TLO.Me.CombatState() == "COMBAT" or mq.TLO.Pet.Combat() then
-		return true
-	elseif mq.TLO.Me.XTarget() > 0 then
+	local mainAssistTarget = mq.TLO.Me.GroupAssistTarget()
+	local radius = config.maxDistanceToEngage
+	local combatState = mq.TLO.Me.CombatState()
+	local petinCombat = mq.TLO.Pet.Combat()
+
+	if mq.TLO.Me.XTarget() > 0 then
 		for i = 1, mq.TLO.Me.XTarget() do
-			if
-				mq.TLO.Me.XTarget(i).TargetType() == "Specific NPC"
+			if not mq.TLO.Me.XTarget(i).Aggressive() then return false end
+			if (mq.TLO.Me.XTarget(i).Distance() < radius and mq.TLO.Me.XTarget(i).Aggressive() and not Aliases.invis())
+				or combatState == "COMBAT"
+				or petinCombat
 			then
+				if not mq.TLO.Group.MainAssist() then
+					mq.cmd('/assist main')
+				end
 				return true
-			elseif mq.TLO.Me.XTarget(i).TargetType == "Specific PC" then
-				return false
 			end
 		end
 	end
+	return false
 end
 
-function Aliases.mobInRange()
-	if Aliases.inCombat() and mq.TLO.Spawn("radius 30")() then
+function Aliases.checkForAssist()
+	local maTarget = mq.TLO.Me.GroupAssistTarget()
+	if maTarget ~= nil and maTarget.Distance() < config.maxDistanceToEngage and maTarget.PctHPs() <= config.assistPct then
 		return true
 	else
 		return false
 	end
 end
+
 function Aliases.isNamed()
 	if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Named() == true then
 		return true
