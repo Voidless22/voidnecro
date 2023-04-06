@@ -76,13 +76,16 @@ while Open do
 	------------------------------------------------------------------
 	if mq.TLO.Group.MainAssist() ~= nil then
 		------------------------------------------------------------------
-		if config.mode == "Chase" and mq.TLO.Group.MainAssist.Distance() > config.chaseDistance and not mq.TLO.Me.Casting() then
+		if config.mode == "Chase" and not mq.TLO.Group.MainAssist.OtherZone() and not mq.TLO.Group.MainAssist.Offline() then
+		if mq.TLO.Group.MainAssist.Distance() > config.chaseDistance and not mq.TLO.Me.Casting() then
 			mq.cmdf("/squelch /nav id %i", mq.TLO.Group.MainAssist.ID())
 			while mq.TLO.Navigation.Active() do
 				mq.delay(50)
 			end
 		
 		end
+	end
+	
 		if config.mode == "Camp" then
 			if baseCampLoc == nil then
 				baseCampLoc = {}
