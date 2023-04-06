@@ -13,7 +13,7 @@ function Aliases.CombatPreChecks()
 end
 
 function Aliases.castGem(gem)
-	printf("Casting:-- %s -- Gem: %s", mq.TLO.Me.Gem(gem).RankName(), gem)
+	cprint("Casting:-- %s -- Gem: %s", mq.TLO.Me.Gem(gem).RankName(), gem)
 	mq.cmdf("/cast %i", gem)
 	Aliases.WaitforCast()
 end
@@ -27,7 +27,7 @@ function Aliases.AAReady(altnumber)
 end
 function Aliases.activateItem(item)
 	Aliases.WaitforCast()
-	printf("Activating Item %s", item)
+	cprint("Activating Item %s", item)
 	if mq.TLO.Me.ItemReady(item) then
 		mq.cmdf('/useitem "%s"', item)
 		Aliases.WaitforCast()
@@ -37,7 +37,7 @@ end
 
 function Aliases.activateAA(altnumber)
 	Aliases.WaitforCast()
-	printf("Activating AA %s", mq.TLO.Me.AltAbility(altnumber).Name())
+	cprint("Activating AA %s", mq.TLO.Me.AltAbility(altnumber).Name())
 	while Aliases.AAReady(altnumber) == true do
 		mq.cmdf("/alt activate %s", altnumber)
 		mq.delay(250)
@@ -89,11 +89,11 @@ function Aliases.isNamed()
 end
 function Aliases.hasBuff(spell)
 	if mq.TLO.Target.Buff(spell)() then
-		printf("Has spell %s", spell)
+		cprint("Has spell %s", spell)
 		mq.delay(100)
 		return true
 	else
-		printf("Does not have %s", spell)
+		cprint("Does not have %s", spell)
 		mq.delay(100)
 		return false
 	end
@@ -141,7 +141,7 @@ end
 function Aliases.checkBurnAAs()
 	for _, aa in pairs(Abilities.BurnAAs) do
 		if not Aliases.AAReady(aa) then
-			printf(
+			cprint(
 				"We can't burn yet! %s is on cooldown(and probably others as well).",
 				mq.TLO.Me.AltAbility(aa).Name()
 			)
@@ -154,7 +154,7 @@ end
 function Aliases.checkBurnItems()
 	for _, item in pairs(Abilities.BurnItems) do
 		if not mq.TLO.Me.ItemReady(item)() then
-			printf("We can't burn yet! %s is on cooldown(and probably others as well).", item)
+			cprint("We can't burn yet! %s is on cooldown(and probably others as well).", item)
 			return false
 		end
 	end

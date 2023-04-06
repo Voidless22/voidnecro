@@ -1,8 +1,10 @@
 local config = {}
 -- The furthest out you want to engage a mob
-config.campRadius = 25
+config.campRadius = 60
 -- Voidnecro mode, currently only Manual Tank available.
-config.mode = "Chase"
+config.Mode = "Chase"
+config.Tank = true
+config.autoAssist = true
 -- Minimum Mana % to cast dots, swarm pets,etc.
 config.minDmgSpellManaPct = 10
 -- Minimum amount of Dots on Mob before we start burns

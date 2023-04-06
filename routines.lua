@@ -21,17 +21,22 @@ function PetRoutines.PetSetup(mode)
 		if mq.TLO.Me.Pet() == "NO PET" then
 			print("You have no pet! Summoning one.")
 
-			if mode == "Manual Tank" or mode("Auto Tank") then
+			if config.Tank then
+				mq.cmd("/stand")
 				print("In Pet Tank mode, loading Warrior Pet Stuff.")
 				mq.cmdf('/memspell 8 "%s"', warriorPet)
 				while mq.TLO.Me.Gem(8)() ~= warriorPet do
 					mq.delay(50)
 				end
 				mq.cmd('/memspell 7 "Cascading Shadeshield"')
-				while mq.TLO.Me.Gem(8)() ~= warriorPet do
+				while mq.TLO.Me.Gem(7)() ~= "Cascading Shadeshield" do
 					mq.delay(50)
 				end
 				mq.cmd('/memspell 9 "Frigid Salubrity"')
+				while mq.TLO.Me.Gem(9)() ~= "Frigid Salubrity" do
+					mq.delay(50)
+				end
+
 				Aliases.WaitforCast(8)
 				Aliases.castGem(8)
 				Aliases.WaitforCast()
@@ -133,15 +138,12 @@ end
 function CombatRoutines.CheckDots()
 	if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
 		for _, dot in ipairs(Abilities.Dots) do
-			if mq.TLO.Target.Name() ~= nil and  mq.TLO.Target.PctHPs() > config.stopDotsAt then
+			if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.PctHPs() > config.stopDotsAt then
 				if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.BuffCount() > config.minDotsForBurns then
 					CombatRoutines.BurnRoutine()
 				end
 				CombatRoutines.AggroHandler()
-				if
-					(config.mode == "Manual Tank" or config.mode == "Auto Tank")
-					and (dot.name == "Pyre of the Neglected" or dot.name == "Ignite Cognition")
-				then
+				if config.Tank and (dot.name == "Pyre of the Neglected" or dot.name == "Ignite Cognition") then
 					return
 				end
 				if mq.TLO.Target.Name() == nil then
@@ -221,35 +223,40 @@ function CombatRoutines.CheckMindWrack()
 			Aliases.castGem(12)
 			mq.delay(100)
 			Aliases.WaitforCast()
-			mq.cmd("/sit")
 		end
 	end
 end
 
 ----------------------------------------------------------------------------------------------------
 function CombatRoutines.BurnRoutine()
-	if config.burnAlways or (Aliases.checkBurnAAs() and Aliases.checkDotCount(config.minDotsForBurns) and Aliases.checkBurnItems()) then
-			 if not Aliases.amIDead() and mq.TLO.Target.Name() ~= nil then
-				if mq.TLO.Target.PctHPs() > 40 then
-					--- Activate all Burn AAs
-					for _, aa in pairs(Abilities.BurnAAs) do
-						if Aliases.AAReady(aa) then
-							Aliases.activateAA(aa)
-							mq.delay(250)
-						end
-					end
-					for _, item in pairs(Abilities.BurnItems) do
-						if mq.TLO.Me.ItemReady(item) then
-							Aliases.activateItem(item)
-							mq.delay(250)
-						end
-					end
-			 end
-
-	else
+	if
+		config.waitForAllBurns
+		and not (Aliases.checkBurnAAs() and Aliases.checkDotCount(config.minDotsForBurns) and Aliases.checkBurnItems())
+	then
 		return
+	else
+		if
+			(config.burnAlways or Burnnow)
+			and not (Aliases.amIDead() and mq.TLO.Target.Name() == nil and mq.TLO.Target.PctHPs() < 40)
+		then
+			--- Activate all Burn AAs
+			for _, aa in pairs(Abilities.BurnAAs) do
+				if Aliases.AAReady(aa) then
+					Aliases.activateAA(aa)
+					mq.delay(250)
+				end
+			end
+			for _, item in pairs(Abilities.BurnItems) do
+				if mq.TLO.Me.ItemReady(item) then
+					Aliases.activateItem(item)
+					mq.delay(250)
+				end
+			end
+		else
+			return
+		end
 	end
-end
+	Burnnow = false
 end
 
 function CombatRoutines.ManaAAHandler()
@@ -275,7 +282,7 @@ end
 ----------------------------------------------------------------------------------------------------
 
 function PrimaryRoutines.AssistHandler()
-	if config.mode == "Manual" or config.mode == "Manual Tank" then
+	if not config.autoAssist then
 		return
 	end
 
@@ -283,20 +290,25 @@ function PrimaryRoutines.AssistHandler()
 		print("We have a main assist but it is not us.")
 		if
 			mq.TLO.Me.GroupAssistTarget.Distance() < config.campRadius
-			and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.GroupAssistTarget.LineOfSight()
+			and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget()
+			and mq.TLO.Me.GroupAssistTarget.LineOfSight()
 		then
 			mq.cmdf('/mqtarget npc "%s"', mq.TLO.Me.GroupAssistTarget())
-			
 		end
-	elseif mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then -- If we are the main assist though... pick a mob any mob(but only if they're in radius)
+	end
+	if mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
+		print("Looks like we're main assist, better find a good target.") -- If we are the main assist though... pick a mob any mob(but only if they're in radius)
 		for i = 1, mq.TLO.Me.XTarget() do
 			if
-				mq.TLO.Me.XTarget(i).Distance() < config.campRadius
-				and mq.TLO.Me.XTarget(i).LineOfSight()
-				and mq.TLO.Target.Name() == nil
+				mq.TLO.Me.XTarget(i).Aggressive()
+				and mq.TLO.Me.XTarget(i).Distance() < config.campRadius
+				and (mq.TLO.Me.XTarget(i + 1).Name() == nil or mq.TLO.Me.XTarget(i)())
 			then
-				if mq.TLO.Target.Aggressive() then
-					mq.cmdf('/tar "%s"', mq.TLO.Me.XTarget(i).Name())
+				if mq.TLO.Target.Name() ~= mq.TLO.Me.XTarget(i).Name() then
+					mq.cmdf('/mqtarget npc "%s"', mq.TLO.Me.XTarget(i).Name())
+					if mq.TLO.Target.Name() == mq.TLO.Me.XTarget(i).Name() then
+						break
+					end
 				end
 			end
 		end
@@ -305,50 +317,60 @@ end
 
 function PrimaryRoutines.CombatHandler()
 	while Aliases.inCombat() do
-		if mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and not string.find(config.mode, 'Manual') then
+		if
+			(mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and config.autoAssist)
+			or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name()
+		then
 			PrimaryRoutines.AssistHandler()
 		end
 		mq.delay(250)
-		if not mq.TLO.Target.LineOfSight() then
-			mq.cmd("/squelch /nav target")
-			while mq.TLO.Navigation.Active() do
-				mq.delay(100)
-			end
-		end
 
-		CombatRoutines.AggroHandler()
-		CombatRoutines.ManaAAHandler()
-
-		mq.delay(1000)
-		if not mq.TLO.Pet.Combat() then
-			mq.cmd("/pet attack")
-		end
-
-		if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
-			if config.mode == "Manual Tank" or config.mode == "Auto Tank" then
-				PetRoutines.PetTankRoutine()
+		if mq.TLO.Target.Name() ~= nil then
+			if not mq.TLO.Target.LineOfSight() then
+				mq.cmd("/squelch /nav target")
+				while mq.TLO.Navigation.Active() do
+					mq.delay(100)
+				end
 			end
 
-			CombatRoutines.DebuffMob()
+			CombatRoutines.AggroHandler()
+			CombatRoutines.ManaAAHandler()
 
-			if config.burnAlways or Aliases.isNamed then
-				CombatRoutines.BurnRoutine()
+			if mq.TLO.Me.PctMana() < config.MindWrackManaMax then
+				CombatRoutines.CheckMindWrack()
 			end
 
-			CombatRoutines.BloodProcCheck()
-			CombatRoutines.SwarmPetHandler()
-			CombatRoutines.CheckDots()
+			mq.delay(1000)
+			if not mq.TLO.Pet.Combat() then
+				mq.cmd("/pet attack")
+			end
+
+			if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
+				if config.Tank then
+					PetRoutines.PetTankRoutine()
+				end
+
+				CombatRoutines.DebuffMob()
+
+				if config.burnAlways or Aliases.isNamed then
+					CombatRoutines.BurnRoutine()
+				end
+
+				CombatRoutines.BloodProcCheck()
+				CombatRoutines.SwarmPetHandler()
+				CombatRoutines.CheckDots()
+			end
 		end
 	end
 end
 
 ----------------------------------------------------------------------------------------------------
-function PrimaryRoutines.LoadSpells(set)
+function PrimaryRoutines.LoadSpells(tankmode)
 	for i = 1, mq.TLO.Me.NumGems() do
 		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(Abilities.Spellbar[i]).RankName() then
 			if not Aliases.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
 				if
-					set == "Pet Tank"
+					tankmode == true
 					and (
 						Abilities.Spellbar[i] == "Pyre of the Neglected"
 						or Abilities.Spellbar[i] == "Ignite Cognition"
@@ -356,7 +378,7 @@ function PrimaryRoutines.LoadSpells(set)
 				then
 					return
 				else
-					printf("memorizing %s", Abilities.Spellbar[i])
+					cprint("memorizing %s", Abilities.Spellbar[i])
 					mq.cmdf('/memspell %i "%s"', i, Abilities.Spellbar[i])
 					mq.delay(200)
 					while mq.TLO.Window("SpellBookWnd").Open() do

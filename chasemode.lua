@@ -7,7 +7,7 @@ local config = require('config')
 
 local function chaseMode()
 
-    while config.mode == 'Chase' do
+    while config.Mode == 'Chase' do
         PetRoutines.petSetup('Chase')
         PrimaryRoutines.LoadSpells('Chase')
         
