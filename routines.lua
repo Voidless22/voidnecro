@@ -134,9 +134,11 @@ function CombatRoutines.CheckDots()
 	if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
 		for _, dot in ipairs(Abilities.Dots) do
 			if mq.TLO.Target.Name() ~= nil and  mq.TLO.Target.PctHPs() > config.stopDotsAt then
+
 				if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.BuffCount() > config.minDotsForBurns then
 					CombatRoutines.BurnRoutine()
 				end
+
 				CombatRoutines.AggroHandler()
 				if
 					config.mode == "Manual Pet Tank"
@@ -288,6 +290,9 @@ function PrimaryRoutines.AssistHandler()
 			mq.cmdf('/mqtarget npc "%s"', mq.TLO.Me.GroupAssistTarget())
 			
 		end
+		if not mq.TLO.Me.GroupAssistTarget.LineOfSight() and mq.TLO.Me.GroupAssistTarget.Distance() < config.maxDistanceToEngage then
+			mq.cmdf('/nav id %i', mq.TLO.Me.GroupAssistTarget.ID())
+		end
 	elseif mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then -- If we are the main assist though... pick a mob any mob(but only if they're in radius)
 		for i = 1, mq.TLO.Me.XTarget() do
 			if
@@ -304,18 +309,20 @@ function PrimaryRoutines.AssistHandler()
 end
 
 function PrimaryRoutines.CombatHandler()
+
 	while Aliases.inCombat() do
 		if mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and not string.find(config.mode, 'Manual') then
 			PrimaryRoutines.AssistHandler()
 		end
-		mq.delay(250)
+		mq.delay(50)
 		if not mq.TLO.Target.LineOfSight() then
 			mq.cmd("/squelch /nav target")
 			while mq.TLO.Navigation.Active() do
-				mq.delay(100)
+				mq.delay(50)
 			end
 		end
-
+if mq.TLO.Target.Name() == mq.TLO.Me.GroupAssistTarget() then
+		mq.cmd('/face')
 		CombatRoutines.AggroHandler()
 		CombatRoutines.ManaAAHandler()
 
@@ -341,7 +348,7 @@ function PrimaryRoutines.CombatHandler()
 		end
 	end
 end
-
+end
 ----------------------------------------------------------------------------------------------------
 function PrimaryRoutines.LoadSpells(set)
 	for i = 1, mq.TLO.Me.NumGems() do
@@ -368,3 +375,14 @@ function PrimaryRoutines.LoadSpells(set)
 	end
 end
 ----------------------------------------------------------------------------------------------------
+function PrimaryRoutines.BuffRoutine()
+local buffNames = { 'Flesh to Toxin', 'Shield of Shadow', 'Lunaside'}
+for _, buff in pairs(buffNames) do
+	if (mq.TLO.Me.Buff(buff)() == nil or mq.TLO.Me.Buff(buff).Duration.TotalSeconds() < 30) and not Aliases.inCombat() then
+			if Aliases.AAReady(1167) then
+				Aliases.WaitforCast()
+				Aliases.activateAA(1167)
+			end
+		end
+	end
+end
