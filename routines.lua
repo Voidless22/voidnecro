@@ -21,7 +21,7 @@ function PetRoutines.PetSetup(mode)
 		if mq.TLO.Me.Pet() == "NO PET" then
 			print("You have no pet! Summoning one.")
 
-			if mode == "Manual Pet Tank" or mode("Auto Pet Tank") then
+			if mode == "Manual Tank" or mode("Auto Tank") then
 				print("In Pet Tank mode, loading Warrior Pet Stuff.")
 				mq.cmdf('/memspell 8 "%s"', warriorPet)
 				while mq.TLO.Me.Gem(8)() ~= warriorPet do
@@ -139,7 +139,7 @@ function CombatRoutines.CheckDots()
 				end
 				CombatRoutines.AggroHandler()
 				if
-					config.mode == "Manual Pet Tank"
+					(config.mode == "Manual Tank" or config.mode == "Auto Tank")
 					and (dot.name == "Pyre of the Neglected" or dot.name == "Ignite Cognition")
 				then
 					return
@@ -275,14 +275,14 @@ end
 ----------------------------------------------------------------------------------------------------
 
 function PrimaryRoutines.AssistHandler()
-	if config.mode == "Manual" or config.mode == "Manual Pet Tank" then
+	if config.mode == "Manual" or config.mode == "Manual Tank" then
 		return
 	end
 
 	if mq.TLO.Group.MainAssist() ~= nil and mq.TLO.Group.MainAssist() ~= mq.TLO.Me.Name() then
 		print("We have a main assist but it is not us.")
 		if
-			mq.TLO.Me.GroupAssistTarget.Distance() < config.maxDistanceToEngage
+			mq.TLO.Me.GroupAssistTarget.Distance() < config.campRadius
 			and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.GroupAssistTarget.LineOfSight()
 		then
 			mq.cmdf('/mqtarget npc "%s"', mq.TLO.Me.GroupAssistTarget())
@@ -291,7 +291,7 @@ function PrimaryRoutines.AssistHandler()
 	elseif mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then -- If we are the main assist though... pick a mob any mob(but only if they're in radius)
 		for i = 1, mq.TLO.Me.XTarget() do
 			if
-				mq.TLO.Me.XTarget(i).Distance() < config.maxDistanceToEngage
+				mq.TLO.Me.XTarget(i).Distance() < config.campRadius
 				and mq.TLO.Me.XTarget(i).LineOfSight()
 				and mq.TLO.Target.Name() == nil
 			then
@@ -325,7 +325,7 @@ function PrimaryRoutines.CombatHandler()
 		end
 
 		if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
-			if config.mode == "Manual Pet Tank" or config.mode == "Auto Pet Tank" then
+			if config.mode == "Manual Tank" or config.mode == "Auto Tank" then
 				PetRoutines.PetTankRoutine()
 			end
 
