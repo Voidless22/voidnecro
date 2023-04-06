@@ -50,7 +50,7 @@ end
 
 function Aliases.inCombat()
 	local mainAssistTarget = mq.TLO.Me.GroupAssistTarget()
-	local radius = config.maxDistanceToEngage
+	local radius = config.campRadius
 	local combatState = mq.TLO.Me.CombatState()
 	local petinCombat = mq.TLO.Pet.Combat()
 
@@ -73,7 +73,7 @@ end
 
 function Aliases.checkForAssist()
 	local maTarget = mq.TLO.Me.GroupAssistTarget()
-	if maTarget ~= nil and maTarget.Distance() < config.maxDistanceToEngage and maTarget.PctHPs() <= config.assistPct then
+	if maTarget ~= nil and maTarget.Distance() < config.campRadius and maTarget.PctHPs() <= config.assistPct then
 		return true
 	else
 		return false

@@ -1,7 +1,7 @@
 local config = {}
 -- The furthest out you want to engage a mob
-config.maxDistanceToEngage = 60
--- Voidnecro mode, currently only Manual Pet Tank available.
+config.campRadius = 25
+-- Voidnecro mode, currently only Manual Tank available.
 config.mode = "Chase"
 -- Minimum Mana % to cast dots, swarm pets,etc.
 config.minDmgSpellManaPct = 10
