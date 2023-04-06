@@ -6,9 +6,11 @@ config.mode = "Chase"
 -- Minimum Mana % to cast dots, swarm pets,etc.
 config.minDmgSpellManaPct = 10
 -- Minimum amount of Dots on Mob before we start burns
-config.minDotsForBurns = 5
+config.minDotsForBurns = 2
 -- Min Mana Pct for Swarm Pets
 config.minSwarmPetManaPct = 10
+
+config.stopDotsAt = 30
 
 config.minBloodProcManaPct = 10
 -- Burn anytime it's availble?

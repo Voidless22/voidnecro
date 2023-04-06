@@ -133,33 +133,38 @@ end
 function CombatRoutines.CheckDots()
 	if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
 		for _, dot in ipairs(Abilities.Dots) do
-			CombatRoutines.AggroHandler()
-			if
-				config.mode == "Manual Pet Tank"
-				and (dot.name == "Pyre of the Neglected" or dot.name == "Ignite Cognition")
-			then
-				return
-			end
-			if mq.TLO.Target.Name() == nil then
-				return
-			end
-
-			if not Aliases.hasBuff(dot.name) or mq.TLO.Target.Buff(dot.name).Duration.TotalSeconds() < 6 then
-				local gem = dot.gem
-				if dot.priority > 2 and mq.TLO.Me.SpellReady(10)() then
-					if not mq.TLO.Me.Song("Chaotic Power X")() then
-						gem = 10
-					else
-						gem = dot.gem
-					end
-				elseif dot.priority == 1 then
-					gem = dot.gem
-					mq.delay(250)
+			if mq.TLO.Target.Name() ~= nil and  mq.TLO.Target.PctHPs() > config.stopDotsAt then
+				if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.BuffCount() > config.minDotsForBurns then
+					CombatRoutines.BurnRoutine()
+				end
+				CombatRoutines.AggroHandler()
+				if
+					config.mode == "Manual Pet Tank"
+					and (dot.name == "Pyre of the Neglected" or dot.name == "Ignite Cognition")
+				then
+					return
+				end
+				if mq.TLO.Target.Name() == nil then
+					return
 				end
 
-				Aliases.WaitforCast()
-				Aliases.castGem(gem)
-				mq.delay(100)
+				if not Aliases.hasBuff(dot.name) or mq.TLO.Target.Buff(dot.name).Duration.TotalSeconds() < 6 then
+					local gem = dot.gem
+					if dot.priority > 2 and mq.TLO.Me.SpellReady(10)() then
+						if not mq.TLO.Me.Song("Chaotic Power X")() then
+							gem = 10
+						else
+							gem = dot.gem
+						end
+					elseif dot.priority == 1 then
+						gem = dot.gem
+						mq.delay(250)
+					end
+
+					Aliases.WaitforCast()
+					Aliases.castGem(gem)
+					mq.delay(100)
+				end
 			end
 		end
 	end
@@ -223,43 +228,65 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function CombatRoutines.BurnRoutine()
-	if
-		(config.burnAlways and mq.TLO.Target.Name() ~= nil)
-		or (Aliases.checkBurnAAs() and Aliases.checkDotCount(config.minDotsForBurns) and Aliases.checkBurnItems())
-			and not Aliases.amIDead()
-			and mq.TLO.Target.PctHPs() > 40
-	then
-		--- Activate all Burn AAs
-		for _, aa in pairs(Abilities.BurnAAs) do
-			if Aliases.AAReady(aa) then
-				Aliases.activateAA(aa)
-				mq.delay(250)
-			end
-		end
-		for _, item in pairs(Abilities.BurnItems) do
-			if mq.TLO.Me.ItemReady(item) then
-				Aliases.activateItem(item)
-				mq.delay(250)
-			end
-		end
+	if config.burnAlways or (Aliases.checkBurnAAs() and Aliases.checkDotCount(config.minDotsForBurns) and Aliases.checkBurnItems()) then
+			 if not Aliases.amIDead() and mq.TLO.Target.Name() ~= nil then
+				if mq.TLO.Target.PctHPs() > 40 then
+					--- Activate all Burn AAs
+					for _, aa in pairs(Abilities.BurnAAs) do
+						if Aliases.AAReady(aa) then
+							Aliases.activateAA(aa)
+							mq.delay(250)
+						end
+					end
+					for _, item in pairs(Abilities.BurnItems) do
+						if mq.TLO.Me.ItemReady(item) then
+							Aliases.activateItem(item)
+							mq.delay(250)
+						end
+					end
+			 end
+
 	else
 		return
+	end
+end
+end
+
+function CombatRoutines.ManaAAHandler()
+	if
+		mq.TLO.Me.PctMana() < config.minDeathBloomMana
+		and not config.useDeathBloomOnCooldown
+		and not mq.TLO.Me.Buff("Blood Magic")() == nil
+	then
+		if Aliases.AAReady(7703) then
+			Aliases.WaitforCast()
+			Aliases.activateAA(7703)
+			Aliases.WaitforCast()
+		end
+	elseif config.useDeathBloomOnCooldown and mq.TLO.Me.Buff("Blood Magic")() == nil then
+		if Aliases.AAReady(7703) then
+			Aliases.WaitforCast()
+			Aliases.activateAA(7703)
+			Aliases.WaitforCast()
+		end
 	end
 end
 
 ----------------------------------------------------------------------------------------------------
 
 function PrimaryRoutines.AssistHandler()
-	if config.mode == 'Manual' or config.mode == 'Manual Pet Tank' then return end
+	if config.mode == "Manual" or config.mode == "Manual Pet Tank" then
+		return
+	end
 
 	if mq.TLO.Group.MainAssist() ~= nil and mq.TLO.Group.MainAssist() ~= mq.TLO.Me.Name() then
-		print('We have a main assist but it is not us.')
-		if mq.TLO.Me.GroupAssistTarget.Distance() < config.maxDistanceToEngage and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() then
-			mq.cmdf("/assist off")
-			mq.delay(100)
-			mq.cmdf("/tar %s", mq.TLO.Group.MainAssist())
-			mq.delay(100)
-			mq.cmdf("/assist")
+		print("We have a main assist but it is not us.")
+		if
+			mq.TLO.Me.GroupAssistTarget.Distance() < config.maxDistanceToEngage
+			and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.GroupAssistTarget.LineOfSight()
+		then
+			mq.cmdf('/mqtarget npc "%s"', mq.TLO.Me.GroupAssistTarget())
+			
 		end
 	elseif mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then -- If we are the main assist though... pick a mob any mob(but only if they're in radius)
 		for i = 1, mq.TLO.Me.XTarget() do
@@ -278,12 +305,16 @@ end
 
 function PrimaryRoutines.CombatHandler()
 	while Aliases.inCombat() do
-		PrimaryRoutines.AssistHandler()
+		if mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and not string.find(config.mode, 'Manual') then
+			PrimaryRoutines.AssistHandler()
+		end
 		mq.delay(250)
-if not mq.TLO.Target.LineOfSight() then 
-	mq.cmd('/nav target')
-	while mq.TLO.Navigation.Active() do mq.delay(100) end
-end
+		if not mq.TLO.Target.LineOfSight() then
+			mq.cmd("/squelch /nav target")
+			while mq.TLO.Navigation.Active() do
+				mq.delay(100)
+			end
+		end
 
 		CombatRoutines.AggroHandler()
 		CombatRoutines.ManaAAHandler()
@@ -337,22 +368,3 @@ function PrimaryRoutines.LoadSpells(set)
 	end
 end
 ----------------------------------------------------------------------------------------------------
-function CombatRoutines.ManaAAHandler()
-	if
-		mq.TLO.Me.PctMana() < config.minDeathBloomMana
-		and not config.useDeathBloomOnCooldown
-		and not mq.TLO.Me.Buff("Blood Magic")() == nil
-	then
-		if Aliases.AAReady(7703) then
-			Aliases.WaitforCast()
-			Aliases.activateAA(7703)
-			Aliases.WaitforCast()
-		end
-	elseif config.useDeathBloomOnCooldown and mq.TLO.Me.Buff("Blood Magic")() == nil then
-		if Aliases.AAReady(7703) then
-			Aliases.WaitforCast()
-			Aliases.activateAA(7703)
-			Aliases.WaitforCast()
-		end
-	end
-end

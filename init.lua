@@ -43,16 +43,30 @@ while Open do
 		petsetupdone = true
 	end
 
-	if Aliases.inCombat() or mq.TLO.Pet.Combat() then
+	if Aliases.inCombat() then
 		PrimaryRoutines.CombatHandler()
 	end
-if mq.TLO.Group.MainAssist() ~= nil then
-	if config.mode == "Chase" and mq.TLO.Group.MainAssist.Distance() > config.chaseDistance and not Aliases.inCombat() and not mq.TLO.Me.Casting() then
-		mq.cmdf("/squelch /nav id %i", mq.TLO.Group.MainAssist.ID())
-	while mq.TLO.Navigation.Active() do mq.delay(50) end
 
+	if mq.TLO.Group.MainAssist() ~= nil then
+		if
+			config.mode == "Chase"
+			and mq.TLO.Group.MainAssist.Distance() > config.chaseDistance
+			and not mq.TLO.Me.Casting()
+		then
+			mq.cmdf("/squelch /nav id %i", mq.TLO.Group.MainAssist.ID())
+			while mq.TLO.Navigation.Active() do
+				mq.delay(50)
+			end
+			if mq.TLO.Group.MainAssist.Sitting() then
+				while mq.TLO.Group.MainAssist.Sitting() and not mq.TLO.Me.Casting() do
+					if not mq.TLO.Me.Sitting() then
+						mq.cmd("/sit")
+						mq.delay(500)
+					end
+				end
+			end
+		end
 	end
-end
 
 	if mq.TLO.Me.Dead() then
 		print("You are dead.")
