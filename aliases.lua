@@ -56,19 +56,15 @@ function Aliases.inCombat()
 
 	if mq.TLO.Me.XTarget() > 0 then
 		for i = 1, mq.TLO.Me.XTarget() do
-			if not mq.TLO.Me.XTarget(i).Aggressive() then return false end
-			if (mq.TLO.Me.XTarget(i).Distance() < radius and mq.TLO.Me.XTarget(i).Aggressive() and not Aliases.invis())
-				or combatState == "COMBAT"
-				or petinCombat
+			if mq.TLO.Me.XTarget(i).Distance() < radius and mq.TLO.Me.XTarget(i).Aggressive() and not Aliases.invis()
 			then
-				if not mq.TLO.Group.MainAssist() then
-					mq.cmd('/assist main')
-				end
 				return true
 			end
 		end
-	end
+	else
 	return false
+	end
+
 end
 
 function Aliases.checkForAssist()

@@ -3,7 +3,7 @@ local config = {
 campRadius = 60,
 -- Voidnecro mode, currently only Manual Tank available.
 Mode = "Chase",
-Tank = true,
+Tank = false,
 autoAssist = true,
 -- Minimum Mana % to cast dots, swarm pets,etc.
 minDmgSpellManaPct = 10,

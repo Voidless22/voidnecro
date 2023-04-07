@@ -301,7 +301,5 @@ end
 
 while Open do
 mq.delay(100)
-if not VNPaused then
 VNMain()
-end
 end
