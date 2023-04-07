@@ -12,6 +12,33 @@ CombatRoutines.totalDotsActive = 0
 CombatRoutines.totalAbilitiesUp = 0
 CombatRoutines.minDotsDone = nil
 local burnsActive = false
+
+function CombatRoutines.CCRoutine()
+	local totalUndead = 0
+
+	if mq.TLO.Me.XTarget() > config.minMobsForCC then
+		for i = 1, mq.TLO.Me.XTarget() do
+			if not mq.TLO.Me.XTarget(i).FindBuff("spa root")() then
+				if Aliases.AAReady(431) and mq.TLO.Me.XTarget(i).LineOfSight() then
+					mq.cmdf('/tar "%s"', mq.TLO.Me.XTarget(i)())
+					mq.delay(750)
+					Aliases.activateAA(431)
+				end
+			end
+			if mq.TLO.Me.XTarget(i).Body() == "Undead" then
+				totalUndead = totalUndead + 1
+			end
+		end
+		if totalUndead > 3 then
+			if Aliases.AAReady(903) then
+				Aliases.activateAA(903)
+			elseif Aliases.AAReady(70) then
+				Aliases.activateAA(70)
+			end
+		end
+	end
+end
+
 ----------------------------------------------------------------------------------------------------
 
 function PetRoutines.PetSetup(mode)
@@ -85,24 +112,28 @@ function PetRoutines.PetTankRoutine()
 	then
 		return
 	end
-	if mq.TLO.Pet.PctHPs() < 50 then
+	if mq.TLO.Pet.PctHPs() < 50 and config.usePetHeal then
 		print("Stoping casting if we are and healing pet!")
 		mq.cmd("/stopcast")
 		Aliases.castGem(9)
 		Aliases.WaitforCast()
 	end
-	if mq.TLO.Me.SpellReady(7)() then
+	if mq.TLO.Me.SpellReady(7)() and config.useShortPetRune then
 		print("Stoping casting if we are and casting rune on pet!")
 		mq.cmd("/stopcast")
 		Aliases.castGem(7)
 		Aliases.WaitforCast()
 	end
-	if Aliases.AAReady(441) and mq.TLO.Me.CurrentMana() > 7000 then
+	if Aliases.AAReady(441) and mq.TLO.Me.CurrentMana() > 7000 and config.usePetAegisAA then
 		mq.cmd("/stopcast")
 		Aliases.activateAA(441)
 		Aliases.WaitforCast()
 	end
-
+	if Aliases.AAReady(3707) and config.useFortificationOnCooldown then
+		mq.cmd("/stopcast")
+		Aliases.activateAA(3707)
+		Aliases.WaitforCast()
+	end
 	if mq.TLO.Target.Named() then
 		if Aliases.AAReady(3707) then
 			print("NAMED! Activating our long cooldown pet AAs.")
@@ -125,8 +156,9 @@ function CombatRoutines.DebuffMob()
 		return
 	end
 	if
-		not Aliases.hasBuff("Scent of Terris")
-		or not Aliases.hasBuff("Scent of the Grave") and not Aliases.amIDead()
+		not (Aliases.hasBuff("Scent of Terris") or Aliases.hasBuff("Scent of the Grave"))
+		and not Aliases.amIDead()
+		and config.useScent
 	then
 		Aliases.WaitforCast()
 		Aliases.activateAA(Abilities["Scent"].AltNumber)
@@ -139,10 +171,6 @@ function CombatRoutines.CheckDots()
 	if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
 		for _, dot in ipairs(Abilities.Dots) do
 			if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.PctHPs() > config.stopDotsAt then
-				if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.BuffCount() > config.minDotsForBurns then
-					CombatRoutines.BurnRoutine()
-				end
-				CombatRoutines.AggroHandler()
 				if config.Tank and (dot.name == "Pyre of the Neglected" or dot.name == "Ignite Cognition") then
 					return
 				end
@@ -150,7 +178,13 @@ function CombatRoutines.CheckDots()
 					return
 				end
 
-				if not Aliases.hasBuff(dot.name) or mq.TLO.Target.Buff(dot.name).Duration.TotalSeconds() < 6 then
+				if
+					not (Aliases.hasBuff(dot.name) and mq.TLO.Target.Buff(dot.name).CasterName() == mq.TLO.Me.Name())
+					or (
+						mq.TLO.Target.Buff(dot.name).Duration.TotalSeconds() < 6
+						and mq.TLO.Target.Buff(dot.name).CasterName() == mq.TLO.Me.Name()
+					)
+				then
 					local gem = dot.gem
 					if dot.priority > 2 and mq.TLO.Me.SpellReady(10)() then
 						if not mq.TLO.Me.Song("Chaotic Power X")() then
@@ -160,12 +194,10 @@ function CombatRoutines.CheckDots()
 						end
 					elseif dot.priority == 1 then
 						gem = dot.gem
-						mq.delay(250)
 					end
 
 					Aliases.WaitforCast()
 					Aliases.castGem(gem)
-					mq.delay(100)
 				end
 			end
 		end
@@ -316,11 +348,8 @@ function PrimaryRoutines.AssistHandler()
 end
 
 function PrimaryRoutines.CombatHandler()
-	while Aliases.inCombat() do
-		if
-			(mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and config.autoAssist)
-			or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name()
-		then
+	while Aliases.inCombat() and not VNPaused do
+		if (mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and config.autoAssist) or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
 			PrimaryRoutines.AssistHandler()
 		end
 		mq.delay(250)
@@ -332,34 +361,51 @@ function PrimaryRoutines.CombatHandler()
 					mq.delay(100)
 				end
 			end
-
-			CombatRoutines.AggroHandler()
-			CombatRoutines.ManaAAHandler()
-
-			if mq.TLO.Me.PctMana() < config.MindWrackManaMax then
-				CombatRoutines.CheckMindWrack()
-			end
-
-			mq.delay(1000)
-			if not mq.TLO.Pet.Combat() then
-				mq.cmd("/pet attack")
-			end
-
-			if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
-				if config.Tank then
-					PetRoutines.PetTankRoutine()
+		end
+		if config.useEradicateAA and Aliases.AAReady(547) and mq.TLO.Target.Name() ~= nil then
+			if mq.TLO.Target.BuffCount() > 0 then
+				for i = 1, mq.TLO.Target.BuffCount() do
+					if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Buff(i).SpellType() == "Beneficial" then
+						Aliases.WaitforCast()
+						Aliases.activateAA(547)
+					end
 				end
-
-				CombatRoutines.DebuffMob()
-
-				if config.burnAlways or Aliases.isNamed then
-					CombatRoutines.BurnRoutine()
-				end
-
-				CombatRoutines.BloodProcCheck()
-				CombatRoutines.SwarmPetHandler()
-				CombatRoutines.CheckDots()
 			end
+		end
+
+		if config.useSnareAA and Aliases.AAReady(826) and mq.TLO.Target.Name() ~= nil then
+			Aliases.WaitforCast()
+			Aliases.activateAA(826)
+		end
+		if config.useCC and mq.TLO.Target.Name() ~= nil then
+			CombatRoutines.CCRoutine()
+		end
+		CombatRoutines.AggroHandler()
+		CombatRoutines.ManaAAHandler()
+
+		if mq.TLO.Me.PctMana() < config.MindWrackManaMax and mq.TLO.Target.Name() ~= nil then
+			CombatRoutines.CheckMindWrack()
+		end
+
+		mq.delay(1000)
+		if not mq.TLO.Pet.Combat() and mq.TLO.Target.Name() ~= nil then
+			mq.cmd("/pet attack")
+		end
+
+		if mq.TLO.Me.PctMana() > config.minDmgSpellManaPct then
+			if config.Tank then
+				PetRoutines.PetTankRoutine()
+			end
+
+			CombatRoutines.DebuffMob()
+
+			if config.burnAlways or Aliases.isNamed then
+				CombatRoutines.BurnRoutine()
+			end
+
+			CombatRoutines.BloodProcCheck()
+			CombatRoutines.SwarmPetHandler()
+			CombatRoutines.CheckDots()
 		end
 	end
 end

@@ -1,45 +1,51 @@
-local config = {}
+local config = {
 -- The furthest out you want to engage a mob
-config.campRadius = 60
+campRadius = 60,
 -- Voidnecro mode, currently only Manual Tank available.
-config.Mode = "Chase"
-config.Tank = true
-config.autoAssist = true
+Mode = "Chase",
+Tank = true,
+autoAssist = true,
 -- Minimum Mana % to cast dots, swarm pets,etc.
-config.minDmgSpellManaPct = 10
+minDmgSpellManaPct = 10,
 -- Minimum amount of Dots on Mob before we start burns
-config.minDotsForBurns = 2
+minDotsForBurns = 2,
 -- Min Mana Pct for Swarm Pets
-config.minSwarmPetManaPct = 10
+minSwarmPetManaPct = 10,
 
-config.stopDotsAt = 30
+stopDotsAt = 30,
 
-config.minBloodProcManaPct = 10
+useSnareAA = true,
+useEradicateAA = true,
+
+minBloodProcManaPct = 10,
 -- Burn anytime it's availble?
-config.burnAlways = false 
+burnAlways = false, 
 -- Wait for all abilities to come up first or just burn as soon as one is ready?
-config.waitForAllBurns = true
+waitForAllBurns = true,
 
 -- Pet Tank Settings
-config.useShortPetRune = true
-config.usePetHeal = true
-config.petHealPct = 60
-config.usePetAegisAA = true
-config.useFortificationOnCooldown = true
-config.switchPetTargetOnAggro = true
+useShortPetRune = true,
+usePetHeal = true,
+petHealPct = 60,
+usePetAegisAA = true,
+useFortificationOnCooldown = true,
+switchPetTargetOnAggro = true,
 
 -- Mana Regen Ability Settings
-config.useDeathBloomOnCooldown = true
-config.useBloodMagicForBurns = true
-config.MindWrackManaMax = 60
-config.minDeathBloomMana = 40
+useDeathBloomOnCooldown = true,
+useBloodMagicForBurns = true,
+MindWrackManaMax = 60,
+minDeathBloomMana = 40,
 
-config.useScent = true
+useScent = true,
 
+minMobsForCC = 3,
+useCC = true,
 -- Aggro Settings
-config.aggroFDPct = 80
+aggroFDPct = 80,
+assistPct = 99,
 
-config.assistPct = 99
+chaseDistance = 10
+}
 
-config.chaseDistance = 10
 return config
