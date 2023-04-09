@@ -1,6 +1,6 @@
 ---@type Mq
 local mq = require("mq")
-local config = require("config")
+
 
 Aliases = {}
 
@@ -50,26 +50,30 @@ end
 
 function Aliases.inCombat()
 	local mainAssistTarget = mq.TLO.Me.GroupAssistTarget()
-	local radius = config.campRadius
+	local radius = Config.campRadius
 	local combatState = mq.TLO.Me.CombatState()
 	local petinCombat = mq.TLO.Pet.Combat()
 
 	if mq.TLO.Me.XTarget() > 0 then
 		for i = 1, mq.TLO.Me.XTarget() do
-			if mq.TLO.Me.XTarget(i).Distance() < radius and mq.TLO.Me.XTarget(i).Aggressive() and not Aliases.invis()
+			if not mq.TLO.Me.XTarget(i).Aggressive() then return false end
+			if (mq.TLO.Me.XTarget(i).Distance() < radius and mq.TLO.Me.XTarget(i).Aggressive() and not Aliases.invis())
+				or combatState == "COMBAT"
+				or petinCombat
 			then
+				if not mq.TLO.Group.MainAssist() then
+					mq.cmd('/assist main')
+				end
 				return true
 			end
 		end
-	else
-	return false
 	end
-
+	return false
 end
 
 function Aliases.checkForAssist()
 	local maTarget = mq.TLO.Me.GroupAssistTarget()
-	if maTarget ~= nil and maTarget.Distance() < config.campRadius and maTarget.PctHPs() <= config.assistPct then
+	if maTarget ~= nil and maTarget.Distance() < Config.campRadius and maTarget.PctHPs() <= Config.assistPct then
 		return true
 	else
 		return false

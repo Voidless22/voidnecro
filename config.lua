@@ -1,4 +1,4 @@
-local config = {
+local Config = {
 -- The furthest out you want to engage a mob
 campRadius = 60,
 -- Voidnecro mode, currently only Manual Tank available.
@@ -44,8 +44,8 @@ useCC = true,
 -- Aggro Settings
 aggroFDPct = 80,
 assistPct = 99,
-
+---@type number
 chaseDistance = 10
 }
 
-return config
+return Config
