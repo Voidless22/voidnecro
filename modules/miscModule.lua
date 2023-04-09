@@ -3,6 +3,25 @@ local mq = require("mq")
 
 
 MiscModule = {}
+ MiscModule.levelStrings = {
+'One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+'Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen','Twenty',
+'TwentyOne','TwentyTwo','TwentyThree','TwentyFour','TwentyFive','TwentySix','TwentySeven','TwentyEight','TwentyNine','Thirty',
+'ThirtyOne','ThirtyTwo','ThirtyThree','ThirtyFour','ThirtyFive','ThirtySix','ThirtySeven','ThirtyEight','ThirtyNine','Forty',
+'FortyOne','FortyTwo','FortyThree','FortyFour','FortyFive','FortySix','FortySeven','FortyEight','FortyNine','Fifty',
+'FiftyOne','FiftyTwo','FiftyThree','FiftyFour','FiftyFive','FiftySix','FiftySeven','FiftyEight','FiftyNine','Sixty',
+'SixtyOne','SixtyTwo','SixtyThree','SixtyFour','SixtyFive','SixtySix','SixtySeven','SixtyEight','SixtyNine','Seventy',
+'SeventyOne','SeventyTwo','SeventyThree','SeventyFour','SeventyFive','SeventySix','SeventySeven','SeventyEight','SeventyNine',
+'Eighty','EightyOne','EightyTwo','EightyThree','EightyFour','EightyFive','EightySix','EightySeven','EightyEight','EightyNine','Ninety',
+'NinetyOne','NinetyTwo','NinetyThree','NinetyFour','NinetyFive','NinetySix','NinetySeven','NinetyEight','NinetyNine','OneHundred',
+'OneHundredOne','OneHundredTwo','OneHundredThree','OneHundredFour','OneHundredFive','OneHundredSix','OneHundredSeven','OneHundredEight','OneHundredNine','OneHundredTen',
+'OneHundredEleven','OneHundredTwelve','OneHundredThirteen','OneHundredFourteen','OneHundredFifteen','OneHundredSixteen','OneHundredSeventeen','OneHundredEighteen','OneHundredNineteen','OneHundredTwenty' 
+}
+
+
+
+
+
 
 function MiscModule.WaitforCast(gem)
 	mq.delay(100)
@@ -113,28 +132,32 @@ function MiscModule.checkForSit()
 end
 
 
-function MiscModule.LoadSpells(tankmode)
+function MiscModule.LoadSpells()
 	for i = 1, mq.TLO.Me.NumGems() do
-		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(Abilities.Spellbar[i]).RankName() then
+		if not Config.Tank then
+		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar[i]).RankName() then
 			if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
-				if
-					tankmode == true
-					and (
-						Abilities.Spellbar[i] == "Pyre of the Neglected"
-						or Abilities.Spellbar[i] == "Ignite Cognition"
-					)
-				then
-					return
-				else
-					cprint("memorizing %s", Abilities.Spellbar[i])
-					mq.cmdf('/memspell %i "%s"', i, Abilities.Spellbar[i])
+					cprint("memorizing %s", AbilitySet.Spellbar[i])
+					mq.cmdf('/memspell %i "%s"', i, AbilitySet.Spellbar[i])
 					mq.delay(200)
 					while mq.TLO.Window("SpellBookWnd").Open() do
 						mq.delay(50)
 					end
 				end
 			end
+		else
+			if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.TankSpellBar[i]).RankName() then
+				if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
+						cprint("memorizing %s", AbilitySet.TankSpellBar[i])
+						mq.cmdf('/memspell %i "%s"', i, AbilitySet.TankSpellBar[i])
+						mq.delay(200)
+						while mq.TLO.Window("SpellBookWnd").Open() do
+							mq.delay(50)
+						end
+					end
+				end
 		end
+
 	end
 end
 

@@ -55,7 +55,7 @@ argHandler.VNInfo()
 
 mq.imgui.init("VoidNecro", VNInit)
 
-MiscModule.LoadSpells(Config.Tank)
+MiscModule.LoadSpells()
 PetModule.PetSetup(Config.Tank)
 petsetupdone = true
 
@@ -64,10 +64,11 @@ petsetupdone = true
 
 
 local function VNMain()
+	AbilitySet = AbilityDB[MiscModule.levelStrings[mq.TLO.Me.Level()]..'Abilities']
 	mq.delay(100)
 	if not VNPaused then
 
-	if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" then
+	if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
 		PetModule.PetSetup(Config.Tank)
 		petsetupdone = true
 	end

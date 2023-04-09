@@ -9,9 +9,9 @@ local mq = require('mq')
 PetModule = {}
 
 function PetModule.PetSetup(mode)
-	local warriorPet = "Luclin's Conqueror"
-	local roguePet = "Unrelenting Assassin"
-	if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() then
+	local warriorPet = AbilitySet.warriorPet
+	local roguePet = AbilitySet.roguePet
+	if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() and warriorPet ~= 'N/A' and roguePet ~= 'N/A' then
 		if mq.TLO.Me.Pet() == "NO PET" then
 			print("You have no pet! Summoning one.")
 
@@ -22,15 +22,6 @@ function PetModule.PetSetup(mode)
 				while mq.TLO.Me.Gem(8)() ~= warriorPet do
 					mq.delay(50)
 				end
-				mq.cmd('/memspell 7 "Cascading Shadeshield"')
-				while mq.TLO.Me.Gem(7)() ~= "Cascading Shadeshield" do
-					mq.delay(50)
-				end
-				mq.cmd('/memspell 9 "Frigid Salubrity"')
-				while mq.TLO.Me.Gem(9)() ~= "Frigid Salubrity" do
-					mq.delay(50)
-				end
-
 				MiscModule.WaitforCast(8)
 				MiscModule.castGem(8)
 				MiscModule.WaitforCast()
@@ -63,7 +54,7 @@ function PetModule.PetSetup(mode)
 	end
 
 	print("Done with pet setup routine, rememorizing Gem 8 for combat.")
-	mq.cmdf('/memspell 8 "%s"', Abilities.Spellbar[8])
+	mq.cmdf('/memspell 8 "%s"', AbilitySet.Spellbar[8])
 end
 
 

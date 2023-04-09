@@ -4,6 +4,7 @@ require('./modules/modeModule')
 require('./modules/burnModule')
 require('./modules/miscModule')
 require('./modules/petModule')
+AbilityDB = require('abilityDB')
 CombatModule = {}
 
 function CombatModule.AssistHandler()
@@ -113,7 +114,7 @@ function CombatModule.DebuffMob()
 		and Config.useScent
 	then
 		MiscModule.WaitforCast()
-		MiscModule.activateAA(Abilities["Scent"].AltNumber)
+		MiscModule.activateAA(AbilitySet["Scent"].AltNumber)
 		MiscModule.WaitforCast()
 	end
 end
@@ -126,8 +127,9 @@ local function SuperCast(gem)
 
 ----------------------------------------------------------------------------------------------------
 function CombatModule.SpellHandler()
+	
 	----------------------------------------------------------------------------------------------------
-	for index, value in pairs(FirstPrioritySpells) do
+	for index, value in pairs(AbilitySet.FirstPrioritySpells) do
 		if mq.TLO.Target.Name() == nil then CombatModule.AssistHandler() end
 		local spellCategory = mq.TLO.Spell(value.name).Category()
 		local hasBuffComponent = value.buffRecieved
@@ -169,7 +171,7 @@ function CombatModule.SpellHandler()
 		end
 	end	
 ----------------------------------------------------------------------------------------------------
-	for index, value in pairs(SecondPrioritySpells) do
+	for index, value in pairs(AbilitySet.SecondPrioritySpells) do
 		local spellCategory = mq.TLO.Spell(value.name).Category()
 		local hasBuffComponent = value.buffRecieved
 ----------------------------------------------------------------------------------------------------
@@ -213,7 +215,7 @@ function CombatModule.SpellHandler()
 		end
 	end
 ----------------------------------------------------------------------------------------------------
-	for index, value in pairs(LastPrioritySpells) do
+	for index, value in pairs(AbilitySet.LastPrioritySpells) do
 		local spellCategory = mq.TLO.Spell(value.name).Category()
 		local hasBuffComponent = value.buffRecieved
 		if spellCategory == 'Damage Over Time' then
@@ -300,13 +302,21 @@ end
 function CombatModule.CombatHandler()
 	
 	while MiscModule.inCombat() and not VNPaused do
-		mq.doevents()
 		if (mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and Config.autoAssist) or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
 			CombatModule.AssistHandler()
 		end
         CombatModule.CheckForLOS()
         if not mq.TLO.Pet.Combat() and mq.TLO.Target.Name() ~= nil then
 			mq.cmd("/pet attack")
+		end
+
+		if Config.doMelee then
+		mq.cmd('/face')
+		mq.delay(100)
+		mq.cmd('/nav target')
+		while mq.TLO.Navigation.Active() do mq.delay(50) end
+		mq.cmd('/attack on')
+
 		end
         if Config.useCC and mq.TLO.Target.Name() ~= nil then
 			CombatModule.CCRoutine()
@@ -318,7 +328,7 @@ function CombatModule.CombatHandler()
 			if Config.Tank then
 				PetModule.PetTankRoutine()
 			end
-            if Config.useScent then
+            if Config.useScent and AbilitySet.Scent ~= 'N/A' then
                 CombatModule.DebuffMob()
             end
 

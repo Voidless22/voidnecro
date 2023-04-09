@@ -44,8 +44,8 @@ useCC = true,
 -- Aggro Settings
 aggroFDPct = 80,
 assistPct = 99,
----@type number
-chaseDistance = 10
+chaseDistance = 10,
+doMelee = true
 }
 
 return Config
