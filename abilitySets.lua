@@ -17,7 +17,6 @@ AbilitySets = {
 			[4] = 'Lifetap',
 			[5] = 'Siphon Strength'
 		},
-		TankSpellBar = { [1] = 'Minor Shielding', [2] = 'Cavorting Bones', [3] = 'Disease Cloud', [4] = 'Lifetap', [5] = 'Siphon Strength' },
 		warriorPet = 'Cavorting Bones',
 		roguePet = 'N/A',
 		FirstPrioritySpells = {
@@ -57,22 +56,47 @@ AbilitySets = {
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
-		Dots = 'N/A'
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Minor Shielding'
+		}
 	},
 	[2] = {
 		Level = 2,
 		Scent = 'N/A',
 		Spellbar = {
 			[1] = 'Minor Shielding',
-			[2] = 'Lifetap'
+			[2] = 'Cavorting Bones',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifetap',
+			[5] = 'Siphon Strength'
 		},
-		TankSpellBar = {},
-		warriorPet = 'N/A',
+		warriorPet = 'Cavorting Bones',
 		roguePet = 'N/A',
 		FirstPrioritySpells = {
 			{
 				name = "Lifetap",
-				gem = 2,
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Disease Cloud",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Siphon Strength",
+				gem = 5,
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
@@ -86,386 +110,583 @@ AbilitySets = {
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Minor Shielding'
+		}
 	},
 	-- Repeat Table 3 for Level 3 through 24
 
 	[3] = {
 		Level = 3,
-		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
-		},
+		Scent = 'N/A',
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Minor Shielding',
+			[2] = 'Cavorting Bones',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Siphon Strength',
+			[6] = 'Grim Aura',
+			[7] = 'Endure Cold'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Cavorting Bones',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Disease Cloud",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
-		},
-		LastPrioritySpells = {
 			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Siphon Strength",
+				gem = 5,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
-
+		SecondPrioritySpells = 'N/A',
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Minor Shielding', 'Grim Aura', 'Endure Cold'
+		}
 	},
-
 	[4] = {
 		Level = 4,
-		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
-		},
+		Scent = 'N/A',
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Grim Aura',
+			[2] = 'Leering Corpse',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Clinging Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Endure Cold',
+			[8] = 'Gate'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Leering Corpse',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Clinging Darkness",
+				gem = 5,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
 		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
+			name = "Disease Cloud",
+			gem = 3,
+			priority = 2,
+			buffRecieved = false,
+			buffRecievedName = nil,
+			alternateNamePostCast = false,
+			altName1 = nil,
+			altName2 = nil,
+			}
 		},
-		LastPrioritySpells = {
-			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
-		},
-
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Minor Shielding', 'Grim Aura', 'Endure Cold'
+		}
 	},
-
 	[5] = {
 		Level = 5,
-		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
-		},
+		Scent = 'N/A',
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Grim Aura',
+			[2] = 'Leering Corpse',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Clinging Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Endure Cold',
+			[8] = 'Gate'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Leering Corpse',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Clinging Darkness",
+				gem = 5,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
 		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
+			name = "Disease Cloud",
+			gem = 3,
+			priority = 2,
+			buffRecieved = false,
+			buffRecievedName = nil,
+			alternateNamePostCast = false,
+			altName1 = nil,
+			altName2 = nil,
+			}
 		},
-		LastPrioritySpells = {
-			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
-		},
-
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Minor Shielding', 'Grim Aura', 'Endure Cold'
+		}
 	},
 
 
 	[6] = {
 		Level = 6,
-		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
-		},
+		Scent = 'N/A',
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Grim Aura',
+			[2] = 'Leering Corpse',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Clinging Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Dark Pact',
+			[8] = 'Gate'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Leering Corpse',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Clinging Darkness",
+				gem = 5,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
 		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
+			name = "Disease Cloud",
+			gem = 3,
+			priority = 2,
+			buffRecieved = false,
+			buffRecievedName = nil,
+			alternateNamePostCast = false,
+			altName1 = nil,
+			altName2 = nil,
+			}
 		},
-		LastPrioritySpells = {
-			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
-		},
-
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Minor Shielding', 'Grim Aura', 'Endure Cold', 'Dark Pact'
+		}
 	},
-
 	[7] = {
 		Level = 7,
-		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
-		},
+		Scent = 'N/A',
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Grim Aura',
+			[2] = 'Leering Corpse',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Clinging Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Dark Pact',
+			[8] = 'Vampiric Embrace'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Leering Corpse',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Clinging Darkness",
+				gem = 5,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
 		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
+			name = "Disease Cloud",
+			gem = 3,
+			priority = 4,
+			buffRecieved = false,
+			buffRecievedName = nil,
+			alternateNamePostCast = false,
+			altName1 = nil,
+			altName2 = nil,
+			}
 		},
-		LastPrioritySpells = {
-			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
-		},
-
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Minor Shielding', 'Grim Aura', 'Endure Cold', 'Dark Pact', 'Vampiric Embrace'
+		}
 	},
 
 	[8] = {
 		Level = 8,
-		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
-		},
+		Scent = 'N/A',
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Grim Aura',
+			[2] = 'Bone Walk',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Clinging Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Dark Pact',
+			[8] = 'Vampiric Embrace'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Bone Walk',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Clinging Darkness",
+				gem = 5,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
 		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
+			name = "Disease Cloud",
+			gem = 3,
+			priority = 2,
+			buffRecieved = false,
+			buffRecievedName = nil,
+			alternateNamePostCast = false,
+			altName1 = nil,
+			altName2 = nil,
+			}
 		},
-		LastPrioritySpells = {
-			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
-		},
-
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Lesser Shielding', 'Grim Aura', 'Endure Cold', 'Dark Pact', 'Vampiric Embrace'
+		}
 	},
-
 	[9] = {
 		Level = 9,
-		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
-		},
+		Scent = 'N/A',
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Grim Aura',
+			[2] = 'Leech',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Clinging Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Dark Pact',
+			[8] = 'Vampiric Embrace'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Bone Walk',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Leech",
+				gem = 2,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
 		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+			name = "Disease Cloud",
+			gem = 3,
+			priority = 2,
+			buffRecieved = false,
+			buffRecievedName = nil,
+			alternateNamePostCast = false,
+			altName1 = nil,
+			altName2 = nil,
 			},
-		},
-		LastPrioritySpells = {
 			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
-			},
+				name = 'Clinging Darkness',
+				gem = 5,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
 		},
-
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Lesser Shielding', 'Grim Aura', 'Endure Cold', 'Dark Pact', 'Vampiric Embrace'
+		}
 	},
 
 	[10] = {
 		Level = 10,
 		Scent = {
-			name = '',
-			altnum = '',
-			gem = ''
+			type = 'Spell',
+			name = 'Scent of Dusk'
 		},
 		Spellbar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
+			[1] = 'Heat Blood',
+			[2] = 'Leech',
+			[3] = 'Disease Cloud',
+			[4] = 'Lifespike',
+			[5] = 'Clinging Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Dark Pact',
+			[8] = 'Vampiric Embrace'
 		},
-		TankSpellBar = {
-			[1] = '',[2] = '',[3] = '',[4] = '',[5] = '',[6] = '',
-			[7] = '',[8] = '',[9] = '',[10] = '',[11] = '',[12] = '',
-			[13] = '',
-		},
-		warriorPet = 'N/A',
+		warriorPet = 'Bone Walk',
 		roguePet = 'N/A',
-
 		FirstPrioritySpells = {
+
 			{
-				name = "", gem = '', priority = 1,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Heat Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Leech",
+				gem = 2,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
 		},
 		SecondPrioritySpells = {
 			{
-				name = "", gem = '', priority = 2,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+				name = "Lifespike",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
 			},
-		},
-		LastPrioritySpells = {
 			{
-				name = "", gem = '', priority = 3,
-				buffRecieved = false, buffRecievedName = nil,
-				alternateNamePostCast = false, altName1 = nil, altName2 = nil,
+			name = "Disease Cloud",
+			gem = 3,
+			priority = 2,
+			buffRecieved = false,
+			buffRecievedName = nil,
+			alternateNamePostCast = false,
+			altName1 = nil,
+			altName2 = nil,
 			},
+			{
+				name = 'Clinging Darkness',
+				gem = 5,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
 		},
-
+		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Lesser Shielding', 'Grim Aura', 'Endure Cold', 'Dark Pact', 'Vampiric Embrace'
+		}
 	},
-
 	[11] = {
 		Level = 11,
 		Scent = {

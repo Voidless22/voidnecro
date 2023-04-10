@@ -58,16 +58,8 @@ AbilitySet = abilitySets[mq.TLO.Me.Level()]
 
 
 local function configCheck() 
-if Config.usePetHeal then
-	AbilitySet.Spellbar[7] = MiscModule.findClosestValue(BuffSpellLines.PetHeals, mq.TLO.Me.Level())
-end
-if Config.useShortPetRune then
-	--AbilitySet.Spellbar[8] = MiscModule.findClosestValue(BuffSpellLines.ShortPetRunes, mq.TLO.Me.Level())
-end
-if Config.useLongPetRune then
---	AbilitySet.Spellbar[6] = MiscModule.findClosestValue(BuffSpellLines.LongPetRunes, mq.TLO.Me.Level())
-end
-if Config.useScent and AbilitySet.type == 'Spell' then
+
+if Config.useScent and AbilitySet.type == 'Spell' and not mq.TLO.Me.Gem(AbilitySet.Scent.Name)() then
 	AbilitySet.Spellbar[2] = MiscModule.findClosestValue(BuffSpellLines.Scent, mq.TLO.Me.Level())
 end
 
@@ -77,7 +69,6 @@ end
 
 
 
-configCheck()
 
 
 argHandler.VNInfo()
@@ -85,10 +76,12 @@ argHandler.VNInfo()
 mq.imgui.init("VoidNecro", VNInit)
 
 MiscModule.LoadSpells()
+configCheck()
 if mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
 PetModule.PetSetup(Config.Tank)
 end
 petsetupdone = true
+MiscModule.BuffHandler()
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -103,6 +96,7 @@ local function VNMain()
 			cprint('Current Level Ability Set: %s', AbilitySet.Level)
 			MiscModule.LoadSpells()
 		end
+		MiscModule.BuffHandler()
 
 	if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
 		PetModule.PetSetup(Config.Tank)
