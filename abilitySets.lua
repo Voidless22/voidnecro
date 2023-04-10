@@ -3,6 +3,7 @@ local mq = require("mq")
 local spellDB = require('spellDB')
 require('spellLines')
 require('config')
+require('./modules/miscModule')
 
 -- Need to Finish Level 2 through 24
 AbilitySets = {
@@ -5492,35 +5493,21 @@ AbilitySets = {
 			AltNumber = 751,
 		},
 		Spellbar = {
-			[1] = MiscModule.findClosestIndex(CombatSpellLines.LongDreadPyre, 120),
-			[2] = MiscModule.findClosestIndex(CombatSpellLines.NecrotizingWounds, 120),
-			[3] = MiscModule.findClosestIndex(CombatSpellLines.LongKedgefishVenom, 120),
-			[4] = MiscModule.findClosestIndex(CombatSpellLines.VisziajsPallidHaze,120),
-			[5] = MiscModule.findClosestIndex(CombatSpellLines.LongCurseOfMortality, 120),
-			[6] = MiscModule.findClosestIndex(CombatSpellLines.DiseaseCombo, 120),
-			[7] = MiscModule.findClosestIndex(CombatSpellLines.LongPyreOfMori, 120),
-			[8] = MiscModule.findClosestIndex(CombatSpellLines.SearingShadow, 120),
-			[9] = MiscModule.findClosestIndex(CombatSpellLines.Ignite, 120),
-			[10] = MiscModule.findClosestIndex(CombatSpellLines.Blood, 120),
-			[11] = MiscModule.findClosestIndex(CombatSpellLines.SwarmPets, 120),
-			[12] = MiscModule.findClosestIndex(CombatSpellLines.MindWrack, 120),
-			[13] = MiscModule.findClosestIndex(CombatSpellLines.Progressive, 120)
+			[1] = MiscModule.findClosestValue(CombatSpellLines.LongDreadPyre, 120),
+			[2] = MiscModule.findClosestValue(CombatSpellLines.NecrotizingWounds, 120),
+			[3] = MiscModule.findClosestValue(CombatSpellLines.LongKedgefishVenom, 120),
+			[4] = MiscModule.findClosestValue(CombatSpellLines.VisziajsPallidHaze,120),
+			[5] = MiscModule.findClosestValue(CombatSpellLines.LongCurseOfMortality, 120),
+			[6] = MiscModule.findClosestValue(CombatSpellLines.DiseaseCombo, 120),
+			[7] = MiscModule.findClosestValue(CombatSpellLines.LongPyreOfMori, 120),
+			[8] = MiscModule.findClosestValue(CombatSpellLines.SearingShadow, 120),
+			[9] = MiscModule.findClosestValue(CombatSpellLines.DarkLeech, 120),
+			[10] = MiscModule.findClosestValue(CombatSpellLines.Blood, 120),
+			[11] = MiscModule.findClosestValue(CombatSpellLines.SwarmPets, 120),
+			[12] = MiscModule.findClosestValue(CombatSpellLines.MindWrack, 120),
+			[13] = MiscModule.findClosestValue(CombatSpellLines.Progressive, 120)
 		},
-		TankSpellBar = {
-			[1] = "Pyre of Va Xakra",
-			[2] = "Infected Wounds",
-			[3] = "Hemorrhagic Venom",
-			[4] = "Zelnithak's Pallid Haze",
-			[5] = "Extinction",
-			[6] = "Fleshrot's Grip of Decay",
-			[7] = "Cascading Shadeshield",
-			[8] = "Scalding Shadow",
-			[9] = "Frigid Salubrity",
-			[10] = "Proclamation for Blood",
-			[11] = "Call Skeleton Mass",
-			[12] = "Mind Atrophy",
-			[13] = "Composite Paroxysm",
-		},
+
 		warriorPet = "Luclin's Conqueror",
 		roguePet = "Unrelenting Assassin",
 		FirstPrioritySpells = {

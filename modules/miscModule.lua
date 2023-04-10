@@ -1,13 +1,7 @@
 ---@type Mq
 local mq = require("mq")
 
-
 MiscModule = {}
-
-
-
-
-
 
 function MiscModule.WaitforCast(gem)
 	mq.delay(100)
@@ -57,7 +51,6 @@ function MiscModule.hasBuff(spell)
 	end
 end
 
-
 function MiscModule.activateItem(item)
 	MiscModule.WaitforCast()
 	cprint("Activating Item %s", item)
@@ -88,15 +81,17 @@ function MiscModule.inCombat()
 
 	if mq.TLO.Me.XTarget() > 0 then
 		for i = 1, mq.TLO.Me.XTarget() do
-			if mq.TLO.Me.XTarget(i).Distance() < radius and mq.TLO.Me.XTarget(i).Aggressive() and not MiscModule.invis()
+			if
+				mq.TLO.Me.XTarget(i).Distance() < radius
+				and mq.TLO.Me.XTarget(i).Aggressive()
+				and not MiscModule.invis()
 			then
 				return true
 			end
 		end
 	else
-	return false
+		return false
 	end
-
 end
 function MiscModule.isNamed()
 	if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Named() == true then
@@ -107,69 +102,59 @@ function MiscModule.isNamed()
 end
 
 function MiscModule.checkForSit()
-    if mq.TLO.Group.MainAssist ~= nil and mq.TLO.Group.MainAssist.Sitting() and not mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
-        while mq.TLO.Group.MainAssist.Sitting() and not mq.TLO.Me.Casting() do
-            if not mq.TLO.Me.Sitting() then
-                mq.cmd("/sit")
-                mq.delay(500)
-            end
-        end
-    end
+	if
+		mq.TLO.Group.MainAssist ~= nil
+		and mq.TLO.Group.MainAssist.Sitting()
+		and not mq.TLO.Group.MainAssist() == mq.TLO.Me.Name()
+	then
+		while mq.TLO.Group.MainAssist.Sitting() and not mq.TLO.Me.Casting() do
+			if not mq.TLO.Me.Sitting() then
+				mq.cmd("/sit")
+				mq.delay(500)
+			end
+		end
+	end
 end
-
 
 function MiscModule.LoadSpells()
 	for i = 1, mq.TLO.Me.NumGems() do
-		if not Config.Tank then
-		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar[i]).RankName() then
+		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar.i).RankName() then
 			if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
-				if mq.TLO.Cursor.ID() ~= nil then 
+				if mq.TLO.Cursor.ID() ~= nil then
 					while mq.TLO.Cursor.ID() ~= nil do
-						mq.cmd('/autoinventory') 
+						mq.cmd("/autoinventory")
 						mq.delay(200)
 					end
 				end
-					cprint("memorizing %s", AbilitySet.Spellbar[i])
-					mq.cmdf('/memspell %i "%s"', i, AbilitySet.Spellbar[i])
-					mq.delay(200)
-					while mq.TLO.Window("SpellBookWnd").Open() do
-						mq.delay(50)
-					end
+				cprint("memorizing %s", AbilitySet.Spellbar[i])
+				mq.cmdf('/memspell %i "%s"', i, AbilitySet.Spellbar[i])
+				mq.delay(200)
+				while mq.TLO.Window("SpellBookWnd").Open() do
+					mq.delay(50)
 				end
 			end
-		else
-			if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.TankSpellBar[i]).RankName() then
-				if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
-					if mq.TLO.Cursor.ID() ~= nil then 
-						while mq.TLO.Cursor.ID() ~= nil do
-							mq.cmd('/autoinventory') 
-							mq.delay(200)
-						end
-					end
-						cprint("memorizing %s", AbilitySet.TankSpellBar[i])
-						mq.cmdf('/memspell %i "%s"', i, AbilitySet.TankSpellBar[i])
-						mq.delay(200)
-						while mq.TLO.Window("SpellBookWnd").Open() do
-							mq.delay(50)
-						end
-					end
-				end
 		end
-
 	end
 end
 
-function MiscModule.findClosestIndex(tbl, value)
-	local closestIndex = 1
-	local closestDistance = math.abs(value - tbl[1])
-	for i = 2, #tbl do
-	  local distance = math.abs(value - tbl[i])
-	  if distance < closestDistance then
-		closestIndex = i
-		closestDistance = distance
-	  end
+function MiscModule.findClosestValue(tbl, level)
+	local tableLevels = {}
+	local tableSpells = {}
+	local closestValue
+	local i = 0
+	for index, value in pairs(tbl) do
+		table.insert(tableLevels, (i+1), index)
+		table.insert(tableSpells,(i+1), value)
 	end
-	return closestIndex
-  end
+
+	local closest = tableLevels[1]
+	for i = 1, #tableLevels do
+		if math.abs(tableLevels[i] - level) < math.abs(closest - level) then
+			closest = i
+		end
+	end
+	closestValue = tableSpells[closest]
+	return closestValue
+end
 
 return MiscModule

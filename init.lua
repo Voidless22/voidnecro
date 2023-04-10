@@ -8,7 +8,7 @@ require('./modules/burnModule')
 require('./modules/miscModule')
 require('./modules/petModule')
 require('./modules/combatModule')
-require('./spellLines')
+require('spellLines')
  Config = require('config')
 
 
@@ -59,8 +59,18 @@ AbilitySet = abilitySets[mq.TLO.Me.Level()]
 
 local function configCheck() 
 if Config.usePetHeal then
-	AbilitySet.Spellbar[7] = MiscModule.findClosestIndex(
+	AbilitySet.Spellbar[7] = MiscModule.findClosestValue(BuffSpellLines.PetHeals, mq.TLO.Me.Level())
 end
+if Config.useShortPetRune then
+	--AbilitySet.Spellbar[8] = MiscModule.findClosestValue(BuffSpellLines.ShortPetRunes, mq.TLO.Me.Level())
+end
+if Config.useLongPetRune then
+--	AbilitySet.Spellbar[6] = MiscModule.findClosestValue(BuffSpellLines.LongPetRunes, mq.TLO.Me.Level())
+end
+if Config.useScent and AbilitySet.type == 'Spell' then
+	AbilitySet.Spellbar[2] = MiscModule.findClosestValue(BuffSpellLines.Scent, mq.TLO.Me.Level())
+end
+
 
 end
 

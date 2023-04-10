@@ -17,7 +17,7 @@ CombatSpellLines.LongDreadPyre = {
 	[104] = "Pyre of Jorobb",
 	[109] = "Pyre of the Shadewarden",
 	[114] = "Pyre of Klraggek",
-	[119] = "Pyre of Va Xakra",
+	[119] = "Pyre of Va Xakra"
 }
 CombatSpellLines.LongPyreOfMori = {
 	[69] = "Pyre of Mori",
@@ -30,7 +30,7 @@ CombatSpellLines.LongPyreOfMori = {
 	[103] = "Pyre of the Lost",
 	[108] = "Pyre of the Fereth",
 	[113] = "Pyre of the Wretched",
-	[118] = "Pyre of the Neglected",
+	[118] = "Pyre of the Neglected"
 }
 CombatSpellLines.ShortPyreOfMori = {
 	[88] = "Tenak's Flashblaze",
@@ -39,7 +39,7 @@ CombatSpellLines.ShortPyreOfMori = {
 	[103] = "Mazub's Flashblaze",
 	[108] = "Azeron's Flashblaze",
 	[113] = "Otatomik's Flashblaze",
-	[118] = "Thall Va Kelun's Flashblaze",
+	[118] = "Thall Va Kelun's Flashblaze"
 }
 CombatSpellLines.SearingShadow = {
 	[80] = "Searing Shadow",
@@ -50,7 +50,7 @@ CombatSpellLines.SearingShadow = {
 	[105] = "Smouldering Shadow",
 	[110] = "Burning Shadow",
 	[115] = "Broiling Shadow",
-	[120] = "Scalding Shadow",
+	[120] = "Scalding Shadow"
 }
 CombatSpellLines.Ignite = {
 	[84] = "Ignite Energy",
@@ -60,7 +60,7 @@ CombatSpellLines.Ignite = {
 	[104] = "Ignite Synapses",
 	[109] = "Ignite Memories",
 	[114] = "Ignite Intellect",
-	[119] = "Ignite Cognition",
+	[119] = "Ignite Cognition"
 }
 CombatSpellLines.GripOfMori = {
 	[67] = "Grip of Mori",
@@ -69,7 +69,7 @@ CombatSpellLines.GripOfMori = {
 	[101] = "Grip of Jabaum",
 	[106] = "Grip of Kraz",
 	[111] = "Grip of Zorglim",
-	[116] = "Grip of Quietus",
+	[116] = "Grip of Quietus"
 }
 CombatSpellLines.LongEranonsDecay = {
 	[66] = "Chaos Plague",
@@ -82,7 +82,7 @@ CombatSpellLines.LongEranonsDecay = {
 	[101] = "Livianus' Decay",
 	[106] = "Mourgis' Decay",
 	[111] = "Danvid's Decay",
-	[116] = "Fleshrot's Decay",
+	[116] = "Fleshrot's Decay"
 }
 
 CombatSpellLines.ShortEranonsDecay = {
@@ -92,7 +92,7 @@ CombatSpellLines.ShortEranonsDecay = {
 	[104] = "Ilsaria's Swift Sickness",
 	[109] = "Hoshkar's Swift Sickness",
 	[114] = "Lairsaf's Swift Sickness",
-	[119] = "Diabo Tatrua's Swift Sickness",
+	[119] = "Diabo Tatrua's Swift Sickness"
 }
 
 CombatSpellLines.Corruption = {}
@@ -149,7 +149,7 @@ CombatSpellLines.DarkLeech = {
 	[100] = "Dark Leech",
 	[110] = "Ashen Leech",
 	[115] = "Frozen Leech",
-	[120] = "Twilight Leech",
+	[120] = "Twilight Leech"
 }
 
 CombatSpellLines.LongDynlethsGrasp = {
@@ -163,7 +163,7 @@ CombatSpellLines.LongDynlethsGrasp = {
 	[102] = "Plexipharia's Grasp",
 	[107] = "Bomoda's Grasp",
 	[112] = "Tserrina's Grasp",
-	[117] = "The Protector's Grasp",
+	[117] = "The Protector's Grasp"
 }
 
 CombatSpellLines.NecrotizingWounds = {
@@ -176,7 +176,7 @@ CombatSpellLines.NecrotizingWounds = {
 	[105] = "Mortiferous Wounds",
 	[110] = "Cytotoxic Wounds",
 	[115] = "Septic Wounds",
-	[120] = "Infected Wounds",
+	[120] = "Infected Wounds"
 }
 
 CombatSpellLines.LongCurseOfMortality = {
@@ -191,7 +191,7 @@ CombatSpellLines.LongCurseOfMortality = {
 	[102] = "Annihilation",
 	[107] = "Inevitable End",
 	[112] = "Oblivion",
-	[117] = "Extinction",
+	[117] = "Extinction"
 }
 CombatSpellLines.ShortCurseOfMortality = {
 	[87] = "Ninavero's Swift Deconstruction",
@@ -200,7 +200,7 @@ CombatSpellLines.ShortCurseOfMortality = {
 	[102] = "Marmat's Swift Deconstruction",
 	[107] = "Adalora's Swift Deconstruction",
 	[112] = "Lexelan's Swift Deconstruction",
-	[117] = "Xetheg's Swift Deconstruction",
+	[117] = "Xetheg's Swift Deconstruction"
 }
 
 CombatSpellLines.VisziajsPallidHaze = {
@@ -214,7 +214,7 @@ CombatSpellLines.VisziajsPallidHaze = {
 	[104] = "Plexipharia's Pallid Haze",
 	[109] = "Bomoda's Pallid Haze",
 	[114] = "Dracnia's Pallid Haze",
-	[119] = "Zelnithak's Pallid Haze",
+	[119] = "Zelnithak's Pallid Haze"
 }
 
 CombatSpellLines.LongKedgefishVenom = {
@@ -228,7 +228,7 @@ CombatSpellLines.LongKedgefishVenom = {
 	[105] = "Glistenwing Venom",
 	[110] = "Polybiad Venom",
 	[115] = "Crystal Crawler Venom",
-	[120] = "Hemorrhagic Venom",
+	[120] = "Hemorrhagic Venom"
 }
 
 CombatSpellLines.ShortKedgefishVenom = {
@@ -238,7 +238,7 @@ CombatSpellLines.ShortKedgefishVenom = {
 	[101] = "Serisaria's Swift Venom",
 	[106] = "Nexona's Swift Venom",
 	[111] = "Vilefang's Swift Venom",
-	[116] = "Xenacious' Swift Venom",
+	[116] = "Xenacious' Swift Venom"
 }
 
 CombatSpellLines.DiseaseCombo = {
