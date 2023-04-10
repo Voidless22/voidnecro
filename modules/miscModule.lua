@@ -159,4 +159,17 @@ function MiscModule.LoadSpells()
 	end
 end
 
+function MiscModule.findClosestIndex(tbl, value)
+	local closestIndex = 1
+	local closestDistance = math.abs(value - tbl[1])
+	for i = 2, #tbl do
+	  local distance = math.abs(value - tbl[i])
+	  if distance < closestDistance then
+		closestIndex = i
+		closestDistance = distance
+	  end
+	end
+	return closestIndex
+  end
+
 return MiscModule

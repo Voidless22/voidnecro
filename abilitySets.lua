@@ -1,6 +1,8 @@
 ---@type Mq
 local mq = require("mq")
 local spellDB = require('spellDB')
+require('spellLines')
+require('config')
 
 -- Need to Finish Level 2 through 24
 AbilitySets = {
@@ -5490,19 +5492,19 @@ AbilitySets = {
 			AltNumber = 751,
 		},
 		Spellbar = {
-			[1] = SpellLines.LongDreadPyre[119],
-			[2] = SpellLines.NecrotizingWounds[120],
-			[3] = SpellLines.LongKedgefishVenom[120],
-			[4] = SpellLines.VisziajsPallidHaze[119],
-			[5] = SpellLines.LongCurseOfMortality[117],
-			[6] = SpellLines.DiseaseCombo[120],
-			[7] = SpellLines.LongPyreOfMori[118],
-			[8] = SpellLines.SearingShadow[120],
-			[9] = SpellLines.Ignite[119],
-			[10] = "Proclamation for Blood",
-			[11] = "Call Skeleton Mass",
-			[12] = "Mind Atrophy",
-			[13] = "Composite Paroxysm",
+			[1] = MiscModule.findClosestIndex(CombatSpellLines.LongDreadPyre, 120),
+			[2] = MiscModule.findClosestIndex(CombatSpellLines.NecrotizingWounds, 120),
+			[3] = MiscModule.findClosestIndex(CombatSpellLines.LongKedgefishVenom, 120),
+			[4] = MiscModule.findClosestIndex(CombatSpellLines.VisziajsPallidHaze,120),
+			[5] = MiscModule.findClosestIndex(CombatSpellLines.LongCurseOfMortality, 120),
+			[6] = MiscModule.findClosestIndex(CombatSpellLines.DiseaseCombo, 120),
+			[7] = MiscModule.findClosestIndex(CombatSpellLines.LongPyreOfMori, 120),
+			[8] = MiscModule.findClosestIndex(CombatSpellLines.SearingShadow, 120),
+			[9] = MiscModule.findClosestIndex(CombatSpellLines.Ignite, 120),
+			[10] = MiscModule.findClosestIndex(CombatSpellLines.Blood, 120),
+			[11] = MiscModule.findClosestIndex(CombatSpellLines.SwarmPets, 120),
+			[12] = MiscModule.findClosestIndex(CombatSpellLines.MindWrack, 120),
+			[13] = MiscModule.findClosestIndex(CombatSpellLines.Progressive, 120)
 		},
 		TankSpellBar = {
 			[1] = "Pyre of Va Xakra",
