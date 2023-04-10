@@ -118,7 +118,7 @@ end
 
 function MiscModule.LoadSpells()
 	for i = 1, mq.TLO.Me.NumGems() do
-		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar.i).RankName() then
+		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar[i]).RankName() then
 			if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
 				if mq.TLO.Cursor.ID() ~= nil then
 					while mq.TLO.Cursor.ID() ~= nil do
@@ -136,25 +136,36 @@ function MiscModule.LoadSpells()
 		end
 	end
 end
+function MiscModule.BuffHandler()
+	local isMemorized = false 
+	local buffGem
+if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() then
+	for index, value in ipairs(AbilitySet.Buffs) do
+		if not mq.TLO.Me.Buff(value)() then
+			for i=1, mq.TLO.Me.NumGems() do
+				if mq.TLO.Me.Gem(i).Name() == value then isMemorized = true buffGem = i end
+			end
+			if isMemorized then 
+				mq.cmdf('/tar %S', mq.TLO.Me.Name())
+				mq.delay(100)
+				MiscModule.WaitforCast()
+				MiscModule.castGem(buffGem)
+				MiscModule.WaitforCast()
+			else
+			mq.cmdf('/memspell 8 "%s"', value)
+			while mq.TLO.Me.Gem(8).Name() ~= mq.TLO.Spell(value).RankName() do mq.delay(100) end
+				MiscModule.WaitforCast()
+				MiscModule.castGem(8)
+				MiscModule.WaitforCast()
 
-function MiscModule.findClosestValue(tbl, level)
-	local tableLevels = {}
-	local tableSpells = {}
-	local closestValue
-	local i = 0
-	for index, value in pairs(tbl) do
-		table.insert(tableLevels, (i+1), index)
-		table.insert(tableSpells,(i+1), value)
-	end
+			end
 
-	local closest = tableLevels[1]
-	for i = 1, #tableLevels do
-		if math.abs(tableLevels[i] - level) < math.abs(closest - level) then
-			closest = i
+
 		end
 	end
-	closestValue = tableSpells[closest]
-	return closestValue
 end
+
+end
+
 
 return MiscModule
