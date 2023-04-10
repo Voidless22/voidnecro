@@ -8,6 +8,7 @@ require('./modules/burnModule')
 require('./modules/miscModule')
 require('./modules/petModule')
 require('./modules/combatModule')
+require('./spellLines')
  Config = require('config')
 
 
@@ -32,6 +33,8 @@ Burnnow = false
 
 
 
+
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 mq.bind("/vn", argHandler.vnbind)
@@ -52,6 +55,20 @@ end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 AbilitySet = abilitySets[mq.TLO.Me.Level()]
 	cprint('Current Level Ability Set: %s', AbilitySet.Level)
+
+
+local function configCheck() 
+if Config.usePetHeal then
+	AbilitySet.Spellbar[7] = MiscModule.findClosestIndex(
+end
+
+end
+
+
+
+
+configCheck()
+
 
 argHandler.VNInfo()
 
