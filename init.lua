@@ -9,7 +9,7 @@ require('./modules/miscModule')
 require('./modules/petModule')
 require('./modules/combatModule')
 require('spellLines')
- Config = require('config')
+Config = require('config')
 
 
 local petsetupdone = false
@@ -54,16 +54,13 @@ local function VNInit()
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 AbilitySet = abilitySets[mq.TLO.Me.Level()]
-	cprint('Current Level Ability Set: %s', AbilitySet.Level)
+cprint('Current Level Ability Set: %s', AbilitySet.Level)
 
 
-local function configCheck() 
-
-if Config.useScent and AbilitySet.type == 'Spell' and not mq.TLO.Me.Gem(AbilitySet.Scent.Name)() then
-	AbilitySet.Spellbar[2] = MiscModule.findClosestValue(BuffSpellLines.Scent, mq.TLO.Me.Level())
-end
-
-
+local function configCheck()
+	if Config.useScent and AbilitySet.type == 'Spell' and not mq.TLO.Me.Gem(AbilitySet.Scent.Name)() then
+		AbilitySet.Spellbar[2] = MiscModule.findClosestValue(BuffSpellLines.Scent, mq.TLO.Me.Level())
+	end
 end
 
 
@@ -78,7 +75,7 @@ mq.imgui.init("VoidNecro", VNInit)
 MiscModule.LoadSpells()
 configCheck()
 if mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
-PetModule.PetSetup(Config.Tank)
+	PetModule.PetSetup(Config.Tank)
 end
 petsetupdone = true
 MiscModule.BuffHandler()
@@ -88,7 +85,6 @@ MiscModule.BuffHandler()
 
 
 local function VNMain()
-	
 	mq.delay(100)
 	if not VNPaused then
 		if AbilitySet.Level ~= mq.TLO.Me.Level() then
@@ -98,24 +94,22 @@ local function VNMain()
 		end
 		MiscModule.BuffHandler()
 
-	if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
-		PetModule.PetSetup(Config.Tank)
-		petsetupdone = true
+		if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
+			PetModule.PetSetup(Config.Tank)
+			petsetupdone = true
+		end
+		ModeModule.checkForCamp()
+		ModeModule.checkForChase()
+
+		if MiscModule.inCombat() then
+			CombatModule.CombatHandler()
+		end
 	end
-	ModeModule.checkForCamp()
-	ModeModule.checkForChase()
-
-if MiscModule.inCombat() then
-	CombatModule.CombatHandler()
-end
-
-
-end
 end
 
 
 while Open do
-mq.delay(100)
-VNMain()
-mq.doevents()
+	mq.delay(100)
+	VNMain()
+	mq.doevents()
 end

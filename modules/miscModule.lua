@@ -146,7 +146,7 @@ if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDe
 				if mq.TLO.Me.Gem(i).Name() == value then isMemorized = true buffGem = i end
 			end
 			if isMemorized then 
-				mq.cmdf('/tar %S', mq.TLO.Me.Name())
+				mq.cmdf('/tar %s', mq.TLO.Me.Name())
 				mq.delay(100)
 				MiscModule.WaitforCast()
 				MiscModule.castGem(buffGem)

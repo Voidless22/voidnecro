@@ -5714,20 +5714,7 @@ AbilitySets = {
 			AltNumber = 751,
 		},
 		Spellbar = {
-			[1] = MiscModule.findClosestValue(CombatSpellLines.LongDreadPyre, 120),
-			[2] = MiscModule.findClosestValue(CombatSpellLines.NecrotizingWounds, 120),
-			[3] = MiscModule.findClosestValue(CombatSpellLines.LongKedgefishVenom, 120),
-			[4] = MiscModule.findClosestValue(CombatSpellLines.VisziajsPallidHaze,120),
-			[5] = MiscModule.findClosestValue(CombatSpellLines.LongCurseOfMortality, 120),
-			[6] = MiscModule.findClosestValue(CombatSpellLines.DiseaseCombo, 120),
-			[7] = MiscModule.findClosestValue(CombatSpellLines.LongPyreOfMori, 120),
-			[8] = MiscModule.findClosestValue(CombatSpellLines.SearingShadow, 120),
-			[9] = MiscModule.findClosestValue(CombatSpellLines.DarkLeech, 120),
-			[10] = MiscModule.findClosestValue(CombatSpellLines.Blood, 120),
-			[11] = MiscModule.findClosestValue(CombatSpellLines.SwarmPets, 120),
-			[12] = MiscModule.findClosestValue(CombatSpellLines.MindWrack, 120),
-			[13] = MiscModule.findClosestValue(CombatSpellLines.Progressive, 120)
-		},
+				},
 
 		warriorPet = "Luclin's Conqueror",
 		roguePet = "Unrelenting Assassin",

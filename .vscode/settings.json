@@ -8,6 +8,6 @@
       "deprecated"
     ],
     "[lua]": {
-      "editor.defaultFormatter": "JohnnyMorganz.stylua"
+      "editor.defaultFormatter": "sumneko.lua"
   },
   }

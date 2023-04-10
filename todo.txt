@@ -1,0 +1,39 @@
+Voidnecro Done:
+    Autoassist toggle
+    tank toggle
+    chase mode 
+    camp mode
+    scent toggle(spell and aa)
+    Burns(AA and Items)
+    do doMelee
+    Buff Handler 
+    Argument Handler
+    Aggro Managment(AA)
+    Mana AAs 
+    CC(AAs)
+    Eradicate Magic AA
+    Snare AA
+
+Voidnecro Todo:
+    Undead stuff:
+      Ignite Bones
+      Slow
+      Mez
+      Charm
+  Root(Spell)
+  Venin
+  Rezzing
+  Corpse Summoning
+  Offtank(?)
+  Pulling
+  Aggro managmeent(spells)
+  GUI
+  Config Persisting
+  Finish Filling in Ability Sets for 11-120
+  Saccing
+  Auto Campfire
+  Convert to behavior tree system(probably not at this point)
+  Glyph / Intensity
+  Flesh to Venom Toggle
+  Add Long Pet Runes
+  
