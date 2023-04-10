@@ -4,7 +4,7 @@ require('./modules/modeModule')
 require('./modules/burnModule')
 require('./modules/miscModule')
 require('./modules/petModule')
-AbilityDB = require('abilityDB')
+abilitySets = require('abilitySets')
 CombatModule = {}
 
 function CombatModule.AssistHandler()
@@ -104,20 +104,24 @@ function CombatModule.CCRoutine()
 end
 
 ----------------------------------------------------------------------------------------------------
-function CombatModule.DebuffMob()
+function CombatModule.DebuffMob(debuff)
 	if mq.TLO.Target.Name() == nil or mq.TLO.Target.PctHPs() < 20 or MiscModule.amIDead() then
 		return
 	end
-	if
-		not (MiscModule.hasBuff("Scent of Terris") or MiscModule.hasBuff("Scent of the Grave"))
-		and not MiscModule.amIDead()
-		and Config.useScent
-	then
+	if type(debuff) == "number" then
+	local AASpell = mq.TLO.Me.AltAbility(debuff).Spell()
+	if not (MiscModule.hasBuff(AASpell)) and not MiscModule.amIDead() and Config.useScent then
+
 		MiscModule.WaitforCast()
 		MiscModule.activateAA(AbilitySet["Scent"].AltNumber)
 		MiscModule.WaitforCast()
 	end
+elseif type(debuff) == 'string' then
+	local spell = AbilitySet.Scent.gem
+
 end
+end
+
 
 local function SuperCast(gem)
 	MiscModule.WaitforCast()
@@ -129,7 +133,11 @@ local function SuperCast(gem)
 function CombatModule.SpellHandler()
 	
 	----------------------------------------------------------------------------------------------------
+	if AbilitySet.FirstPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.minDmgSpellManaPct then
+		
 	for index, value in pairs(AbilitySet.FirstPrioritySpells) do
+		if mq.TLO.Me.PctMana() < Config.minDmgSpellManaPct then return end
+		if Config.Tank and (value.gem == 7 or value.gem == 9) then return end
 		if mq.TLO.Target.Name() == nil then CombatModule.AssistHandler() end
 		local spellCategory = mq.TLO.Spell(value.name).Category()
 		local hasBuffComponent = value.buffRecieved
@@ -144,7 +152,7 @@ function CombatModule.SpellHandler()
 
 			end
 ----------------------------------------------------------------------------------------------------
-		elseif spellCategory == 'Direct Damage' then
+		elseif spellCategory == 'Direct Damage' or spellCategory == 'Taps' then
 			if hasBuffComponent then
 				if not mq.TLO.Me.Buff(value.buffRecievedName)() or not mq.TLO.Me.Song(value.buffRecievedName)() then
 					SuperCast(value.gem)
@@ -153,10 +161,10 @@ function CombatModule.SpellHandler()
 			else
 				SuperCast(value.gem)
 
-				end
+			end
 ----------------------------------------------------------------------------------------------------
 		elseif spellCategory == 'Utility Detrimental' then
-			if hasBuffComponent and mq.TLO.Spell(value.name).Duration() > '0' and not MiscModule.hasBuff(value.name) then
+			if hasBuffComponent and mq.TLO.Spell(value.name).Duration.Seconds() > 0 and not MiscModule.hasBuff(value.name) then
 				if not (mq.TLO.Me.Buff(value.buffRecievedName) or mq.TLO.Me.Song(value.buffRecievedName)) then
 					SuperCast(value.gem)
 
@@ -170,8 +178,13 @@ function CombatModule.SpellHandler()
 			end
 		end
 	end	
+end
 ----------------------------------------------------------------------------------------------------
+if AbilitySet.SecondPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.minDmgSpellManaPct then
 	for index, value in pairs(AbilitySet.SecondPrioritySpells) do
+		if mq.TLO.Me.PctMana() < Config.minDmgSpellManaPct then return end
+		if Config.Tank and (value.gem == 7 or value.gem == 9) then return end
+
 		local spellCategory = mq.TLO.Spell(value.name).Category()
 		local hasBuffComponent = value.buffRecieved
 ----------------------------------------------------------------------------------------------------
@@ -187,7 +200,7 @@ function CombatModule.SpellHandler()
 			end
 		end
 ----------------------------------------------------------------------------------------------------
-		if spellCategory == 'Direct Damage' then
+		if spellCategory == 'Direct Damage' or spellCategory == 'Taps' then
 			if hasBuffComponent then
 				if not (mq.TLO.Me.Buff(value.buffRecievedName) or mq.TLO.Me.Song(value.buffRecievedName)) then
 					SuperCast(value.gem)
@@ -214,8 +227,13 @@ function CombatModule.SpellHandler()
 			end
 		end
 	end
+end
 ----------------------------------------------------------------------------------------------------
+if AbilitySet.LastPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.minDmgSpellManaPct then
 	for index, value in pairs(AbilitySet.LastPrioritySpells) do
+		if mq.TLO.Me.PctMana() < Config.minDmgSpellManaPct then return end
+		if Config.Tank and (value.gem == 7 or value.gem == 9) then return end
+
 		local spellCategory = mq.TLO.Spell(value.name).Category()
 		local hasBuffComponent = value.buffRecieved
 		if spellCategory == 'Damage Over Time' then
@@ -230,7 +248,7 @@ function CombatModule.SpellHandler()
 			end
 		end
 ----------------------------------------------------------------------------------------------------
-		if spellCategory == 'Direct Damage' then
+		if spellCategory == 'Direct Damage' or spellCategory == 'Taps' then
 			if hasBuffComponent then
 				if not (mq.TLO.Me.Buff(value.buffRecievedName) or not mq.TLO.Me.Song(value.buffRecievedName)) then
 					SuperCast(value.gem)
@@ -260,7 +278,7 @@ function CombatModule.SpellHandler()
 ----------------------------------------------------------------------------------------------------
 
 end
-
+end
 
 
 function CombatModule.CheckForLOS()
@@ -275,7 +293,7 @@ function CombatModule.CheckForLOS()
 end
 
 function CombatModule.useEradicateAA()
-if mq.TLO.Target.Name() ~= nil then
+if mq.TLO.Target.Name() ~= nil and mq.TLO.Me.Level() >= 100 then
     if mq.TLO.Target.BuffCount() > 0 and MiscModule.AAReady(547)  then
         for i = 1, mq.TLO.Target.BuffCount() do
             if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Buff(i).SpellType() == "Beneficial" then
@@ -289,7 +307,7 @@ end
 end
 
 function CombatModule.useSnareAA()
-if MiscModule.AAReady(826) and mq.TLO.Target.Name() ~= nil then
+if MiscModule.AAReady(826) and mq.TLO.Target.Name() ~= nil and mq.TLO.Me.Level() >= 70 then
     MiscModule.WaitforCast()
     MiscModule.activateAA(826)
 end
@@ -313,8 +331,10 @@ function CombatModule.CombatHandler()
 		if Config.doMelee then
 		mq.cmd('/face')
 		mq.delay(100)
+		if mq.TLO.Target.Name() ~= nil and  mq.TLO.Target.Distance() > 5 then
 		mq.cmd('/nav target')
 		while mq.TLO.Navigation.Active() do mq.delay(50) end
+		end
 		mq.cmd('/attack on')
 
 		end

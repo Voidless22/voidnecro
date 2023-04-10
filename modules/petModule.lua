@@ -11,11 +11,11 @@ PetModule = {}
 function PetModule.PetSetup(mode)
 	local warriorPet = AbilitySet.warriorPet
 	local roguePet = AbilitySet.roguePet
-	if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() and warriorPet ~= 'N/A' and roguePet ~= 'N/A' then
+	if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead()  then
 		if mq.TLO.Me.Pet() == "NO PET" then
 			print("You have no pet! Summoning one.")
 
-			if Config.Tank then
+			if Config.Tank and AbilitySet.warriorPet ~= nil then
 				mq.cmd("/stand")
 				print("In Pet Tank mode, loading Warrior Pet Stuff.")
 				mq.cmdf('/memspell 8 "%s"', warriorPet)
@@ -27,7 +27,7 @@ function PetModule.PetSetup(mode)
 				MiscModule.WaitforCast()
 				print("Turning Pet Taunt on since we are in Pet Tank mode.")
 				mq.cmd("/pet taunt on")
-			else
+			elseif not Config.Tank and AbilitySet.roguePet ~= nil then
 				print("Not in a tank mode, loading Rogue Pet.")
 				mq.cmdf('/memspell 8 "%s"', roguePet)
 				while mq.TLO.Me.Gem(8)() ~= roguePet do
@@ -38,7 +38,18 @@ function PetModule.PetSetup(mode)
 				MiscModule.WaitforCast()
 				print("Turning Pet Taunt off since we aren't in a tank mode.")
 				mq.cmd("/pet taunt off")
+			elseif not Config.Tank and AbilitySet.roguePet == nil and AbilitySet.warriorPet ~= nil then
+				print('Loading Warrior Pet even though we are not in a tank mode because you do not have a rogue pet.')
+				mq.cmdf('/memspell 8 "%s"', warriorPet)
+				while mq.TLO.Me.Gem(8)() ~= warriorPet do
+					mq.delay(50)
+				end
+				MiscModule.WaitforCast(8)
+				MiscModule.castGem(8)
+				MiscModule.WaitforCast()
 			end
+
+
 		end
 	end
 	if mq.TLO.Me.Pet() ~= "NO PET" and not mq.TLO.Pet.Buff("Sigil of Undeath")() then

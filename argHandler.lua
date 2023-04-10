@@ -38,6 +38,7 @@ end
 	cprint("[Tank]: %s", Config.Tank)
 
 	cprint("\ar[Combat and Burns]")
+	cprint("[DoMelee]: %s", Config.DoMelee)
 	cprint("[minDotsForBurns]: %i", Config.minDotsForBurns)
 	cprint("[stopDotsAt]: %i", Config.stopDotsAt)
 	cprint("[burnAlways]: %s", Config.burnAlways)
@@ -68,7 +69,7 @@ end
 function ArgHandler.checkArgs(argument)
 	local acceptedConfigArgs = { "on", "off", "true", "false", "On", "Off", "True", "False" }
 	cprint("Checking %s for validity.", argument)
-	if type(argument) == "number" then
+	if type(argument) == "number" or argument == nil then
 		return 
 	end
 	for index, value in ipairs(acceptedConfigArgs) do
@@ -142,9 +143,14 @@ ArgHandler.vnbind = function(...)
 		if args[2] == "1" or args[2] == "true" or args[2] == "on" then
 			cprint("Turning Tank Mode on.")
 			Config.Tank = true
+			MiscModule.LoadSpells()
+			mq.cmd('/pet taunt on')
 		elseif args[2] == "0" or args[2] == "false" or args[2] == "off" then
 			print("Turning Tank Mode off.")
 			Config.Tank = false
+			MiscModule.LoadSpells()
+			mq.cmd('/pet taunt off')
+
 		end
 	end
 	------------------------------------------------------------------

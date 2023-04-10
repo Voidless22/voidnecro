@@ -2,7 +2,7 @@
 local mq = require('mq')
 
 
-local Abilities = require('abilityDB')
+local Abilities = require('abilitySets')
 
 
 local baseCampLoc
