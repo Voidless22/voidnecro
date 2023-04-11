@@ -8,6 +8,7 @@ require('./modules/burnModule')
 require('./modules/miscModule')
 require('./modules/petModule')
 require('./modules/combatModule')
+require('scribeModule')
 require('spellLines')
 Config = require('config')
 
@@ -53,16 +54,12 @@ local function VNInit()
 	ImGui.End()
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-AbilitySet = abilitySets[mq.TLO.Me.Level()]
+AbilitySet = AbilitySets[mq.TLO.Me.Level()]
 cprint('Current Level Ability Set: %s', AbilitySet.Level)
 
 
-local function configCheck()
-	if Config.useScent and AbilitySet.type == 'Spell' and not mq.TLO.Me.Gem(AbilitySet.Scent.Name)() then
-		AbilitySet.Spellbar[2] = MiscModule.findClosestValue(BuffSpellLines.Scent, mq.TLO.Me.Level())
-	end
-end
 
+ScribeModule.checkNeededSpells()
 
 
 
@@ -73,9 +70,22 @@ argHandler.VNInfo()
 mq.imgui.init("VoidNecro", VNInit)
 
 MiscModule.LoadSpells()
-configCheck()
-if mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
-	PetModule.PetSetup(Config.Tank)
+
+
+
+
+if mq.TLO.Me.Pet() == "NO PET" and AbilitySet.warriorPet ~= 'N/A' or AbilitySet.roguePet ~= 'N/A' and not PetModule.NoReagent then
+	while mq.TLO.Me.Pet() == "NO PET" and not PetModule.NoReagent do
+		if not mq.TLO.FindItem('Bone Chips')() then
+			cprint('No Bone Chips in inventory')
+			PetModule.NoReagent = true
+		else 
+			PetModule.NoReagent = false
+		end
+
+	PetModule.PetSetup()
+	mq.delay(2000)
+end
 end
 petsetupdone = true
 MiscModule.BuffHandler()
@@ -87,15 +97,21 @@ MiscModule.BuffHandler()
 local function VNMain()
 	mq.delay(100)
 	if not VNPaused then
+
 		if AbilitySet.Level ~= mq.TLO.Me.Level() then
-			AbilitySet = abilitySets[mq.TLO.Me.Level()]
-			cprint('Current Level Ability Set: %s', AbilitySet.Level)
+			AbilitySet = AbilitySets[mq.TLO.Me.Level()]
+			cprint('DING! You leveled up! New Ability Set: %s', AbilitySet.Level)
 			MiscModule.LoadSpells()
 		end
 		MiscModule.BuffHandler()
 
-		if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" and not (AbilitySet.warriorPet == 'N/A' or AbilitySet.roguePet == 'N/A') then
-			PetModule.PetSetup(Config.Tank)
+		if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" and AbilitySet.warriorPet ~= 'N/A' or AbilitySet.roguePet ~= 'N/A' then
+			if not mq.TLO.FindItem('Bone Chips')() then
+				PetModule.NoReagent = true
+			else 
+				PetModule.NoReagent = false
+			end
+			PetModule.PetSetup()
 			petsetupdone = true
 		end
 		ModeModule.checkForCamp()

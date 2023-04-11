@@ -117,8 +117,15 @@ function MiscModule.checkForSit()
 end
 
 function MiscModule.LoadSpells()
-	for i = 1, mq.TLO.Me.NumGems() do
-		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar[i]).RankName() then
+	local skippedGems = {}
+	for i = 1, #AbilitySet.Spellbar do
+		for index, value in pairs(ScribeModule.neededSpells) do
+				if value == AbilitySet.Spellbar[i] then
+					cprint('Missing spell %s, skipping that gem.', value)
+					skippedGems[i] = true
+				end
+		end
+		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar[i]).RankName() and not skippedGems[i] then
 			if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
 				if mq.TLO.Cursor.ID() ~= nil then
 					while mq.TLO.Cursor.ID() ~= nil do

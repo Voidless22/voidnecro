@@ -1,20 +1,22 @@
-Voidnecro Done:
+ Done:
     Autoassist toggle
     tank toggle
     chase mode 
     camp mode
     scent toggle(spell and aa)
     Burns(AA and Items)
-    do doMelee
+    Melee
     Buff Handler 
     Argument Handler
-    Aggro Managment(AA)
-    Mana AAs 
+    Aggro Managment(AA and spell)
+    Mana AAs(for real this time)
     CC(AAs)
     Eradicate Magic AA
     Snare AA
+    Aggro Management(both spells and AAs)
 
-Voidnecro Todo:
+
+Todo:
     Undead stuff:
       Ignite Bones
       Slow
@@ -26,7 +28,6 @@ Voidnecro Todo:
   Corpse Summoning
   Offtank(?)
   Pulling
-  Aggro managmeent(spells)
   GUI
   Config Persisting
   Finish Filling in Ability Sets for 11-120
@@ -35,5 +36,23 @@ Voidnecro Todo:
   Convert to behavior tree system(probably not at this point)
   Glyph / Intensity
   Flesh to Venom Toggle
-  Add Long Pet Runes
-  
+  Add new SpellLine info to AbilitySets
+
+
+  SpellLines todo:
+    Add Long Pet Runes
+    Add FD Lines 
+    Add Short Pet Runes
+
+
+Refactored Combat Functions:
+Assist, Aggro, Mana Handler, Scent
+
+
+  Togglable Spells Currently:
+  Root(will default to AA when possible)
+  FD(will default to AA when possible)
+  Scent(will default to AA when possible)
+  Short Pet Runes
+  Long Pet Runes
+  Pet Heals

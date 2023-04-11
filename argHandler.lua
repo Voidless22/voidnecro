@@ -1,7 +1,7 @@
 ---@type Mq
 local mq = require("mq")
 
-
+require('scribeModule')
 
 local ArgHandler = {}
 
@@ -26,58 +26,37 @@ function ArgHandler.VNInfo()
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
- function ArgHandler.VNConfigInfo()
+function ArgHandler.VNConfigInfo()
 	print('\ag[Available Configurable Options:] Type "/vn *option* *value*" to change the value.')
 
-	cprint("\at[General]")
-	cprint("[assistPct]: %i", Config.assistPct)
-	cprint("[chaseDistance] %i", Config.chaseDistance)
-	cprint("[campRadius]: %i", Config.campRadius)
-	cprint("[Mode]: %s", Config.Mode)
-	cprint("[autoAssist]: %s", Config.autoAssist)
-	cprint("[Tank]: %s", Config.Tank)
-
-	cprint("\ar[Combat and Burns]")
-	cprint("[DoMelee]: %s", Config.DoMelee)
-	cprint("[minDotsForBurns]: %i", Config.minDotsForBurns)
-	cprint("[stopDotsAt]: %i", Config.stopDotsAt)
-	cprint("[burnAlways]: %s", Config.burnAlways)
-	cprint("[waitForAllBurns]: %s", Config.waitForAllBurns)
-	cprint("[useScent]: %s", Config.useScent)
-	cprint("[aggroFDPct]: %i", Config.aggroFDPct)
-	cprint("[useSnareAA]: %s", Config.useSnareAA)
-	cprint("[useEradicateAA]: %s", Config.useEradicateAA)
-	cprint("[useCC]: %s", Config.useCC)
-	cprint("[minMobsForCC]: %i", Config.minMobsForCC)
-	cprint("\a-u[Mana]")
-	cprint("[minDmgSpellManaPct]: %i", Config.minDmgSpellManaPct)
-	cprint("[minBloodProcManaPct]: %i", Config.minBloodProcManaPct)
-	cprint("[minSwarmPetManaPct]: %i", Config.minSwarmPetManaPct)
-	cprint("[useDeathBloomOnCooldown]: %s", Config.useDeathBloomOnCooldown)
-	cprint("[MindWrackManaMax]: %i", Config.MindWrackManaMax)
-	cprint("[minDeathBloomMana]: %i", Config.minDeathBloomMana)
-
-	print("\ao[Pet]")
-	cprint("[useShortPetRune]: %s", Config.useShortPetRune)
-	cprint("[usePetHeal]: %s", Config.usePetHeal)
-	cprint("[petHealPct]: %i", Config.petHealPct)
-	cprint("[usePetAegisAA]: %s", Config.usePetAegisAA)
-	cprint("[useFortificationOnCooldown]: %s", Config.useFortificationOnCooldown)
+	for index, value in pairs(Config) do
+		cprint(string.format("\ag[%s]: \aw[%s]", index, tostring(value)))
+	end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-function ArgHandler.checkArgs(argument)
-	local acceptedConfigArgs = { "on", "off", "true", "false", "On", "Off", "True", "False" }
+function ArgHandler.setConfig(setting, argument)
+	local trueArgumentAliases = { "on", "true", "On", "True", 1 }
+	local falseArgumentAliases = { "off", "false", "Off", "False", 0 }
+
 	cprint("Checking %s for validity.", argument)
-	if type(argument) == "number" or argument == nil then
-		return 
+	if tonumber(argument) ~= nil and tonumber(Config[setting]) ~= nil then
+		Config[setting] = tonumber(argument)
+		cprint("Setting %s to %s", setting, argument)
+		return
 	end
-	for index, value in ipairs(acceptedConfigArgs) do
-		if argument == "on" or "off" or "true" or "false" or "On" or "Off" or "True" or "False" then
-			return true
+	for index, value in ipairs(trueArgumentAliases) do
+		if argument == value then
+			Config[setting] = true
+		end
+	end
+	for index, value in ipairs(falseArgumentAliases) do
+		if argument == value then
+			Config[setting] = false
 		end
 	end
 end
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -85,45 +64,51 @@ end
 ArgHandler.vnbind = function(...)
 	local args = { ... }
 	------------------------------------------------------------------
-	if args[1] == nil or args[1] == "Help" or args[1] == "help" then
-		ArgHandler.VNInfo()
+	if string.lower(args[1]) == 'reloadspells' then
+		AbilitySet = AbilitySets[mq.TLO.Me.Level()]
+		cprint('Current Level Ability Set: %s', AbilitySet.Level)
+		MiscModule.LoadSpells()
+		ScribeModule.checkNeededSpells()
 	end
-	if args[1] == "Pause" or args[1] == "pause" then
-		VNPaused = true
-		cprint("Pause: %s", tostring(VNPaused))
-	end
-	if args[1] == "Unpause" or args[1] == "unpause" then
-		VNPaused = false
-		cprint("Pause: %s", tostring(VNPaused))
+	if string.lower(args[1]) == 'getneededspells' then
+		ScribeModule.checkNeededSpells()
+		ScribeModule.StartScribing()
+	
 	end
 
-	------------------------------------------------------------------
-	if args[1] == "config" or args[1] == "Config" then
+	if args[1] == nil or args[1] == "Help" or args[1] == "help" then
+		ArgHandler.VNInfo()
+	elseif args[1] == "Pause" or args[1] == "pause" then
+		VNPaused = true
+		cprint("Pause: %s", tostring(VNPaused))
+	elseif args[1] == "Unpause" or args[1] == "unpause" then
+		VNPaused = false
+		cprint("Pause: %s", tostring(VNPaused))
+	elseif args[1] ~= nil and args[2] ~= nil then
+		for index, value in pairs(Config) do
+			if args[1] == string.lower(index) or args[1] == index then
+				ArgHandler.setConfig(index, args[2])
+			end
+		end
+	elseif args[1] == "config" or args[1] == "Config" then
 		if args[2] == nil then
 			ArgHandler.VNConfigInfo()
 		else
-			if ArgHandler.checkArgs(args[3]) then
+			if args[2] ~= nil and args[3] ~= nil then
 				for index, value in pairs(Config) do
 					if args[2] == string.lower(index) or args[2] == index then
-						Config[index] = args[3]
-						cprint("\atSetting %s to %s", args[2], args[3])
+						ArgHandler.setConfig(index, args[3])
 					end
 				end
-			else
-				cprint("\arInvalid argument in command.")
 			end
 		end
-	end
-
-	if args[1] == "mode" or args[1] == "Mode" then
+	elseif args[1] == "mode" or args[1] == "Mode" then
 		if args[2] == nil then
 			cprint("Current mode is: %s", Config.Mode)
 		end
 		Config.Mode = args[2]
 		cprint("\atSetting VoidNecro Mode to %s", Config.Mode)
-	end
-	------------------------------------------------------------------
-	if args[1] == "Autoassist" or args[1] == "autoassist" then
+	elseif args[1] == "Autoassist" or args[1] == "autoassist" then
 		if args[2] == nil then
 			cprint("Currently auto assisting is is: %s", Config.autoAssist)
 		end
@@ -134,9 +119,7 @@ ArgHandler.vnbind = function(...)
 			cprint("Turning Auto Assist off.")
 			Config.autoAssist = false
 		end
-	end
-	------------------------------------------------------------------
-	if args[1] == "tank" or args[1] == "Tank" then
+	elseif args[1] == "tank" or args[1] == "Tank" then
 		if args[2] == nil then
 			cprint("Currently Tank mode is set to %s", Config.Tank)
 		end
@@ -150,11 +133,8 @@ ArgHandler.vnbind = function(...)
 			Config.Tank = false
 			MiscModule.LoadSpells()
 			mq.cmd('/pet taunt off')
-
 		end
-	end
-	------------------------------------------------------------------
-	if
+	elseif
 		args[1] == "burnnow"
 		or args[1] == "BurnNow"
 		or args[1] == "Burnnow"
@@ -165,8 +145,6 @@ ArgHandler.vnbind = function(...)
 		BurnModule.BurnRoutine()
 		Burnnow = false
 	end
-
-
 end
 
 
