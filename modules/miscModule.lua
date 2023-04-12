@@ -2,6 +2,7 @@
 local mq = require("mq")
 
 MiscModule = {}
+-- this one works don't touch it or it'll blow up
 
 function MiscModule.WaitforCast(gem)
 	mq.delay(100)
@@ -17,12 +18,15 @@ function MiscModule.WaitforCast(gem)
 		end
 	end
 end
+-- this one works don't touch it or it'll blow up
 
 function MiscModule.castGem(gem)
 	cprint("Casting:-- %s -- Gem: %s", mq.TLO.Me.Gem(gem).RankName(), gem)
 	mq.cmdf("/cast %i", gem)
 	MiscModule.WaitforCast()
 end
+-- this one works don't touch it or it'll blow up
+
 function MiscModule.AAReady(altnumber)
 	if mq.TLO.Me.AltAbilityReady(altnumber)() then
 		return true
@@ -30,6 +34,9 @@ function MiscModule.AAReady(altnumber)
 		return false
 	end
 end
+
+-- this one works don't touch it or it'll blow up
+
 function MiscModule.amIDead()
 	if mq.TLO.Me.Dead() then
 		print("I am dead")
@@ -38,6 +45,8 @@ function MiscModule.amIDead()
 		return false
 	end
 end
+
+-- this one works don't touch it or it'll blow up
 
 function MiscModule.hasBuff(spell)
 	if mq.TLO.Target.Buff(spell)() then
@@ -51,6 +60,8 @@ function MiscModule.hasBuff(spell)
 	end
 end
 
+-- this one works don't touch it or it'll blow up
+
 function MiscModule.activateItem(item)
 	MiscModule.WaitforCast()
 	cprint("Activating Item %s", item)
@@ -60,6 +71,7 @@ function MiscModule.activateItem(item)
 		mq.delay(50)
 	end
 end
+-- this one works don't touch it or it'll blow up
 function MiscModule.activateAA(altnumber)
 	MiscModule.WaitforCast()
 	cprint("Activating AA %s", mq.TLO.Me.AltAbility(altnumber).Name())
@@ -68,14 +80,17 @@ function MiscModule.activateAA(altnumber)
 		mq.delay(250)
 	end
 end
+-- this one works don't touch it or it'll blow up
 
 function MiscModule.invis()
 	return mq.TLO.Me.Invis()
 end
 
+
+-- This one works don't touch it it might blow up
 function MiscModule.inCombat()
 	local mainAssistTarget = mq.TLO.Me.GroupAssistTarget()
-	local radius = Config.campRadius
+	local radius = Config.General.campradius
 	local combatState = mq.TLO.Me.CombatState()
 	local petinCombat = mq.TLO.Pet.Combat()
 
@@ -93,6 +108,8 @@ function MiscModule.inCombat()
 		return false
 	end
 end
+
+-- No idea if this works 
 function MiscModule.isNamed()
 	if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Named() == true then
 		return true
@@ -100,6 +117,8 @@ function MiscModule.isNamed()
 		return false
 	end
 end
+
+-- Does this work either?
 
 function MiscModule.checkForSit()
 	if
@@ -115,6 +134,12 @@ function MiscModule.checkForSit()
 		end
 	end
 end
+
+
+-- Add Catches for all these fuckin toggles I want for some reason
+-- otherwise
+-- this one works don't touch it or it'll blow up
+
 
 function MiscModule.LoadSpells()
 	local skippedGems = {}
@@ -143,10 +168,12 @@ function MiscModule.LoadSpells()
 		end
 	end
 end
+
+-- Add Pet and Group buffs
 function MiscModule.BuffHandler()
 	local isMemorized = false 
 	local buffGem
-if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() then
+if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() and mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
 	for index, value in ipairs(AbilitySet.Buffs) do
 		if not mq.TLO.Me.Buff(value)() then
 			for i=1, mq.TLO.Me.NumGems() do

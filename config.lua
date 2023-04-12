@@ -1,65 +1,77 @@
-local Config = {
-Mode = "Chase",
-Tank = false,
-autoAssist = true,
-campRadius = 60,
-assistPct = 99,
-chaseDistance = 10,
-burnAlways = false, 
-waitForAllBurns = true,
-doMelee = true,
-
-minDmgSpellManaPct = 10,
-stopDotsAt = 30,
-minDotsForBurns = 2,
-minSwarmPetManaPct = 10,
-minBloodProcManaPct = 10,
-useScent = true,
-useSnareAA = true,
-useEradicateAA = true,
-useSpellFD = false,
-
--- CC Settings --
-useCC = true,
-minMobsForCC = 2,
-minMobsForAoeCC = 3,
-minCCHP = 99,
-useMez = false,
-mezType = 'Living',
-useRoot = true,
-usePunt = true,
-useAoECC = true,
-useIgniteBones = true,
+local config = {}
 
 
+config.General = {
+    mode = 'chase',
+    tank = false,
+    autoassist = true,
+    campradius = 60,
+    assistpct = 99,
+    chasedistance = 10,
+    burnalways = false,
+}
 
+config.Damage = {
+    domelee = true,
+    usescent = true,
+    mindmgspellmanapct = 10,
+    -- Need to plug in
+    stopdotsat = 30,
+    mindotsforburns = 2,
+    minswarmpetmanapct = 10,
+    minbloodprocmanapct = 10,
+    usesnareaa = true,
+    useeradicateaa = true,
+    waitforallburns = true
+}
 
--- Burn anytime it's availble?
--- Wait for all abilities to come up first or just burn as soon as one is ready?
+config.CC = {
+    usecc = false,
+    minmobsforcc = 2,
+    minmobsforaoecc = 3,
+    mincchp = 99,
+    usemez = false,
+    meztype = 'living',
+    useroot = true,
+    usepunt = true,
+    useaoecc = true,
+    useignitebones = true,
+}
 
--- Pet Tank Settings
-usePetAegisAA = true,
-useLongPetRune = false,
-useShortPetRune = false,
-usePetHeal = false,
-petHealPct = 60,
-useFortificationOnCooldown = true,
-switchPetTargetOnAggro = true,
-
--- Mana Regen Ability Settings
-useDeathBloomOnCooldown = true,
-holdBloodMagicForBurns = true,
-MindWrackManaMax = 60,
-minDeathBloomMana = 40,
-minBloodMagicMana = 15,
-
-
-
-
--- Aggro Settings
-useFeign = true,
-aggroFDPct = 80,
+config.Pet = {
+usemendcompanion = true,
+usepetaegisaa = true,
+usefury = true,
+usefurywhen = 'on cooldown',
+usefortification = true,
+usefortificationwhen = 'on cooldown',
+uselongpetrune = false,
+longrunegem = '',
+useshortpetrune = false,
+shortrunegem = '',
+usepetheal = false,
+pethealgem = '',
+pethealpct = 60,
 
 }
 
-return Config
+config.Mana = {
+    usedeathbloom = true,
+    usedeathbloomwhen = 'on cooldown',
+    usebloodmagic = true,
+    usebloodmagicwhen = 'on cooldown',
+    deathbloommanapct = 40,
+    bloodmagicmanapct = 10,
+    
+}
+
+config.Feign = {
+    usefeign = true,
+    aggrofdpct = 80,
+    usespellfd = false,
+    spellfdpct = 80,
+    spellfdgem = '',
+}
+
+
+return config

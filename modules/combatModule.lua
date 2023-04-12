@@ -8,14 +8,14 @@ AbilitySets = require('abilitySets')
 CombatModule = {}
 
 function CombatModule.AssistHandler()
-	if not Config.autoAssist then
+	if not Config.General.autoassist then
 		return
 	end
 
 	if mq.TLO.Group.MainAssist() ~= nil and mq.TLO.Group.MainAssist() ~= mq.TLO.Me.Name() then
 		print("We have a main assist but it is not us.")
 		if
-			mq.TLO.Me.GroupAssistTarget.Distance() < Config.campRadius
+			mq.TLO.Me.GroupAssistTarget.Distance() < Config.General.campradius
 			and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget()
 			and mq.TLO.Me.GroupAssistTarget.LineOfSight()
 		then
@@ -27,7 +27,7 @@ function CombatModule.AssistHandler()
 		for i = 1, mq.TLO.Me.XTarget() do
 			if
 				mq.TLO.Me.XTarget(i).Aggressive()
-				and mq.TLO.Me.XTarget(i).Distance() < Config.campRadius
+				and mq.TLO.Me.XTarget(i).Distance() < Config.General.campradius
 				and (mq.TLO.Me.XTarget(i + 1).Name() == nil or mq.TLO.Me.XTarget(i)())
 			then
 				if mq.TLO.Target.Name() ~= mq.TLO.Me.XTarget(i).Name() then
@@ -43,20 +43,20 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function CombatModule.AggroHandler()
-	if Config.useFeign then
+	if Config.Feign.usefeign then
 		for i = 1, mq.TLO.Me.XTarget() do
 			if mq.TLO.Target.Name() == nil then return end
 
-			if mq.TLO.Me.XTarget(i).PctAggro() > Config.aggroFDPct then
+			if mq.TLO.Me.XTarget(i).PctAggro() > Config.Feign.aggrofdpct then
 				if type(AbilitySet.FD) == 'number' then
 					if MiscModule.AAReady(AbilitySet.FD) then
 						MiscModule.activateAA(AbilitySet.FD)
 						mq.delay(1000)
 						mq.cmd('/stand')
 					end
-				elseif type(Config.FD) == 'string' and Config.FD ~= 'N/A' then
+				elseif Config.Feign.usespellfd then
 					for i = 1, mq.TLO.Me.NumGems() do
-						if mq.TLO.Me.Gem(i).Name() == Config.FD then
+						if mq.TLO.Me.Gem(i).Name() == AbilitySet.FD then
 							SuperCast(i)
 							mq.delay(1000)
 							mq.cmd('/stand')
@@ -71,13 +71,14 @@ end
 function CombatModule.ManaHandler()
 	if AbilitySet.deathBloom == 'N/A' and AbilitySet.bloodMagic == 'N/A' then
 		return
-	elseif (mq.TLO.Me.PctMana() < Config.minDeathBloomMana) or Config.useDeathBloomOnCooldown then
-		if MiscModule.AAReady(AbilitySet.deathBloom) then
-			MiscModule.activateAA(AbilitySet.deathBloom)
-		end
-	elseif mq.TLO.Me.PctMana() < Config.minBloodMagicMana and not Config.holdBloodMagicForBurns then
+	elseif Config.Mana.usebloodmagic and (mq.TLO.Me.PctMana() < Config.Mana.bloodmagicmanapct and Config.Mana.usebloodmagicwhen == "% Based") or Config.Mana.usebloodmagicwhen == 'on cooldown' or (Config.Mana.usebloodmagicwhen == 'Named Only' and MiscModule.isNamed()) then
 		if MiscModule.AAReady(AbilitySet.bloodMagic) then
 			MiscModule.activateAA(AbilitySet.bloodMagic)
+		end
+		
+	elseif Config.Mana.usedeathbloom and (mq.TLO.Me.PctMana() < Config.Mana.deathbloommanapct and Config.Mana.usedeathbloomwhen == "% Based") or Config.Mana.usedeathbloom == 'on cooldown' or (Config.Mana.usedeathbloomwhen == 'Named Only' and MiscModule.isNamed()) then
+		if MiscModule.AAReady(AbilitySet.deathBloom) then
+			MiscModule.activateAA(AbilitySet.deathBloom)
 		end
 	end
 end
@@ -112,13 +113,13 @@ function SuperCast(gem)
 end
 
 function CombatModule.CCRoutine()
-	if Config.useCC and (Config.useMez or Config.useRoot or Config.usePunt) and mq.TLO.Me.XTarget() > Config.minMobsForCC then
-		if not mq.TLO.Me.XTarget() > Config.minMobsForAoeCC then
+	if Config.CC.usecc and (Config.CC.usemez or Config.CC.useroot or Config.CC.usepunt) and mq.TLO.Me.XTarget() > Config.CC.minmobsforcc then
+		if not mq.TLO.Me.XTarget() > Config.CC.minmobsforaoecc then
 			for index, value in AbilitySet.SingleCCPriority do
 				if value == 'Mez' then
 					for i = 1, mq.TLO.Me.XTarget() do
-						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() > Config.minCCPct then
-							if mq.TLO.Target.Body() == 'Undead' and Config.mezType == 'Undead' then
+						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() > Config.CC.mincchp then
+							if mq.TLO.Target.Body() == 'Undead' and Config.CC.meztype == 'Undead' then
 								if type(AbilitySet.UndeadMez) == 'number' and MiscModule.AAReady(AbilitySet.UndeadMez) then
 									MiscModule.WaitforCast()
 									MiscModule.activateAA(AbilitySet.SingleMez)
@@ -133,7 +134,7 @@ function CombatModule.CCRoutine()
 									end
 								end
 							end
-						elseif mq.TLO.Target.Body ~= 'Undead' and Config.mezType == 'Living' then
+						elseif mq.TLO.Target.Body ~= 'Undead' and Config.CC.meztype == 'Living' then
 							if type(AbilitySet.LivingMez) == 'number' and MiscModule.AAReady(AbilitySet.LivingMez) then
 								MiscModule.WaitforCast()
 								MiscModule.activateAA(AbilitySet.LivingMez)
@@ -152,7 +153,7 @@ function CombatModule.CCRoutine()
 				end
 				if value == 'Punt' then
 					for i = 1, mq.TLO.Me.XTarget() do
-						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() >= Config.minCCPct then
+						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() >= Config.CC.mincchp then
 							if type(AbilitySet.Punt) == 'number' and MiscModule.AAReady(AbilitySet.Punt) then
 								MiscModule.WaitforCast()
 								MiscModule.activateAA(AbilitySet.Punt)
@@ -171,7 +172,7 @@ function CombatModule.CCRoutine()
 				end
 				if value == 'Root' then
 					for i = 1, mq.TLO.Me.XTarget() do
-						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() >= Config.minCCPct then
+						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() >= Config.CC.mincchp then
 							if type(AbilitySet.Root) == 'number' and MiscModule.AAReady(AbilitySet.Root) then
 								MiscModule.WaitforCast()
 								MiscModule.activateAA(AbilitySet.Root)
@@ -196,11 +197,11 @@ end
 ----------------------------------------------------------------------------------------------------
 function CombatModule.SpellHandler()
 	----------------------------------------------------------------------------------------------------
-	if AbilitySet.FirstPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.minDmgSpellManaPct then
+	if AbilitySet.FirstPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
 		for index, value in pairs(AbilitySet.FirstPrioritySpells) do
-			if mq.TLO.Me.PctMana() < Config.minDmgSpellManaPct then return end
+			if mq.TLO.Me.PctMana() < Config.Damage.mindmgspellmanapct then return end
 
-			if Config.Tank and (value.gem == 7 or value.gem == 9) then return end
+			if Config.General.tank and (value.gem == 7 or value.gem == 9) then return end
 
 			if mq.TLO.Target.Name() == nil then CombatModule.AssistHandler() end
 			local spellCategory = mq.TLO.Spell(value.name).Category()
@@ -238,10 +239,10 @@ function CombatModule.SpellHandler()
 		end
 	end
 	----------------------------------------------------------------------------------------------------
-	if AbilitySet.SecondPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.minDmgSpellManaPct then
+	if AbilitySet.SecondPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
 		for index, value in pairs(AbilitySet.SecondPrioritySpells) do
-			if mq.TLO.Me.PctMana() < Config.minDmgSpellManaPct then return end
-			if Config.Tank and (value.gem == 7 or value.gem == 9) then return end
+			if mq.TLO.Me.PctMana() < Config.Damage.mindmgspellmanapct then return end
+			if Config.General.tank and (value.gem == 7 or value.gem == 9) then return end
 
 			local spellCategory = mq.TLO.Spell(value.name).Category()
 			local hasBuffComponent = value.buffRecieved
@@ -280,10 +281,10 @@ function CombatModule.SpellHandler()
 		end
 	end
 	----------------------------------------------------------------------------------------------------
-	if AbilitySet.LastPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.minDmgSpellManaPct then
+	if AbilitySet.LastPrioritySpells ~= 'N/A' and mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
 		for index, value in pairs(AbilitySet.LastPrioritySpells) do
-			if mq.TLO.Me.PctMana() < Config.minDmgSpellManaPct then return end
-			if Config.Tank and (value.gem == 7 or value.gem == 9) then return end
+			if mq.TLO.Me.PctMana() < Config.Damage.mindmgspellmanapct then return end
+			if Config.General.tank and (value.gem == 7 or value.gem == 9) then return end
 
 			local spellCategory = mq.TLO.Spell(value.name).Category()
 			local hasBuffComponent = value.buffRecieved
@@ -356,7 +357,7 @@ end
 
 function CombatModule.CombatHandler()
 	while MiscModule.inCombat() and not VNPaused do
-		if (mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and Config.autoAssist) or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
+		if (mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and Config.General.autoassist) or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
 			CombatModule.AssistHandler()
 		end
 		CombatModule.CheckForLOS()
@@ -365,7 +366,7 @@ function CombatModule.CombatHandler()
 			mq.cmd("/pet attack")
 		end
 
-		if Config.doMelee then
+		if Config.Damage.domelee then
 			mq.cmd('/face')
 			mq.delay(100)
 			if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Distance() > 5 then
@@ -374,30 +375,30 @@ function CombatModule.CombatHandler()
 			end
 			mq.cmd('/attack on')
 		end
-		if Config.useCC and mq.TLO.Target.Name() ~= nil then
+		if Config.CC.usecc and mq.TLO.Target.Name() ~= nil then
 			CombatModule.CCRoutine()
 		end
 		CombatModule.AggroHandler()
 		CombatModule.ManaHandler()
 
-		if mq.TLO.Me.PctMana() > Config.minDmgSpellManaPct then
-			if Config.Tank then
+		if mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
+			if Config.General.tank then
 				PetModule.PetTankRoutine()
 			end
 
-			if Config.useScent and AbilitySet.Scent ~= 'N/A' then
+			if Config.Damage.usescent and AbilitySet.Scent ~= 'N/A' then
 				CombatModule.DebuffMob()
 			end
 
 			CombatModule.SpellHandler()
 
-			if (Config.burnAlways or MiscModule.isNamed or Burnnow) and AbilitySet.TotalBurnAbilities ~= 0 then
+			if (Config.General.burnalways or MiscModule.isNamed or Burnnow) and AbilitySet.TotalBurnAbilities ~= 0 then
 				BurnModule.BurnRoutine()
 			end
-			if Config.useEradicateAA then
+			if Config.Damage.useerradicateaa then
 				CombatModule.useEradicateAA()
 			end
-			if Config.useSnareAA then
+			if Config.Damage.usesnareaa then
 				CombatModule.useSnareAA()
 			end
 		end

@@ -63,17 +63,17 @@ function BurnModule.checkDotCount(count)
 end
 function BurnModule.BurnRoutine()
 	if
-		Config.waitForAllBurns
+		Config.Damage.waitforallburns
 		and not (
 			BurnModule.checkBurnAAs()
-			and BurnModule.checkDotCount(Config.minDotsForBurns)
+			and BurnModule.checkDotCount(Config.Damage.mindotsforburns)
 			and BurnModule.checkBurnItems()
 		)
 	then
 		return
 	else
 		if
-			(Config.burnAlways or Burnnow)
+			(Config.General.burnalways or Burnnow)
 			and not (MiscModule.amIDead() and mq.TLO.Target.Name() == nil and mq.TLO.Target.PctHPs() < 40)
 		then
 			--- Activate all Burn AAs

@@ -12,63 +12,150 @@ ScribeModule.SpellZones = {
 }
 
 
-function ScribeModule.StartScribing()
-    local currentZoneSpells = ScribeModule.neededSpells
-    local currentZoneNPC
-
-    if mq.TLO.Me.Level() >= 1 and mq.TLO.Me.Level() <= 90 then
-        if mq.TLO.Zone.ShortName() ~= 'poknowledge' then
-            mq.cmd('/travelto poknowledge')
-            while mq.TLO.Navigation.Active() do mq.delay(2000) end
+function ScribeModule.scribeSpells()
+    for index, value in pairs(ScribeModule.neededSpells) do
+        if mq.TLO.FindItem(value)() then
+            mq.cmdf('/itemnotify "Spell: %s" rightmouseup', value)
+            mq.delay(100)
+            while not mq.TLO.Me.Book(value)() do
+                mq.delay(50)
+            end
+            table.remove(ScribeModule.neededSpells, index)
         end
-        if currentZoneSpells ~= {} then
-            for index, value in pairs(currentZoneSpells) do
-                if index >= 1 and index <= 25 then
-                    currentZoneNPC = 'Heretic_Drahur'
-                elseif index >= 26 and index <= 50 then
-                    currentZoneNPC = 'Heretic_Elirev'
-                elseif index >= 51 and index <= 60 then
-                    currentZoneNPC = 'Heretic_Edalith'
-                elseif index >= 61 and index <= 70 then
-                    currentZoneNPC = 'Heretic_Ceikon'
-                elseif index >= 71 and index <= 80 then
-                    currentZoneNPC = 'Heretic_Niraf'
-                elseif index >= 81 and index <= 90 then
-                    currentZoneNPC = 'Heretic_Lartman'
-                end
+    end
+    if ScribeModule.neededSpells ~= {} then
+        ScribeModule.GetSpells()
+    end
+end
 
-                mq.cmdf('/nav spawn %s', currentZoneNPC)
-                while mq.TLO.Navigation.Active() do mq.delay(2000) end
-                mq.cmdf('/tar %s', currentZoneNPC)
-                mq.delay(500)
-                if mq.TLO.Me.FreeInventory() < #currentZoneSpells then
-                    cprint('Not enough inventory space to scribe. Stopping')
-                    return
-                else
-                    mq.cmd('/usetarget')
-                    mq.delay(500)
-                    for index, value in pairs(currentZoneSpells) do
-                        if mq.TLO.FindItem(value)() then
-                            break
-                        end
-                        mq.cmdf('/invoke ${Merchant.SelectItem[%s]}', value)
-                        mq.delay(1000)
-                        mq.cmdf('/invoke ${Merchant.Buy[1]}', value)
-                        mq.delay(1000)
-                    end
-                    mq.cmd('/notify MerchantWnd MW_Done_Button leftmouseup')
-                    mq.delay(1000)
-                    for index, value in pairs(currentZoneSpells) do
-                        if mq.TLO.FindItem(value)() then
-                            mq.cmdf('/itemnotify "Spell: %s" rightmouseup', value)
-                            mq.delay(100)
-                            while not mq.TLO.Me.Book(value)() do
-                                mq.delay(50)
-                            end
-                        end
-                    end
+function ScribeModule.pokSpells(level, spell)
+    if level >= 1 and level <= 25 then
+        local NPC = 'Heretic_Drahur'
+        if mq.TLO.Merchant.Open()  == nil then
+            mq.cmdf('/nav spawn %s', NPC)
+            while mq.TLO.Navigation.Active() do mq.delay(500) end
+            mq.cmdf('/target %s', NPC)
+            mq.delay(2000)
+            mq.cmdf('/usetarget')
+            mq.delay(10000)
+        end
+        mq.TLO.Merchant.SelectItem(spell)
+        mq.delay(1000)
+        mq.TLO.Merchant.Buy(1)
+        mq.delay(1000)
+        if mq.TLO.Me.FreeInventory(1)() < 3 then
+            mq.cmd('/notify MerchantWnd MW_Done_Button leftmouseup')
+            ScribeModule.scribeSpells()
+        end
+    end
+    if level >= 26 and level <= 50 then
+        local NPC = 'Heretic_Elirev'
+        if mq.TLO.Merchant.Open()  == nil then
+            mq.cmdf('/nav spawn %s', NPC)
+            while mq.TLO.Navigation.Active() do mq.delay(500) end
+            mq.cmdf('/target %s', NPC)
+            mq.delay(2000)
+            mq.cmdf('/usetarget')
+            mq.delay(10000)
+        end
+        mq.TLO.Merchant.SelectItem(spell)
+        mq.delay(1000)
+        mq.TLO.Merchant.Buy(1)
+        mq.delay(1000)
+        if mq.TLO.Me.FreeInventory(1)() < 3 then
+            mq.cmd('/notify MerchantWnd MW_Done_Button leftmouseup')
+            ScribeModule.scribeSpells()
+        end
+    end
+    if level >= 51 and level <= 60 then
+        local NPC = 'Heretic_Edalith'
+        if mq.TLO.Merchant.Open()  == nil then
+            mq.cmdf('/nav spawn %s', NPC)
+            while mq.TLO.Navigation.Active() do mq.delay(500) end
+            mq.cmdf('/target %s', NPC)
+            mq.delay(2000)
+            mq.cmdf('/usetarget')
+            mq.delay(10000)
+        end
+        mq.TLO.Merchant.SelectItem(spell)
+        mq.delay(1000)
+        mq.TLO.Merchant.Buy(1)
+        mq.delay(1000)
+        if mq.TLO.Me.FreeInventory(1)() < 3 then
+            mq.cmd('/notify MerchantWnd MW_Done_Button leftmouseup')
+            ScribeModule.scribeSpells()
+        end
+    end
+    if level >= 61 and level <= 70 then
+        local NPC = 'Heretic_Ceikon'
+        if mq.TLO.Merchant.Open()  == nil then
+            mq.cmdf('/nav spawn %s', NPC)
+            while mq.TLO.Navigation.Active() do mq.delay(500) end
+            mq.cmdf('/target %s', NPC)
+            mq.delay(2000)
+            mq.cmdf('/usetarget')
+            mq.delay(10000)
+        end
+        mq.TLO.Merchant.SelectItem(spell)
+        mq.delay(1000)
+        mq.TLO.Merchant.Buy(1)
+        mq.delay(1000)
+        if mq.TLO.Me.FreeInventory(1)() < 3 then
+            mq.cmd('/notify MerchantWnd MW_Done_Button leftmouseup')
+            ScribeModule.scribeSpells()
+        end
+    end
+    if level >= 71 and level <= 80 then
+        local NPC = 'Heretic_Niraf'
+        if mq.TLO.Merchant.Open()  == nil then
+            mq.cmdf('/nav spawn %s', NPC)
+            while mq.TLO.Navigation.Active() do mq.delay(500) end
+            mq.cmdf('/target %s', NPC)
+            mq.delay(2000)
+            mq.cmdf('/usetarget')
+            mq.delay(10000)
+        end
+        mq.TLO.Merchant.SelectItem(spell)
+        mq.delay(1000)
+        mq.TLO.Merchant.Buy(1)
+        mq.delay(1000)
+        if mq.TLO.Me.FreeInventory(1)() < 3 then
+            mq.cmd('/notify MerchantWnd MW_Done_Button leftmouseup')
+            ScribeModule.scribeSpells()
+        end
+    end
+    if level >= 81 and level <= 90 then
+        local NPC = 'Heretic_Lartman'
+        if mq.TLO.Merchant.Open()  == nil then
+            mq.cmdf('/nav spawn %s', NPC)
+            while mq.TLO.Navigation.Active() do mq.delay(500) end
+            mq.cmdf('/target %s', NPC)
+            mq.delay(2000)
+            mq.cmdf('/usetarget')
+            mq.delay(10000)
+        end
+        mq.TLO.Merchant.SelectItem(spell)
+        mq.delay(1000)
+        mq.TLO.Merchant.Buy(1)
+        mq.delay(1000)
+        if mq.TLO.Me.FreeInventory(1)() < 3 then
+            mq.cmd('/notify MerchantWnd MW_Done_Button leftmouseup')
+            ScribeModule.scribeSpells()
+        end
+    end
+end
+
+function ScribeModule.GetSpells()
+    for level, spell in pairs(ScribeModule.neededSpells) do
+        if level >= 1 and level <= 90 then
+            if mq.TLO.Zone.ShortName() ~= 'poknowledge' then
+                cprint('Moving to PoK for spells 1 through 90.')
+                mq.cmd('/travelto poknowledge')
+                while mq.TLO.Zone.ShortName() ~= 'poknowledge' do
+                    mq.delay(5000)
                 end
             end
+            ScribeModule.pokSpells(level, spell)
         end
     end
 end
@@ -93,9 +180,9 @@ end
 function ScribeModule.checkNeededSpells()
     for i = 1, mq.TLO.Me.Level() do
         for index, value in ipairs(SpellDB[i]) do
-            if mq.TLO.Me.Book(value)() == nil then
+            if mq.TLO.Me.Book(mq.TLO.Spell(value).RankName())() == nil then
                 table.insert(ScribeModule.neededSpells, i, value)
-                cprint('missing %s. Adding to Needed Spells', value)
+                cprint('missing %s [%i]. Adding to Needed Spells', value, i)
             end
         end
     end
@@ -103,7 +190,7 @@ end
 
 function ScribeModule.StartScribeProcess()
     ScribeModule.checkNeededSpells()
-    if neededSpells ~= {} then
+    if ScribeModule.neededSpells ~= {} then
         ScribeModule.GetToHomeBase()
     end
 end

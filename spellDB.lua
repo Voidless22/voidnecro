@@ -80,7 +80,7 @@ SpellDB[14] = {
 	"Reebo's Lesser Augury",
 	"Wuggan's Lesser Discombobulation",
 	"Wuggan's Lesser Extrication",
-	"Reebo's Lesser Cleaning",
+	"Reebo's Lesser Cleansing",
 }
 SpellDB[15] = {
 	"Banshee Aura",
@@ -97,7 +97,6 @@ SpellDB[16] = {
 	"Focus Primitive Spellcaster's Empowering Essence",
 	"Focus Rudimentary Spellcaster's Empowering Essence",
 	"Focus Crude Spellcaster's Empowering Essence",
-	"Form of Chilled Bone",
 }
 SpellDB[17] = {
 	"Shadow Compact",
@@ -145,7 +144,7 @@ SpellDB[24] = {
 	"Reebo's Augury",
 	"Wuggan's Discombobulation",
 	"Wuggan's Extrication",
-	"Reebo's Cleaning",
+	"Reebo's Cleansing",
 	"Haunting Corpse",
 	"Resist Cold",
 	"Major Shielding",
@@ -300,7 +299,7 @@ SpellDB[54] = {
 	"Deflux",
 	"Thrall of Bones",
 	"Shadowbond",
-	"Succession of Shadows",
+	"Succussion of Shadows",
 	"Torbas' Venom Blast",
 	"Imprecation",
 	"Focus Simple Spellcaster's Empowering Essence",
@@ -327,7 +326,7 @@ SpellDB[56] = {
 }
 SpellDB[57] = {
 	"Exile Undead",
-	"Vexing Modinia",
+	"Vexing Mordinia",
 	"Conjure Corpse",
 	"Imbue Nightmare",
 	"Unholy Voice",
@@ -349,14 +348,11 @@ SpellDB[59] = {
 	"Focus Mass Spellcaster's Empowering Essence",
 }
 SpellDB[60] = {
-	"Gangrenous Touch of Zum'uul",
 	"Arch Lich",
 	"Death Peace",
 	"Banishment of Shadows",
 	"Enslave Death",
 	"Trucidation",
-	"Ancient Master of Death",
-	"Ancient Lifebane",
 	"Zevfeer's Theft of Vitae",
 	"Funeral Pyre of Kelador",
 	"Focus Refined Spellcaster's Empowering Essence",
@@ -399,7 +395,6 @@ SpellDB[65] = {
 	"Night Stalker",
 	"Night Fire",
 	"Night's Beckon",
-	"Ancient Seduction of Chaos",
 	"Focus Intricate Spellcaster's Empowering Essence",
 }
 SpellDB[66] = {
@@ -442,8 +437,6 @@ SpellDB[70] = {
 	"Dark Assassin",
 	"Word of Chaos",
 	"Desolate Undead",
-	"Ancient Curse of Mori",
-	"Ancient Touch of Orshilak",
 	"Focus Elaborate Spellcaster's Empowering Essence",
 	"Dread Pyre",
 	"Grave Pact",
@@ -462,7 +455,7 @@ SpellDB[71] = {
 SpellDB[72] = {
 	"Sigil of the Unnatural",
 	"Curse of Mortality",
-	"Dyn'leth's Grasp",
+	"Dyn`leth's Grasp",
 	"Scent of Twilight",
 	"Bonestitch Fetish",
 	"Form of Restless Spirits",
@@ -479,7 +472,7 @@ SpellDB[74] = {
 	"Coruscating Darkness",
 	"Ashengate Pyre",
 	"Wilting Foliage",
-	"Vakk'dra's Sickly Mists",
+	"Vakk`dra's Sickly Mists",
 	"Otherside",
 	"Aegis of Calliav",
 	"Mind Dissection",
@@ -488,7 +481,7 @@ SpellDB[74] = {
 SpellDB[75] = {
 	"Demand For Blood",
 	"Putrescent Servant",
-	"Vakk'dra's Command",
+	"Vakk`dra's Command",
 	"Annihilate Undead",
 	"Kedgefish Venom",
 	"Focus Ornate Spellcaster's Empowering Essence",
@@ -543,7 +536,7 @@ SpellDB[81] = {
 	"Withering Venin",
 	"Megrima's Decay",
 	"Drain Essence",
-	"	Finsternacht Orb",
+	"Finsternacht Orb",
 }
 SpellDB[82] = {
 	"Bloodreaper's Shade",
@@ -570,7 +563,7 @@ SpellDB[84] = {
 	"Soul Reaper's Pyre",
 	"Ignite Energy",
 	"Necrotic Pustules",
-	"Focus Mass Runed Spellcaster's Empowering Essence",
+
 }
 SpellDB[85] = {
 	"Exigency for Blood",
@@ -618,7 +611,7 @@ SpellDB[89] = {
 	"Necrotic Boils",
 	"Pyre of Nos",
 	"Rilfed's Swift Sickness",
-	"Scrapegoat",
+	"Scapegoat",
 	"Tenuous Darkness",
 	"Thoughtburn",
 	"Thought Flay",

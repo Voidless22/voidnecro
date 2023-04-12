@@ -2,7 +2,8 @@
     "Lua.runtime.version": "Lua 5.1",
     "Lua.workspace.library": [
       "C:/MQ2/lua/mq2definitions",
-      "C:/MQ2/lua/imgui"
+      "C:/MQ2/lua/imgui",
+      "C:/MQ2/lua/icondefs"
     ],
     "Lua.diagnostics.disable": [
       "deprecated"
