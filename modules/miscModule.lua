@@ -18,6 +18,7 @@ function MiscModule.WaitforCast(gem)
 		end
 	end
 end
+
 -- this one works don't touch it or it'll blow up
 
 function MiscModule.castGem(gem)
@@ -25,6 +26,7 @@ function MiscModule.castGem(gem)
 	mq.cmdf("/cast %i", gem)
 	MiscModule.WaitforCast()
 end
+
 -- this one works don't touch it or it'll blow up
 
 function MiscModule.AAReady(altnumber)
@@ -71,6 +73,7 @@ function MiscModule.activateItem(item)
 		mq.delay(50)
 	end
 end
+
 -- this one works don't touch it or it'll blow up
 function MiscModule.activateAA(altnumber)
 	MiscModule.WaitforCast()
@@ -80,12 +83,12 @@ function MiscModule.activateAA(altnumber)
 		mq.delay(250)
 	end
 end
+
 -- this one works don't touch it or it'll blow up
 
 function MiscModule.invis()
 	return mq.TLO.Me.Invis()
 end
-
 
 -- This one works don't touch it it might blow up
 function MiscModule.inCombat()
@@ -109,7 +112,7 @@ function MiscModule.inCombat()
 	end
 end
 
--- No idea if this works 
+-- No idea if this works
 function MiscModule.isNamed()
 	if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Named() == true then
 		return true
@@ -135,7 +138,6 @@ function MiscModule.checkForSit()
 	end
 end
 
-
 -- Add Catches for all these fuckin toggles I want for some reason
 -- otherwise
 -- this one works don't touch it or it'll blow up
@@ -145,10 +147,13 @@ function MiscModule.LoadSpells()
 	local skippedGems = {}
 	for i = 1, #AbilitySet.Spellbar do
 		for index, value in pairs(ScribeModule.neededSpells) do
-				if value == AbilitySet.Spellbar[i] then
-					cprint('Missing spell %s, skipping that gem.', value)
-					skippedGems[i] = true
-				end
+			if value == AbilitySet.Spellbar[i] then
+				cprint('Missing spell %s, skipping that gem.', value)
+				skippedGems[i] = true
+			else
+				skippedGems[i] = false
+			end
+			
 		end
 		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar[i]).RankName() and not skippedGems[i] then
 			if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
@@ -171,35 +176,54 @@ end
 
 -- Add Pet and Group buffs
 function MiscModule.BuffHandler()
-	local isMemorized = false 
+	local isMemorized = false
 	local buffGem
-if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() and mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
-	for index, value in ipairs(AbilitySet.Buffs) do
-		if not mq.TLO.Me.Buff(value)() then
-			for i=1, mq.TLO.Me.NumGems() do
-				if mq.TLO.Me.Gem(i).Name() == value then isMemorized = true buffGem = i end
+	if not MiscModule.inCombat() and not mq.TLO.Me.Moving() and not MiscModule.invis() and not MiscModule.amIDead() and mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
+		local skippedBuffs = {}
+		for i = 1, #AbilitySet.Buffs do
+			mq.delay(500)
+			for index, value in pairs(ScribeModule.neededSpells) do
+				if value == AbilitySet.Buffs[i] then
+					cprint('Missing spell %s, skipping that gem.', value)
+					skippedBuffs[i] = true
+				end
 			end
-			if isMemorized then 
+			if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Buffs[i]).RankName() and not skippedBuffs[i] and not mq.TLO.Me.Buff(AbilitySet.Buffs[i])() then
+				if mq.TLO.Cursor.ID() ~= nil then
+					while mq.TLO.Cursor.ID() ~= nil do
+						mq.cmd("/autoinventory")
+						mq.delay(200)
+					end
+				end
+				cprint("memorizing %s", AbilitySet.Buffs[i])
+				while mq.TLO.Me.Gem(i).Name() ~= AbilitySet.Buffs[i] do
+					mq.cmdf('/memspell %i "%s"', i, AbilitySet.Buffs[i])
+					mq.delay(5000)
+					if mq.TLO.Window('SpellBookWnd').Open() then
+						mq.TLO.Window('SpellBookWnd').DoClose()
+					end
+				end
+				
+			end
+			if mq.TLO.Me.Gem(i).Name() == AbilitySet.Buffs[i] then
+				buffGem = i
 				mq.cmdf('/tar %s', mq.TLO.Me.Name())
-				mq.delay(100)
-				MiscModule.WaitforCast()
+				mq.delay(200)
+				MiscModule.WaitforCast(i)
 				MiscModule.castGem(buffGem)
 				MiscModule.WaitforCast()
-			else
-			mq.cmdf('/memspell 8 "%s"', value)
-			while mq.TLO.Me.Gem(8).Name() ~= mq.TLO.Spell(value).RankName() do mq.delay(100) end
-				MiscModule.WaitforCast()
-				MiscModule.castGem(8)
-				MiscModule.WaitforCast()
-
 			end
-
-
+		end
+		local totalBuffs = 0
+		for i = 1, #AbilitySet.Buffs do
+			if mq.TLO.Me.Buff(AbilitySet.Buffs[i])() then
+				totalBuffs = totalBuffs + 1
+			end
+		end
+		if totalBuffs == #AbilitySet.Buffs then
+			MiscModule.LoadSpells()
 		end
 	end
 end
-
-end
-
 
 return MiscModule

@@ -20,6 +20,8 @@ local petsetupdone = false
 VNPaused = false
 Burnnow = false
 
+
+
 local running = true
 Open, ShowUI = true, true
 OpenConfig, ShowConfig = false, false
@@ -32,15 +34,12 @@ if no_scrollbar then window_flags = bit32.bor(window_flags, ImGuiWindowFlags.NoS
 if no_resize then window_flags = bit32.bor(window_flags, ImGuiWindowFlags.NoResize) end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 local lineCount = 0
 local section_listbox = {
 	items = { 'Quick Settings', 'Damage', 'CC', 'Pet', 'Mana', 'Feign' },
 	selected = 1
 }
-
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function insertSection(section)
 	local i = 1
 	for index, value in pairs(section) do
@@ -50,9 +49,7 @@ local function insertSection(section)
 		end
 	end
 end
-
-
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function sectionHandler(section)
 	if section ~= nil then
 		insertSection(section)
@@ -69,7 +66,7 @@ local function sectionHandler(section)
 	end
 	imgui.EndListBox()
 end
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function DrawConfigWindow()
 	ImGui.SetWindowSize(ImVec2(500, 500))
 	ImGui.SameLine()
@@ -278,9 +275,6 @@ local function DrawConfigWindow()
 		OpenConfig = false
 	end
 end
-
-
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function DrawMainWindow()
 	ImGui.PushStyleColor(ImGuiCol.Button, 0.0, 0.0, 0.0, 0.0)
@@ -307,15 +301,11 @@ local function DrawMainWindow()
 	end
 	ImGui.PopStyleColor(3)
 end
-
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ScribeCheck = false
-
 GoGetSpells = false
 
-
 local function scribeCheckPopup()
-
 	if imgui.BeginPopupModal('Scribe Popup') then
 		imgui.Text("You are missing the following spells:")
 		if ScribeModule.neededSpells ~= nil then
@@ -335,10 +325,10 @@ local function scribeCheckPopup()
 		imgui.EndPopup()
 	end
 end
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function VNGuiLoop()
 	if Open then
 		Open, ShowUI = ImGui.Begin("VoidNecro", Open, window_flags)
@@ -354,28 +344,22 @@ local function VNGuiLoop()
 		end
 		ImGui.End()
 	end
-    if ScribeCheck then
-        imgui.OpenPopup('Scribe Popup')
-        ScribeCheck = false
-    end
-    scribeCheckPopup()
+	if ScribeCheck then
+		imgui.OpenPopup('Scribe Popup')
+		ScribeCheck = false
+	end
+	scribeCheckPopup()
 end
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-AbilitySet = AbilitySets[mq.TLO.Me.Level()]
-cprint('Current Level Ability Set: %s', AbilitySet.Level)
 
 
-
-ScribeModule.checkNeededSpells()
-
-
-
-
-argHandler.VNInfo()
 
 mq.imgui.init("VoidNecro", VNGuiLoop)
 
+ScribeModule.checkNeededSpells()
+argHandler.VNInfo()
+AbilitySet = AbilitySets[mq.TLO.Me.Level()]
+cprint('Current Level Ability Set: %s', AbilitySet.Level)
 MiscModule.LoadSpells()
 
 
@@ -399,8 +383,6 @@ MiscModule.BuffHandler()
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 local function VNMain()
 	mq.delay(100)
 	if not VNPaused then
@@ -408,19 +390,28 @@ local function VNMain()
 			mq.cmdf('/pet taunt on')
 		elseif not Config.General.tank and mq.TLO.Pet.Taunt() then
 			mq.cmdf('/pet taunt off')
-		end	
+		end
 
 
 		if AbilitySet.Level ~= mq.TLO.Me.Level() then
 			AbilitySet = AbilitySets[mq.TLO.Me.Level()]
 			cprint('DING! You leveled up! New Ability Set: %s', AbilitySet.Level)
-			MiscModule.LoadSpells()
+			if not MiscModule.inCombat() then
+				MiscModule.LoadSpells()
+			end
 		end
 		if GoGetSpells then
 			ScribeModule.GetSpells()
 		end
-
-		MiscModule.BuffHandler()
+		local totalBuffs = 0
+		for i = 1, #AbilitySet.Buffs do
+			if mq.TLO.Me.Buff(AbilitySet.Buffs[i])() then
+				totalBuffs = totalBuffs + 1
+			end
+		end
+		if totalBuffs < #AbilitySet.Buffs then
+			MiscModule.BuffHandler()
+		end
 
 		if petsetupdone == true and mq.TLO.Me.Pet() == "NO PET" and AbilitySet.warriorPet ~= 'N/A' or AbilitySet.roguePet ~= 'N/A' then
 			if not mq.TLO.FindItem('Bone Chips')() then
@@ -437,7 +428,6 @@ local function VNMain()
 		if MiscModule.inCombat() then
 			CombatModule.CombatHandler()
 		end
-	
 	end
 end
 

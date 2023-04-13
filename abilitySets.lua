@@ -15,7 +15,7 @@ AbilitySets = {
 			[3] = 'Lifetap',
 			[4] = 'Siphon Strength'
 		},
-		FirstPrioritySpells = {
+		CombatSpells = {
 			{
 				name = "Lifetap",
 				gem = 4,
@@ -47,8 +47,7 @@ AbilitySets = {
 				altName2 = nil,
 			},
 		},
-		SecondPrioritySpells = 'N/A',
-		LastPrioritySpells = 'N/A',
+	
 		-- Buffs --
 		Buffs = { 'Minor Shielding' },
 		-- Pet --
@@ -92,7 +91,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Cavorting Bones',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 			{
 				name = "Lifetap",
 				gem = 4,
@@ -124,8 +123,6 @@ AbilitySets = {
 				altName2 = nil,
 			},
 		},
-		SecondPrioritySpells = 'N/A',
-		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
@@ -148,7 +145,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Cavorting Bones',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 			{
 				name = "Lifespike",
 				gem = 4,
@@ -180,8 +177,7 @@ AbilitySets = {
 				altName2 = nil,
 			},
 		},
-		SecondPrioritySpells = 'N/A',
-		LastPrioritySpells = 'N/A',
+	
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
@@ -545,7 +541,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Bone Walk',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 			{
 				name = "Lifespike",
 				gem = 4,
@@ -576,8 +572,6 @@ AbilitySets = {
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Disease Cloud",
 				gem = 3,
@@ -599,7 +593,6 @@ AbilitySets = {
 				altName2 = nil
 			}
 		},
-		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
@@ -626,7 +619,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Bone Walk',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -658,8 +651,7 @@ AbilitySets = {
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
+	
 			{
 				name = "Lifespike",
 				gem = 4,
@@ -691,13 +683,12 @@ AbilitySets = {
 				altName2 = nil
 			}
 		},
-		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Lesser Shielding', 'Grim Aura', 'Endure Cold', 'Dark Pact', 'Vampiric Embrace'
+			'Lesser Shielding', 'Grim Aura', 'Dark Pact'
 		}
 	},
 	[11] = {
@@ -718,7 +709,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Bone Walk',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -750,8 +741,6 @@ AbilitySets = {
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Lifespike",
 				gem = 4,
@@ -783,7 +772,6 @@ AbilitySets = {
 				altName2 = nil
 			}
 		},
-		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
@@ -813,7 +801,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Convoke Shadow',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -845,8 +833,6 @@ AbilitySets = {
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Lifedraw",
 				gem = 4,
@@ -878,7 +864,6 @@ AbilitySets = {
 				altName2 = nil
 			}
 		},
-		LastPrioritySpells = 'N/A',
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
@@ -2791,6 +2776,2617 @@ AbilitySets = {
 		petHeal = 'Renew Bones'
 
 	},
+	[31] = {
+		Level = 31,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Shadow'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Shock of Poison',
+			[3] = 'Heart Flutter',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Shadow Vortex',
+			[8] = 'Vampiric Curse'
+		},
+		warriorPet = 'Summon Dead',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Heart Flutter",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Shock of Poison",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Major Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Intensify Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Hungry Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[32] = {
+		Level = 32,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Shadow'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Shock of Poison',
+			[3] = 'Heart Flutter',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Summon Dead',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Heart Flutter",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Shock of Poison",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Major Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Intensify Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Hungry Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[33] = {
+		Level = 33,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Shadow'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Shock of Poison',
+			[3] = 'Heart Flutter',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Poison Bolt',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Invoke Shadow',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Poison Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Heart Flutter",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Shock of Poison",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Intensify Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Hungry Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[34] = {
+		Level = 34,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Shadow'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Shock of Poison',
+			[3] = 'Heart Flutter',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Invoke Shadow',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Heart Flutter",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Shock of Poison",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Intensify Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[35] = {
+		Level = 35,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Shadow'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Shock of Poison',
+			[3] = 'Scourge',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Invoke Shadow',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Scourge",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Shock of Poison",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[36] = {
+		Level = 36,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Shadow'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Scourge',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Invoke Shadow',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Scourge",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[37] = {
+		Level = 37,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Scourge',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Invoke Shadow',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Scourge",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[38] = {
+		Level = 38,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Scourge',
+			[4] = 'Spirit Tap',
+			[5] = 'Dooming Darkness',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Invoke Shadow',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Scourge",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Spirit Tap",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dooming Darkness',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[39] = {
+		Level = 39,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Scourge',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Malignant Dead',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Scourge",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[40] = {
+		Level = 40,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Malignant Dead',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[41] = {
+		Level = 41,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Malignant Dead',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones'
+
+	},
+	[42] = {
+		Level = 42,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Malignant Dead',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[43] = {
+		Level = 43,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Malignant Dead',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[44] = {
+		Level = 44,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Shadow Vortex',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Cackling Bones',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[45] = {
+		Level = 45,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Auspice',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Cackling Bones',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Auspice',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Root',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[46] = {
+		Level = 46,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Boil Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Auspice',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Cackling Bones',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Boil Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Auspice',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Paralyzing Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[47] = {
+		Level = 47,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Ignite Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Spirit',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Auspice',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Cackling Bones',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Ignite Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Spirit",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Auspice',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Paralyzing Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[48] = {
+		Level = 48,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Ignite Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Soul',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Auspice',
+			[8] = "Torbas' Acid Blast"
+		},
+		warriorPet = 'Invoke Death',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Ignite Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Soul",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Auspice',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Lich', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Paralyzing Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[49] = {
+		Level = 49,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Ignite Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Soul',
+			[5] = 'Dark Soul',
+			[6] = 'Venom of the Snake',
+			[7] = 'Bond of Death',
+			[8] = "Torbas' Poison Blast"
+		},
+		warriorPet = 'Invoke Death',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Ignite Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Venom of the Snake",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Soul",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Bond of Death',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Lich', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Paralyzing Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	[50] = {
+		Level = 50,
+		Scent = {
+			type = 'Spell',
+			name = 'Scent of Darkness'
+		},
+		Spellbar = {
+			[1] = 'Ignite Blood',
+			[2] = 'Chilling Embrace',
+			[3] = 'Asystole',
+			[4] = 'Drain Soul',
+			[5] = 'Dark Soul',
+			[6] = 'Envenomed Bolt',
+			[7] = 'Bond of Death',
+			[8] = "Torbas' Poison Blast"
+		},
+		warriorPet = 'Invoke Death',
+		roguePet = 'N/A',
+		FirstPrioritySpells = {
+
+			{
+				name = "Ignite Blood",
+				gem = 1,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Envenomed Bolt",
+				gem = 6,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Asystole",
+				gem = 3,
+				priority = 1,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+		},
+		SecondPrioritySpells = {
+			{
+				name = "Drain Soul",
+				gem = 4,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Chilling Embrace",
+				gem = 2,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil,
+			},
+			{
+				name = "Torbas' Acid Blast",
+				gem = 8,
+				priority = 2,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		LastPrioritySpells = {
+			{
+				name = 'Bond of Death',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Vampiric Curse',
+				gem = 8,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Dark Soul',
+				gem = 5,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				alternateNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			}
+		},
+		TotalBurnAbilities = 0,
+		BurnAAs = 'N/A',
+		BurnItems = 'N/A',
+		BurnAbilities = 'N/A',
+		Buffs = {
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Lich', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+		},
+		PetBuffs = {
+			'Augment Death', 'Spirit Armor'
+		},
+		FDSpell = 'Feign Death',
+		RootSpell = 'Paralyzing Earth',
+		LivingMez = 'Screaming Terror',
+		petHeal = 'Renew Bones',
+		igniteBones = 'Ignite Bones'
+	},
+	
 	[120] = {
 		Level = 120,
 		warriorPet = "Luclin's Conqueror",

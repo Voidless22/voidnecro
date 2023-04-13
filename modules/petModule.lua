@@ -15,25 +15,29 @@ function PetModule.PetSetup(mode)
 	local petGem
 	if not MiscModule.inCombat() and not MiscModule.invis() and not MiscModule.amIDead() then
 		if mq.TLO.Me.Pet() == "NO PET" and not PetModule.NoReagent then
-			for i = 1, mq.TLO.Me.NumGems() do
-				if mq.TLO.Me.Gem(i).Name() == AbilitySet.warriorPet then
-					isMemorized = true
-					petGem = i
+			while mq.TLO.Me.Pet() == "NO PET" do
+				for i = 1, mq.TLO.Me.NumGems() do
+					if mq.TLO.Me.Gem(i).Name() == AbilitySet.warriorPet then
+						isMemorized = true
+						petGem = i
+					end
+				end
+				if isMemorized then
+					mq.cmdf('/tar %s', mq.TLO.Me.Name())
+					mq.delay(100)
+					MiscModule.WaitforCast()
+					MiscModule.castGem(petGem)
+					MiscModule.WaitforCast()
+				else
+					mq.cmdf('/memspell 8 "%s"', AbilitySet.warriorPet)
+					while mq.TLO.Me.Gem(8).Name() ~= mq.TLO.Spell(AbilitySet.warriorPet).RankName() do mq.delay(100) end
+					MiscModule.WaitforCast()
+					MiscModule.castGem(8)
+					MiscModule.WaitforCast()
 				end
 			end
-			if isMemorized then
-				mq.cmdf('/tar %s', mq.TLO.Me.Name())
-				mq.delay(100)
-				MiscModule.WaitforCast()
-				MiscModule.castGem(petGem)
-				MiscModule.WaitforCast()
-			else
-				mq.cmdf('/memspell 8 "%s"', AbilitySet.warriorPet)
-				while mq.TLO.Me.Gem(8).Name() ~= mq.TLO.Spell(AbilitySet.warriorPet).RankName() do mq.delay(100) end
-				MiscModule.WaitforCast()
-				MiscModule.castGem(8)
-				MiscModule.WaitforCast()
-			end
+		else
+			MiscModule.LoadSpells()
 		end
 	end
 end
