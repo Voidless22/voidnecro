@@ -207,7 +207,7 @@ function CombatModule.SpellHandler()
 			local spellCategory = mq.TLO.Spell(value.name).Category()
 			local hasBuffComponent = value.buffRecieved
 			----------------------------------------------------------------------------------------------------
-			if spellCategory == 'Damage Over Time' then
+			if spellCategory == 'Damage Over Time' and not mq.TLO.Target.PctHPs() < Config.Damage.stopdotsat then
 				if hasBuffComponent then
 					if not (mq.TLO.Me.Buff(value.buffRecievedName) or mq.TLO.Me.Song(value.buffRecievedName)) or not (MiscModule.hasBuff(value.name) or MiscModule.hasBuff(value.altName1) or MiscModule.hasBuff(value.altName2)) then
 						SuperCast(value.gem)
@@ -247,7 +247,7 @@ function CombatModule.SpellHandler()
 			local spellCategory = mq.TLO.Spell(value.name).Category()
 			local hasBuffComponent = value.buffRecieved
 			----------------------------------------------------------------------------------------------------
-			if spellCategory == 'Damage Over Time' then
+			if spellCategory == 'Damage Over Time' and not mq.TLO.Target.PctHPs() < Config.Damage.stopdotsat then
 				if hasBuffComponent then
 					if not (mq.TLO.Me.Buff(value.buffRecievedName) or mq.TLO.Me.Song(value.buffRecievedName)) or not (MiscModule.hasBuff(value.name) or MiscModule.hasBuff(value.altName1) or MiscModule.hasBuff(value.altName2)) then
 						SuperCast(value.gem)
@@ -288,7 +288,7 @@ function CombatModule.SpellHandler()
 
 			local spellCategory = mq.TLO.Spell(value.name).Category()
 			local hasBuffComponent = value.buffRecieved
-			if spellCategory == 'Damage Over Time' then
+			if spellCategory == 'Damage Over Time' and not mq.TLO.Target.PctHPs() < Config.Damage.stopdotsat then
 				if hasBuffComponent then
 					if not (mq.TLO.Me.Buff(value.buffRecievedName) or mq.TLO.Me.Song(value.buffRecievedName)) or not (MiscModule.hasBuff(value.name) or MiscModule.hasBuff(value.altName1) or MiscModule.hasBuff(value.altName2)) then
 						SuperCast(value.gem)
