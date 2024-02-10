@@ -2,27 +2,30 @@ local config = {}
 
 
 config.General = {
-    mode = 'chase',
-    tank = false,
-    autoassist = true,
-    campradius = 60,
-    assistpct = 99,
-    chasedistance = 10,
-    burnalways = false,
+    Autoassist = true,
+    AssistPct = 99,
+    Mode = 1,
+    Tank = false,
+    AssistRange = 60,
+    CampRadius = 60,
+    MedAt = 20,
+    DoneMedding = 100,
+    ChaseDistance = 10,
+    BurnAlways = false,
+    DoMelee = true,
+
+    screenNames = {
+        "Auto Assist", "Assist Pct", "Mode", "Tank", "Assist Range", "Camp Radius","Med At %", "Med to %", "Chase Distance", "Burn Always", "Melee"
+    }
 }
 
 config.Damage = {
-    domelee = true,
     usescent = true,
-    mindmgspellmanapct = 10,
+    scentgem = '',
+    manaMin = 40,
     -- Need to plug in
     stopdotsat = 30,
-    mindotsforburns = 2,
-    minswarmpetmanapct = 10,
-    minbloodprocmanapct = 10,
-    usesnareaa = true,
-    useeradicateaa = true,
-    waitforallburns = true
+    mindotsforburns = 2
 }
 
 config.CC = {
@@ -33,45 +36,14 @@ config.CC = {
     usemez = false,
     meztype = 'living',
     useroot = true,
+    rootgem = '',
     usepunt = true,
     useaoecc = true,
     useignitebones = true,
+    ignitegem = '', 
 }
 
-config.Pet = {
-usemendcompanion = true,
-usepetaegisaa = true,
-usefury = true,
-usefurywhen = 'on cooldown',
-usefortification = true,
-usefortificationwhen = 'on cooldown',
-uselongpetrune = false,
-longrunegem = '',
-useshortpetrune = false,
-shortrunegem = '',
-usepetheal = false,
-pethealgem = '',
-pethealpct = 60,
 
-}
-
-config.Mana = {
-    usedeathbloom = true,
-    usedeathbloomwhen = 'on cooldown',
-    usebloodmagic = true,
-    usebloodmagicwhen = 'on cooldown',
-    deathbloommanapct = 40,
-    bloodmagicmanapct = 10,
-    
-}
-
-config.Feign = {
-    usefeign = true,
-    aggrofdpct = 80,
-    usespellfd = false,
-    spellfdpct = 80,
-    spellfdgem = '',
-}
 
 
 return config

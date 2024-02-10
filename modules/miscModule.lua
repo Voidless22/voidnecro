@@ -1,8 +1,10 @@
 ---@type Mq
 local mq = require("mq")
+local SpellDB = require('spellDB')
 
 MiscModule = {}
 -- this one works don't touch it or it'll blow up
+MiscModule.neededSpells = {}
 
 function MiscModule.WaitforCast(gem)
 	mq.delay(100)
@@ -10,17 +12,17 @@ function MiscModule.WaitforCast(gem)
 		while not mq.TLO.Me.SpellReady(gem)() do
 			mq.delay(100)
 		end
-	end
-	if mq.TLO.Me.Casting() or mq.TLO.Me.SpellInCooldown() then
-		print("Waiting for cast to finish")
-		while mq.TLO.Me.Casting() or mq.TLO.Me.SpellInCooldown() do
-			mq.delay(50)
+	else
+		if mq.TLO.Me.Casting() or mq.TLO.Me.SpellInCooldown() then
+			print("Waiting for cast to finish")
+			while mq.TLO.Me.Casting() or mq.TLO.Me.SpellInCooldown() do
+				mq.delay(50)
+			end
 		end
 	end
 end
 
 -- this one works don't touch it or it'll blow up
-
 function MiscModule.castGem(gem)
 	cprint("Casting:-- %s -- Gem: %s", mq.TLO.Me.Gem(gem).RankName(), gem)
 	mq.cmdf("/cast %i", gem)
@@ -29,134 +31,77 @@ end
 
 -- this one works don't touch it or it'll blow up
 
-function MiscModule.AAReady(altnumber)
-	if mq.TLO.Me.AltAbilityReady(altnumber)() then
-		return true
-	else
-		return false
-	end
-end
-
--- this one works don't touch it or it'll blow up
-
-function MiscModule.amIDead()
-	if mq.TLO.Me.Dead() then
-		print("I am dead")
-		return true
-	else
-		return false
-	end
-end
-
--- this one works don't touch it or it'll blow up
-
 function MiscModule.hasBuff(spell)
 	if mq.TLO.Target.Buff(spell)() then
-		cprint("Has spell %s", spell)
-		mq.delay(100)
 		return true
 	else
 		cprint("Does not have %s", spell)
-		mq.delay(100)
 		return false
 	end
 end
 
--- this one works don't touch it or it'll blow up
-
-function MiscModule.activateItem(item)
+function MiscModule.SuperCast(gem)
 	MiscModule.WaitforCast()
-	cprint("Activating Item %s", item)
-	if mq.TLO.Me.ItemReady(item) then
-		mq.cmdf('/useitem "%s"', item)
-		MiscModule.WaitforCast()
-		mq.delay(50)
-	end
+	MiscModule.castGem(gem)
+	MiscModule.WaitforCast()
 end
 
 -- this one works don't touch it or it'll blow up
-function MiscModule.activateAA(altnumber)
-	MiscModule.WaitforCast()
-	cprint("Activating AA %s", mq.TLO.Me.AltAbility(altnumber).Name())
-	while MiscModule.AAReady(altnumber) == true do
-		mq.cmdf("/alt activate %s", altnumber)
-		mq.delay(250)
-	end
-end
-
--- this one works don't touch it or it'll blow up
-
 function MiscModule.invis()
 	return mq.TLO.Me.Invis()
-end
-
--- This one works don't touch it it might blow up
-function MiscModule.inCombat()
-	local mainAssistTarget = mq.TLO.Me.GroupAssistTarget()
-	local radius = Config.General.campradius
-	local combatState = mq.TLO.Me.CombatState()
-	local petinCombat = mq.TLO.Pet.Combat()
-
-	if mq.TLO.Me.XTarget() > 0 then
-		for i = 1, mq.TLO.Me.XTarget() do
-			if
-				mq.TLO.Me.XTarget(i).Distance() < radius
-				and mq.TLO.Me.XTarget(i).Aggressive()
-				and not MiscModule.invis()
-			then
-				return true
-			end
-		end
-	else
-		return false
-	end
-end
-
--- No idea if this works
-function MiscModule.isNamed()
-	if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Named() == true then
-		return true
-	else
-		return false
-	end
-end
-
--- Does this work either?
-
-function MiscModule.checkForSit()
-	if
-		mq.TLO.Group.MainAssist ~= nil
-		and mq.TLO.Group.MainAssist.Sitting()
-		and not mq.TLO.Group.MainAssist() == mq.TLO.Me.Name()
-	then
-		while mq.TLO.Group.MainAssist.Sitting() and not mq.TLO.Me.Casting() do
-			if not mq.TLO.Me.Sitting() then
-				mq.cmd("/sit")
-				mq.delay(500)
-			end
-		end
-	end
 end
 
 -- Add Catches for all these fuckin toggles I want for some reason
 -- otherwise
 -- this one works don't touch it or it'll blow up
-
+function MiscModule.CheckToggles()
+	if Config.Damage.usescent and Config.Damage.scentgem ~= nil then
+		AbilitySet.Spellbar[Config.Damage.scentgem] = AbilitySet.Scent.name
+	end
+	if Config.CC.usecc and Config.CC.useroot and Config.CC.rootgem ~= nil and AbilitySet.RootSpell ~= nil then
+		AbilitySet.Spellbar[Config.CC.rootgem] = AbilitySet.RootSpell
+	end
+	if Config.CC.usecc and Config.CC.useignitebones and Config.CC.ignitegem ~= nil and AbilitySet.igniteBones ~= nil then
+		AbilitySet.Spellbar[Config.CC.ignitegem] = AbilitySet.igniteBones
+	end
+	if Config.CC.usecc and Config.CC.usemez and Config.CC.mezgem ~= nil then
+		if Config.CC.meztype == 'living' then
+			AbilitySet.Spellbar[Config.CC.mezgem] = AbilitySet.LivingMez
+		elseif Config.CC.meztype == 'undead' then
+			AbilitySet.Spellbar[Config.CC.mezgem] = AbilitySet.UndeadMez
+		end
+	end
+	if Config.Pet.uselongpetrune and Config.Pet.longrunegem ~= nil and AbilitySet.longPetRune ~= nil then
+		AbilitySet.Spellbar[Config.Pet.longrunegem] = AbilitySet.longPetRune
+	end
+	if Config.Pet.useshortpetrune and Config.Pet.shortrunegem ~= nil and AbilitySet.shortPetRune ~= nil then
+		AbilitySet.Spellbar[Config.Pet.shortrunegem] = AbilitySet.shortPetRune
+	end
+	if Config.Pet.usepetheal and Config.Pet.pethealgem ~= nil and AbilitySet.petHeal ~= nil then
+		AbilitySet.Spellbar[Config.Pet.pethealgem] = AbilitySet.petHeal
+	end
+	if Config.Mana.usemindwrack and Config.Mana.mindwrackgem ~= nil and AbilitySet.mindWrack ~= nil then
+		AbilitySet.Spellbar[Config.Mana.mindwrackgem] = AbilitySet.mindWrack
+	end
+	if Config.Feign.usefeign and Config.Feign.usespellfd and AbilitySet.FDSpell ~= nil then
+		AbilitySet.Spellbar[Config.Feign.spellfdgem] = AbilitySet.FDSpell
+	end
+	MiscModule.LoadSpells()
+end
 
 function MiscModule.LoadSpells()
 	local skippedGems = {}
 	for i = 1, #AbilitySet.Spellbar do
-		for index, value in pairs(ScribeModule.neededSpells) do
+		for index, value in pairs(MiscModule.neededSpells) do
 			if value == AbilitySet.Spellbar[i] then
 				cprint('Missing spell %s, skipping that gem.', value)
 				skippedGems[i] = true
 			else
 				skippedGems[i] = false
 			end
-			
 		end
 		if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Spellbar[i]).RankName() and not skippedGems[i] then
-			if not MiscModule.inCombat() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
+			if not CombatModule.AssistHandler() and not mq.TLO.Me.Invis() and not mq.TLO.Me.Moving() then
 				if mq.TLO.Cursor.ID() ~= nil then
 					while mq.TLO.Cursor.ID() ~= nil do
 						mq.cmd("/autoinventory")
@@ -174,54 +119,35 @@ function MiscModule.LoadSpells()
 	end
 end
 
+function MiscModule.ClearCursor()
+	if mq.TLO.Cursor.ID() ~= nil then
+		while mq.TLO.Cursor.ID() ~= nil do
+			mq.cmd("/autoinventory")
+			mq.delay(200)
+		end
+	end
+end
+
+function MiscModule.ReadyToCast()
+	if not CombatModule.AssistHandler() and not mq.TLO.Me.Moving() and not MiscModule.invis() and not MiscModule.amIDead() then return true end
+end
+
 -- Add Pet and Group buffs
 function MiscModule.BuffHandler()
 	local isMemorized = false
 	local buffGem
-	if not MiscModule.inCombat() and not mq.TLO.Me.Moving() and not MiscModule.invis() and not MiscModule.amIDead() and mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
-		local skippedBuffs = {}
-		for i = 1, #AbilitySet.Buffs do
-			mq.delay(500)
-			for index, value in pairs(ScribeModule.neededSpells) do
-				if value == AbilitySet.Buffs[i] then
-					cprint('Missing spell %s, skipping that gem.', value)
-					skippedBuffs[i] = true
-				end
+	if MiscModule.ReadyToCast() and mq.TLO.Me.PctMana() > Config.Damage.manaMin then
+
+	end
+end
+
+function MiscModule.checkNeededSpells()
+	for i = 1, mq.TLO.Me.Level() do
+		for index, value in ipairs(SpellDB[i]) do
+			if mq.TLO.Me.Book(mq.TLO.Spell(value).RankName())() == nil then
+				table.insert(MiscModule.neededSpells, i, value)
+				cprint('missing %s [%i]. Adding to Needed Spells', value, i)
 			end
-			if mq.TLO.Me.Gem(i)() ~= mq.TLO.Spell(AbilitySet.Buffs[i]).RankName() and not skippedBuffs[i] and not mq.TLO.Me.Buff(AbilitySet.Buffs[i])() then
-				if mq.TLO.Cursor.ID() ~= nil then
-					while mq.TLO.Cursor.ID() ~= nil do
-						mq.cmd("/autoinventory")
-						mq.delay(200)
-					end
-				end
-				cprint("memorizing %s", AbilitySet.Buffs[i])
-				while mq.TLO.Me.Gem(i).Name() ~= AbilitySet.Buffs[i] do
-					mq.cmdf('/memspell %i "%s"', i, AbilitySet.Buffs[i])
-					mq.delay(5000)
-					if mq.TLO.Window('SpellBookWnd').Open() then
-						mq.TLO.Window('SpellBookWnd').DoClose()
-					end
-				end
-				
-			end
-			if mq.TLO.Me.Gem(i).Name() == AbilitySet.Buffs[i] then
-				buffGem = i
-				mq.cmdf('/tar %s', mq.TLO.Me.Name())
-				mq.delay(200)
-				MiscModule.WaitforCast(i)
-				MiscModule.castGem(buffGem)
-				MiscModule.WaitforCast()
-			end
-		end
-		local totalBuffs = 0
-		for i = 1, #AbilitySet.Buffs do
-			if mq.TLO.Me.Buff(AbilitySet.Buffs[i])() then
-				totalBuffs = totalBuffs + 1
-			end
-		end
-		if totalBuffs == #AbilitySet.Buffs then
-			MiscModule.LoadSpells()
 		end
 	end
 end

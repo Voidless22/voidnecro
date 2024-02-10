@@ -1,7 +1,5 @@
----@type Mq
-local mq = require("mq")
-local spellDB = require('spellDB')
-require('spellLines')
+
+--require('spellLines')
 require('config')
 require('./modules/miscModule')
 
@@ -22,7 +20,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -32,7 +30,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -42,12 +40,12 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
 		},
-	
+
 		-- Buffs --
 		Buffs = { 'Minor Shielding' },
 		-- Pet --
@@ -98,7 +96,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -108,7 +106,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -118,7 +116,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -152,7 +150,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -162,7 +160,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -172,12 +170,12 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = true,
 				buffRecievedName = 'Siphon Strength Recourse',
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
 		},
-	
+
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
 		BurnItems = 'N/A',
@@ -208,7 +206,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -218,7 +216,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -228,7 +226,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -240,7 +238,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			}
@@ -276,7 +274,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -286,7 +284,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -296,7 +294,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -308,7 +306,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			}
@@ -344,7 +342,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -354,7 +352,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -364,7 +362,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -376,7 +374,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			}
@@ -412,7 +410,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -422,7 +420,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -432,7 +430,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -444,7 +442,7 @@ AbilitySets = {
 				priority = 4,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			}
@@ -480,7 +478,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -490,7 +488,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -500,7 +498,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -512,7 +510,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			}
@@ -548,7 +546,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -558,7 +556,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -568,7 +566,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -578,7 +576,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -588,7 +586,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -627,7 +625,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -637,7 +635,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -647,18 +645,18 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-	
+
 			{
 				name = "Lifespike",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -668,7 +666,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -678,7 +676,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -717,7 +715,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -727,7 +725,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -737,7 +735,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -747,7 +745,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -757,7 +755,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -767,7 +765,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -809,7 +807,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -819,7 +817,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -829,7 +827,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -839,7 +837,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -849,7 +847,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -859,7 +857,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -901,7 +899,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -911,7 +909,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -921,7 +919,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -933,7 +931,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -943,7 +941,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -953,7 +951,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -996,7 +994,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1006,7 +1004,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1016,7 +1014,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1028,7 +1026,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1038,7 +1036,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1048,7 +1046,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -1091,7 +1089,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1101,7 +1099,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1111,7 +1109,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1123,7 +1121,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1133,7 +1131,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1143,7 +1141,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -1186,7 +1184,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1196,7 +1194,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1206,7 +1204,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1218,7 +1216,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1228,7 +1226,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1238,7 +1236,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -1284,7 +1282,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1294,7 +1292,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1304,7 +1302,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1316,7 +1314,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1326,7 +1324,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1336,7 +1334,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -1382,7 +1380,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1392,7 +1390,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1402,7 +1400,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1414,7 +1412,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1424,7 +1422,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1434,7 +1432,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -1480,7 +1478,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1490,7 +1488,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1500,7 +1498,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1512,7 +1510,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1522,7 +1520,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1532,7 +1530,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -1543,7 +1541,7 @@ AbilitySets = {
 			priority = 3,
 			buffRecieved = false,
 			buffRecievedName = nil,
-			alternateNamePostCast = false,
+			altNamePostCast = false,
 			altName1 = nil,
 			altName2 = nil
 		},
@@ -1579,7 +1577,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Animate Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -1587,7 +1585,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1597,7 +1595,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1607,19 +1605,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Lifedraw",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1629,7 +1625,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1639,20 +1635,20 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
-		},
-		LastPrioritySpells = {
-			name = 'Shadow Vortex',
-			gem = 7,
-			priority = 3,
-			buffRecieved = false,
-			buffRecievedName = nil,
-			alternateNamePostCast = false,
-			altName1 = nil,
-			altName2 = nil
 		},
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
@@ -1694,7 +1690,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1704,7 +1700,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1714,7 +1710,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1726,7 +1722,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1736,7 +1732,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1746,7 +1742,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -1757,7 +1753,7 @@ AbilitySets = {
 			priority = 3,
 			buffRecieved = false,
 			buffRecievedName = nil,
-			alternateNamePostCast = false,
+			altNamePostCast = false,
 			altName1 = nil,
 			altName2 = nil
 		},
@@ -1793,7 +1789,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Animate Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -1801,7 +1797,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1811,7 +1807,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1821,19 +1817,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Lifedraw",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1843,7 +1837,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1853,18 +1847,16 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			name = 'Shadow Vortex',
 			gem = 7,
 			priority = 3,
 			buffRecieved = false,
 			buffRecievedName = nil,
-			alternateNamePostCast = false,
+			altNamePostCast = false,
 			altName1 = nil,
 			altName2 = nil
 		},
@@ -1901,7 +1893,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Animate Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -1909,7 +1901,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1919,7 +1911,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1929,19 +1921,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Lifedraw",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1951,7 +1941,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -1961,20 +1951,20 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
-			name = 'Shadow Vortex',
-			gem = 7,
-			priority = 3,
-			buffRecieved = false,
-			buffRecievedName = nil,
-			alternateNamePostCast = false,
-			altName1 = nil,
-			altName2 = nil
+			},
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				altNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
 		},
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
@@ -2009,7 +1999,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Haunting Corpse',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -2017,7 +2007,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2027,7 +2017,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2037,19 +2027,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Lifedraw",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2059,7 +2047,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2069,18 +2057,16 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			name = 'Shadow Vortex',
 			gem = 7,
 			priority = 3,
 			buffRecieved = false,
 			buffRecievedName = nil,
-			alternateNamePostCast = false,
+			altNamePostCast = false,
 			altName1 = nil,
 			altName2 = nil
 		},
@@ -2117,7 +2103,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Haunting Corpse',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -2125,7 +2111,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2135,7 +2121,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2145,19 +2131,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Lifedraw",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2167,7 +2151,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2177,20 +2161,20 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
-			name = 'Shadow Vortex',
-			gem = 7,
-			priority = 3,
-			buffRecieved = false,
-			buffRecievedName = nil,
-			alternateNamePostCast = false,
-			altName1 = nil,
-			altName2 = nil
+			},
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				altNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
 		},
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
@@ -2225,7 +2209,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Haunting Corpse',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -2233,7 +2217,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2243,7 +2227,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2253,19 +2237,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2275,7 +2257,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2285,20 +2267,20 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
-			name = 'Shadow Vortex',
-			gem = 7,
-			priority = 3,
-			buffRecieved = false,
-			buffRecievedName = nil,
-			alternateNamePostCast = false,
-			altName1 = nil,
-			altName2 = nil
+			},
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				altNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
 		},
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
@@ -2334,7 +2316,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Haunting Corpse',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Heat Blood",
@@ -2342,7 +2324,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2352,7 +2334,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2362,19 +2344,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2384,7 +2364,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2394,20 +2374,20 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
-			name = 'Shadow Vortex',
-			gem = 7,
-			priority = 3,
-			buffRecieved = false,
-			buffRecievedName = nil,
-			alternateNamePostCast = false,
-			altName1 = nil,
-			altName2 = nil
+			},
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				altNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
 		},
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
@@ -2443,7 +2423,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Haunting Corpse',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -2451,7 +2431,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2461,7 +2441,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2471,19 +2451,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2493,7 +2471,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2503,20 +2481,20 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
-			name = 'Shadow Vortex',
-			gem = 7,
-			priority = 3,
-			buffRecieved = false,
-			buffRecievedName = nil,
-			alternateNamePostCast = false,
-			altName1 = nil,
-			altName2 = nil
+			},
+			{
+				name = 'Shadow Vortex',
+				gem = 7,
+				priority = 3,
+				buffRecieved = false,
+				buffRecievedName = nil,
+				altNamePostCast = false,
+				altName1 = nil,
+				altName2 = nil
+			},
 		},
 		TotalBurnAbilities = 0,
 		BurnAAs = 'N/A',
@@ -2552,7 +2530,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Summon Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -2560,7 +2538,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2570,7 +2548,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2580,19 +2558,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2602,7 +2578,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2612,19 +2588,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -2634,7 +2608,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -2673,7 +2647,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Summon Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -2681,7 +2655,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2691,7 +2665,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2701,19 +2675,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2723,7 +2695,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2733,19 +2705,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -2755,7 +2725,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -2794,7 +2764,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Summon Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -2802,7 +2772,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2812,7 +2782,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2822,19 +2792,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2844,7 +2812,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2854,19 +2822,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -2876,7 +2842,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -2886,7 +2852,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Major Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Major Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Intensify Death', 'Spirit Armor'
@@ -2915,7 +2882,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Summon Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -2923,7 +2890,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2933,7 +2900,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2943,19 +2910,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2965,7 +2930,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -2975,19 +2940,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -2997,7 +2960,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3007,7 +2970,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3017,7 +2980,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Major Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Major Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Intensify Death', 'Spirit Armor'
@@ -3046,7 +3010,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Shadow',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3054,7 +3018,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3064,7 +3028,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3074,19 +3038,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3096,7 +3058,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3106,19 +3068,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3128,7 +3088,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3138,7 +3098,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3148,7 +3108,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Intensify Death', 'Spirit Armor'
@@ -3177,7 +3138,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Shadow',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3185,7 +3146,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3195,7 +3156,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3205,19 +3166,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3227,7 +3186,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3237,19 +3196,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3259,7 +3216,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3269,7 +3226,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3279,7 +3236,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Intensify Death', 'Spirit Armor'
@@ -3308,7 +3266,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Shadow',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3316,7 +3274,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3326,7 +3284,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3336,19 +3294,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3358,7 +3314,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3368,19 +3324,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3390,7 +3344,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3400,7 +3354,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3410,7 +3364,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -3439,7 +3394,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Shadow',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3447,7 +3402,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3457,7 +3412,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3467,19 +3422,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3489,7 +3442,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3499,19 +3452,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3521,7 +3472,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3531,7 +3482,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3541,7 +3492,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -3570,7 +3522,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Shadow',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3578,7 +3530,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3588,7 +3540,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3598,19 +3550,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3620,7 +3570,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3630,19 +3580,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3652,7 +3600,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3662,7 +3610,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3672,7 +3620,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -3701,7 +3650,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Shadow',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3709,7 +3658,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3719,7 +3668,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3729,19 +3678,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Spirit Tap",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3751,7 +3698,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3761,19 +3708,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3783,7 +3728,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3793,7 +3738,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3803,7 +3748,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -3832,7 +3778,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Malignant Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3840,7 +3786,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3850,7 +3796,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3860,19 +3806,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3882,7 +3826,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3892,19 +3836,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3914,7 +3856,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -3924,7 +3866,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -3934,7 +3876,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -3963,7 +3906,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Malignant Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -3971,7 +3914,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3981,7 +3924,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -3991,19 +3934,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4013,7 +3954,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4023,19 +3964,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4045,7 +3984,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4055,7 +3994,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4065,7 +4004,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Greater Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -4094,7 +4034,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Malignant Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -4102,7 +4042,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4112,7 +4052,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4122,19 +4062,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4144,7 +4082,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4154,19 +4092,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4176,7 +4112,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4186,7 +4122,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4196,7 +4132,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -4225,7 +4162,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Malignant Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -4233,7 +4170,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4243,7 +4180,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4253,19 +4190,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4275,7 +4210,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4285,19 +4220,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4307,7 +4240,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4317,7 +4250,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4327,7 +4260,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -4356,7 +4290,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Malignant Dead',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -4364,7 +4298,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4374,7 +4308,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4384,19 +4318,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4406,7 +4338,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4416,19 +4348,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4438,7 +4368,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4448,7 +4378,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4458,7 +4388,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -4487,7 +4418,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Cackling Bones',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -4495,7 +4426,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4505,7 +4436,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4515,19 +4446,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4537,7 +4466,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4547,19 +4476,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Shadow Vortex',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4569,7 +4496,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4579,7 +4506,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4589,7 +4516,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -4618,7 +4546,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Cackling Bones',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -4626,7 +4554,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4636,7 +4564,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4646,19 +4574,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4668,7 +4594,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4678,19 +4604,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Auspice',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4700,7 +4624,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4710,7 +4634,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4720,7 +4644,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -4749,7 +4674,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Cackling Bones',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Boil Blood",
@@ -4757,7 +4682,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4767,7 +4692,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4777,19 +4702,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4799,7 +4722,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4809,19 +4732,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Auspice',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4831,7 +4752,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4841,7 +4762,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4851,7 +4772,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -4880,7 +4802,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Cackling Bones',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Ignite Blood",
@@ -4888,7 +4810,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4898,7 +4820,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4908,19 +4830,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Spirit",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4930,7 +4850,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -4940,19 +4860,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Auspice',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4962,7 +4880,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -4972,7 +4890,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -4982,7 +4900,8 @@ AbilitySets = {
 		BurnItems = 'N/A',
 		BurnAbilities = 'N/A',
 		Buffs = {
-			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor', 'Resist Disease'
+			'Arch Shielding', 'Grim Aura', 'Resist Cold', 'Call of Bones', 'Vampiric Embrace', 'Spirit Armor',
+			'Resist Disease'
 		},
 		PetBuffs = {
 			'Augment Death', 'Spirit Armor'
@@ -5011,7 +4930,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Death',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Ignite Blood",
@@ -5019,7 +4938,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5029,7 +4948,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5039,19 +4958,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Soul",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5061,7 +4978,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5071,19 +4988,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Auspice',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -5093,7 +5008,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -5103,7 +5018,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -5142,7 +5057,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Death',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Ignite Blood",
@@ -5150,7 +5065,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5160,7 +5075,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5170,19 +5085,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Soul",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5192,7 +5105,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5202,19 +5115,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Bond of Death',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -5224,7 +5135,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -5234,7 +5145,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -5273,7 +5184,7 @@ AbilitySets = {
 		},
 		warriorPet = 'Invoke Death',
 		roguePet = 'N/A',
-		FirstPrioritySpells = {
+		CombatSpells = {
 
 			{
 				name = "Ignite Blood",
@@ -5281,7 +5192,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5291,7 +5202,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5301,19 +5212,17 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
-		},
-		SecondPrioritySpells = {
 			{
 				name = "Drain Soul",
 				gem = 4,
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5323,7 +5232,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5333,19 +5242,17 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
-			}
-		},
-		LastPrioritySpells = {
+			},
 			{
 				name = 'Bond of Death',
 				gem = 7,
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -5355,7 +5262,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			},
@@ -5365,7 +5272,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil
 			}
@@ -5386,7 +5293,7 @@ AbilitySets = {
 		petHeal = 'Renew Bones',
 		igniteBones = 'Ignite Bones'
 	},
-	
+
 	[120] = {
 		Level = 120,
 		warriorPet = "Luclin's Conqueror",
@@ -5402,7 +5309,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5412,7 +5319,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5422,7 +5329,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5432,7 +5339,7 @@ AbilitySets = {
 				priority = 1,
 				buffRecieved = true,
 				buffRecievedName = "Chaotic Power X",
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			}
@@ -5445,7 +5352,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5455,7 +5362,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5465,7 +5372,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5475,7 +5382,7 @@ AbilitySets = {
 				priority = 2,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = true,
+				altNamePostCast = true,
 				altName1 = "Composite Paroxysm 1",
 				altName2 = nil,
 			}
@@ -5488,7 +5395,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = true,
+				altNamePostCast = true,
 				altName1 = "Fleshrot's Decay",
 				altName2 = "Grip of Quietus",
 			},
@@ -5498,7 +5405,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5508,7 +5415,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5518,7 +5425,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = false,
 				buffRecievedName = nil,
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			},
@@ -5529,7 +5436,7 @@ AbilitySets = {
 				priority = 3,
 				buffRecieved = true,
 				buffRecievedName = "Mind Atrophy Recourse",
-				alternateNamePostCast = false,
+				altNamePostCast = false,
 				altName1 = nil,
 				altName2 = nil,
 			}

@@ -1,39 +1,46 @@
----@type Mq
 local mq = require("mq")
-require('./modules/modeModule')
-require('./modules/burnModule')
+require('modules.movementModule')
 require('./modules/miscModule')
 require('./modules/petModule')
 AbilitySets = require('abilitySets')
 CombatModule = {}
 
 function CombatModule.AssistHandler()
-	if not Config.General.autoassist then
+	if not Config.General.Autoassist then
 		return
 	end
 
 	if mq.TLO.Group.MainAssist() ~= nil and mq.TLO.Group.MainAssist() ~= mq.TLO.Me.Name() then
-		print("We have a main assist but it is not us.")
-		if
-			mq.TLO.Me.GroupAssistTarget.Distance() < Config.General.campradius
-			and mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget()
-			and mq.TLO.Me.GroupAssistTarget.LineOfSight()
-		then
-			mq.cmdf('/mqtarget npc "%s"', mq.TLO.Me.GroupAssistTarget())
+		local assistAtHP = Config.General.AssistPct
+		local assistRange = Config.General.AssistRange
+		if mq.TLO.Me.GroupAssistTarget.ID() == 0 then return false end
+		if mq.TLO.Me.GroupAssistTarget.ID() ~= 0 and mq.TLO.Target.ID() ~= mq.TLO.Me.GroupAssistTarget.ID() and mq.TLO.Me.GroupAssistTarget.Type() == 'NPC' then
+			--cprint(mq.TLO.Me.GroupAssistTarget.Name())
+			mq.TLO.Me.GroupAssistTarget.DoTarget()
 		end
+		if mq.TLO.Target() ~= nil and mq.TLO.Target.PctHPs() <= assistAtHP
+			and mq.TLO.Target.Name() == mq.TLO.Me.GroupAssistTarget.Name() and not mq.TLO.Group.MainAssist.Dead()
+			and mq.TLO.Target.Distance() <= assistRange then
+			--cprint('Engaging %s', mq.TLO.Target.Name())
+			return true
+		end
+	else
+		--cprint("Found no targets")
+		return false
 	end
-	if mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
+	if mq.TLO.Group.MainAssist() == nil or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
 		print("Looks like we're main assist, better find a good target.") -- If we are the main assist though... pick a mob any mob(but only if they're in radius)
 		for i = 1, mq.TLO.Me.XTarget() do
 			if
 				mq.TLO.Me.XTarget(i).Aggressive()
-				and mq.TLO.Me.XTarget(i).Distance() < Config.General.campradius
+				and mq.TLO.Me.XTarget(i).Distance() < Config.General.CampRadius
 				and (mq.TLO.Me.XTarget(i + 1).Name() == nil or mq.TLO.Me.XTarget(i)())
 			then
 				if mq.TLO.Target.Name() ~= mq.TLO.Me.XTarget(i).Name() then
 					mq.cmdf('/mqtarget npc "%s"', mq.TLO.Me.XTarget(i).Name())
+					CombatModule.CheckForLOS()
 					if mq.TLO.Target.Name() == mq.TLO.Me.XTarget(i).Name() then
-						break
+						return
 					end
 				end
 			end
@@ -41,217 +48,29 @@ function CombatModule.AssistHandler()
 	end
 end
 
-----------------------------------------------------------------------------------------------------
-function CombatModule.AggroHandler()
-	if Config.Feign.usefeign then
-		for i = 1, mq.TLO.Me.XTarget() do
-			if mq.TLO.Target.Name() == nil then return end
-
-			if mq.TLO.Me.XTarget(i).PctAggro() > Config.Feign.aggrofdpct then
-				if type(AbilitySet.FD) == 'number' then
-					if MiscModule.AAReady(AbilitySet.FD) then
-						MiscModule.activateAA(AbilitySet.FD)
-						mq.delay(1000)
-						mq.cmd('/stand')
-					end
-				elseif Config.Feign.usespellfd then
-					for i = 1, mq.TLO.Me.NumGems() do
-						if mq.TLO.Me.Gem(i).Name() == AbilitySet.FD then
-							SuperCast(i)
-							mq.delay(1000)
-							mq.cmd('/stand')
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
-function CombatModule.ManaHandler()
-	if AbilitySet.deathBloom == 'N/A' and AbilitySet.bloodMagic == 'N/A' then
-		return
-	elseif Config.Mana.usebloodmagic and (mq.TLO.Me.PctMana() < Config.Mana.bloodmagicmanapct and Config.Mana.usebloodmagicwhen == "% Based") or Config.Mana.usebloodmagicwhen == 'on cooldown' or (Config.Mana.usebloodmagicwhen == 'Named Only' and MiscModule.isNamed()) then
-		if MiscModule.AAReady(AbilitySet.bloodMagic) then
-			MiscModule.activateAA(AbilitySet.bloodMagic)
-		end
-	elseif Config.Mana.usedeathbloom and (mq.TLO.Me.PctMana() < Config.Mana.deathbloommanapct and Config.Mana.usedeathbloomwhen == "% Based") or Config.Mana.usedeathbloom == 'on cooldown' or (Config.Mana.usedeathbloomwhen == 'Named Only' and MiscModule.isNamed()) then
-		if MiscModule.AAReady(AbilitySet.deathBloom) then
-			MiscModule.activateAA(AbilitySet.deathBloom)
-		end
-	end
-end
-
-----------------------------------------------------------------------------------------------------
-function CombatModule.DebuffMob()
-	if mq.TLO.Target.Name() == nil or mq.TLO.Target.PctHPs() < 20 or MiscModule.amIDead() then
-		return
-	end
-	if type(AbilitySet.Scent) == "number" then
-		local AASpell = mq.TLO.Me.AltAbility(AbilitySet.Scent).Spell()
-		if not (MiscModule.hasBuff(AASpell)) and not MiscModule.amIDead() then
-			MiscModule.WaitforCast()
-			MiscModule.activateAA(AbilitySet.Scent)
-			MiscModule.WaitforCast()
-		end
-	elseif type(AbilitySet.Scent) == 'string' then
-		for i = 1, mq.TLO.Me.NumGems() do
-			if mq.TLO.Me.Gem(i).Name() == AbilitySet.Scent then
-				SuperCast(i)
-				mq.delay(1000)
-				mq.cmd('/stand')
-			end
-		end
-	end
-end
-
-function SuperCast(gem)
-	MiscModule.WaitforCast()
-	MiscModule.castGem(gem)
-	MiscModule.WaitforCast()
-end
-
-function CombatModule.CCRoutine()
-	if Config.CC.usecc and (Config.CC.usemez or Config.CC.useroot or Config.CC.usepunt) and mq.TLO.Me.XTarget() > Config.CC.minmobsforcc then
-		if not mq.TLO.Me.XTarget() > Config.CC.minmobsforaoecc then
-			for index, value in AbilitySet.SingleCCPriority do
-				if value == 'Mez' then
-					for i = 1, mq.TLO.Me.XTarget() do
-						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() > Config.CC.mincchp then
-							if mq.TLO.Target.Body() == 'Undead' and Config.CC.meztype == 'Undead' then
-								if type(AbilitySet.UndeadMez) == 'number' and MiscModule.AAReady(AbilitySet.UndeadMez) then
-									MiscModule.WaitforCast()
-									MiscModule.activateAA(AbilitySet.SingleMez)
-									MiscModule.WaitforCast()
-								end
-							elseif type(AbilitySet.UndeadMez == 'string') then
-								if not mq.TLO.Me.SpellReady(AbilitySet.UndeadMez)() then return end
-								for i = 1, mq.TLO.Me.NumGems() do
-									if mq.TLO.Me.Gem(i).Name() == AbilitySet.UndeadMez then
-										SuperCast(i)
-										return
-									end
-								end
-							end
-						elseif mq.TLO.Target.Body ~= 'Undead' and Config.CC.meztype == 'Living' then
-							if type(AbilitySet.LivingMez) == 'number' and MiscModule.AAReady(AbilitySet.LivingMez) then
-								MiscModule.WaitforCast()
-								MiscModule.activateAA(AbilitySet.LivingMez)
-								MiscModule.WaitforCast()
-							end
-						elseif type(AbilitySet.LivingMez == 'string') then
-							if not mq.TLO.Me.SpellReady(AbilitySet.LivingMez)() then return end
-							for i = 1, mq.TLO.Me.NumGems() do
-								if mq.TLO.Me.Gem(i).Name() == AbilitySet.LivingMez then
-									SuperCast(i)
-									return
-								end
-							end
-						end
-					end
-				end
-				if value == 'Punt' then
-					for i = 1, mq.TLO.Me.XTarget() do
-						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() >= Config.CC.mincchp then
-							if type(AbilitySet.Punt) == 'number' and MiscModule.AAReady(AbilitySet.Punt) then
-								MiscModule.WaitforCast()
-								MiscModule.activateAA(AbilitySet.Punt)
-								MiscModule.WaitforCast()
-							end
-						elseif type(AbilitySet.Punt == 'string') then
-							if not mq.TLO.Me.SpellReady(AbilitySet.Punt)() then return end
-							for i = 1, mq.TLO.Me.NumGems() do
-								if mq.TLO.Me.Gem(i).Name() == AbilitySet.Punt then
-									SuperCast(i)
-									return
-								end
-							end
-						end
-					end
-				end
-				if value == 'Root' then
-					for i = 1, mq.TLO.Me.XTarget() do
-						if mq.TLO.Me.XTarget(i) ~= mq.TLO.Me.GroupAssistTarget() and mq.TLO.Me.XTarget(i).PctHPs() >= Config.CC.mincchp then
-							if type(AbilitySet.Root) == 'number' and MiscModule.AAReady(AbilitySet.Root) then
-								MiscModule.WaitforCast()
-								MiscModule.activateAA(AbilitySet.Root)
-								MiscModule.WaitforCast()
-							end
-						elseif type(AbilitySet.Root == 'string') then
-							if not mq.TLO.Me.SpellReady(AbilitySet.Root)() then return end
-							for i = 1, mq.TLO.Me.NumGems() do
-								if mq.TLO.Me.Gem(i).Name() == AbilitySet.Root then
-									SuperCast(i)
-									return
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
-function CombatModule.checkForFirstPriorityBuffs()
-	for index, value in pairs(AbilitySet.CombatSpells) do
-		if value.priority == 1 and value.buffRecieved and not (mq.TLO.Me.Buff(value.buffRecievedName)() or not mq.TLO.Me.Song(value.buffRecievedName)()) then
-			SuperCast(value.gem)
-		else
-			return true
-		end
-	end
-end
-
-function CombatModule.checkForSecondPriorityBuffs()
-	for index, value in pairs(AbilitySet.CombatSpells) do
-		if value.priority == 2 and value.buffRecieved and not (mq.TLO.Me.Buff(value.buffRecievedName)() or not mq.TLO.Me.Song(value.buffRecievedName)()) then
-			SuperCast(value.gem)
-		else
-			return true
-		end
-	end
-end
-
-----------------------------------------------------------------------------------------------------
 function CombatModule.SpellHandler()
-	for index, spell in pairs(AbilitySet.CombatSpells) do
-		if spell.priority == 1 then
-			if spell.buffRecieved then
-				if not mq.TLO.Me.Buff(spell.buffRecievedName)() or not mq.TLO.Me.Song(spell.buffRecievedName)() then
-					if mq.TLO.Spell(spell.name).Duration.TotalSeconds() > 0 and not MiscModule.hasBuff(spell.name) then
-						SuperCast(spell.gem)
-					else
-						if mq.TLO.Spell(spell.Name).Duration.TotalSeconds() == 0 then
-							SuperCast(spell.gem)
+	for priority = 1, 3 do
+		for index, spell in pairs(AbilitySet.CombatSpells) do
+			if spell.priority == priority then
+				if mq.TLO.Target.ID() == 0 then return end
+				if spell.buffRecieved then
+					if not mq.TLO.Me.Buff(spell.buffRecievedName)() or not mq.TLO.Me.Song(spell.buffRecievedName)() then
+						if mq.TLO.Spell(spell.name).Duration.TotalSeconds() > 0 and not MiscModule.hasBuff(spell.name) then
+							MiscModule.SuperCast(spell.gem)
+						else
+							if mq.TLO.Spell(spell.name).Duration.TotalSeconds() == 0 then
+								MiscModule.SuperCast(spell.gem)
+							end
 						end
 					end
-				end
-			elseif not spell.buffRecieved then
-				if mq.TLO.Spell(spell.name).Duration.TotalSeconds() > 0 and not MiscModule.hasBuff(spell.name) then
-					SuperCast(spell.gem)
-				else
-					if mq.TLO.Spell(spell.Name).Duration.TotalSeconds() == 0 then
-						SuperCast(spell.gem)
+				elseif not spell.buffRecieved then
+					if mq.TLO.Spell(spell.name).Duration.TotalSeconds() > 0 and not MiscModule.hasBuff(spell.name) then
+						MiscModule.SuperCast(spell.gem)
+					else
+						if mq.TLO.Spell(spell.name).Duration.TotalSeconds() == 0 then
+							MiscModule.SuperCast(spell.gem)
+						end
 					end
-				end
-			end
-		end
-		if spell.priority == 2 then
-			if CombatModule.checkForFirstPriorityBuffs() then
-				if spell.buffRecieved and not (mq.TLO.Me.Buff(spell.buffRecievedName)() or mq.TLO.Me.Song(spell.buffRecievedName)()) then
-					SuperCast(spell.gem)
-				elseif not spell.buffRecieved then
-					SuperCast(spell.gem)
-				end
-			end
-		end
-		if spell.priority == 3 then
-			if CombatModule.checkForFirstPriorityBuffs() and CombatModule.checkForSecondPriorityBuffs() then
-				if spell.buffRecieved and not (mq.TLO.Me.Buff(spell.buffRecievedName)() or mq.TLO.Me.Song(spell.buffRecievedName)()) then
-					SuperCast(spell.gem)
-				elseif not spell.buffRecieved then
-					SuperCast(spell.gem)
 				end
 			end
 		end
@@ -269,79 +88,29 @@ function CombatModule.CheckForLOS()
 	end
 end
 
-function CombatModule.useEradicateAA()
-	if mq.TLO.Target.Name() ~= nil and mq.TLO.Me.Level() >= 100 then
-		if mq.TLO.Target.BuffCount() > 0 and MiscModule.AAReady(547) then
-			for i = 1, mq.TLO.Target.BuffCount() do
-				if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Buff(i).SpellType() == "Beneficial" then
-					MiscModule.WaitforCast()
-					MiscModule.activateAA(547)
-				end
-			end
-		end
-	end
-end
-
-function CombatModule.useSnareAA()
-	if MiscModule.AAReady(826) and mq.TLO.Target.Name() ~= nil and mq.TLO.Me.Level() >= 70 then
-		MiscModule.WaitforCast()
-		MiscModule.activateAA(826)
-	end
-end
-
 function CombatModule.CombatHandler()
-	while MiscModule.inCombat() and not VNPaused do
-		if AbilitySet.Level ~= mq.TLO.Me.Level() then
-			AbilitySet = AbilitySets[mq.TLO.Me.Level()]
-			cprint('DING! You leveled up! New Ability Set: %s', AbilitySet.Level)
-			if not MiscModule.inCombat() then
-				MiscModule.LoadSpells()
-			end
-		end
-		if (mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and Config.General.autoassist) or (mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() and mq.TLO.Target.Name() == nil) then
-			CombatModule.AssistHandler()
-		end
+	-- While in combat and not paused
+	if not VNPaused then
+		--	cprint("starting combat handler")
 		CombatModule.CheckForLOS()
 
 		if not mq.TLO.Pet.Combat() and mq.TLO.Target.Name() ~= nil then
 			mq.cmd("/pet attack")
 		end
 
-		if Config.Damage.domelee then
+		if Config.Damage.domelee == true and not mq.TLO.Me.Combat() then
+			mq.cmd('/nav target')
+			while mq.TLO.Navigation.Active() do mq.delay(50) end
 			mq.cmd('/face')
 			mq.delay(100)
-			if mq.TLO.Target.Name() ~= nil and mq.TLO.Target.Distance() > 5 then
-				mq.cmd('/nav target')
-				while mq.TLO.Navigation.Active() do mq.delay(50) end
-			end
 			mq.cmd('/attack on')
 		end
-		if Config.CC.usecc and mq.TLO.Target.Name() ~= nil then
-			CombatModule.CCRoutine()
-		end
-		CombatModule.AggroHandler()
-		CombatModule.ManaHandler()
 
-		if mq.TLO.Me.PctMana() > Config.Damage.mindmgspellmanapct then
-			if Config.General.tank then
-				PetModule.PetTankRoutine()
-			end
-
-			if Config.Damage.usescent and AbilitySet.Scent ~= 'N/A' then
-				CombatModule.DebuffMob()
-			end
-
+		if mq.TLO.Me.PctMana() >= Config.Damage.manaMin and mq.TLO.Target.PctHPs() > Config.Damage.stopdotsat then
 			CombatModule.SpellHandler()
-
-			if (Config.General.burnalways or MiscModule.isNamed or Burnnow) and AbilitySet.TotalBurnAbilities ~= 0 then
-				BurnModule.BurnRoutine()
-			end
-			if Config.Damage.useerradicateaa then
-				CombatModule.useEradicateAA()
-			end
-			if Config.Damage.usesnareaa then
-				CombatModule.useSnareAA()
-			end
+		end
+		if (mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and Config.General.Autoassist) or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
+			CombatModule.AssistHandler()
 		end
 	end
 end

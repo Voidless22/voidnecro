@@ -33,7 +33,7 @@ function trim(s)
     return (s:gsub("^%s*(.-)%s*$", "%1"))
  end
 
-mq.imgui.init('Icon Example', DrawMainWindow)
+mq.ImGui.init('Icon Example', DrawMainWindow)
 
 while openGUI do
     mq.delay(1000)

@@ -1,7 +1,6 @@
 ---@type Mq
 local mq = require("mq")
 
-require('scribeModule')
 
 local ArgHandler = {}
 
@@ -93,12 +92,9 @@ ArgHandler.vnbind = function(...)
 			AbilitySet = AbilitySets[mq.TLO.Me.Level()]
 			cprint('Current Level Ability Set: %s', AbilitySet.Level)
 			MiscModule.LoadSpells()
-			ScribeModule.checkNeededSpells()
+			MiscModule.checkNeededSpells()
 		end
-		if string.lower(args[1]) == 'getneededspells' then
-			ScribeModule.checkNeededSpells()
-			ScribeModule.StartScribing()
-		end
+
 
 
 		if args[1] == nil or args[1] == "Help" or args[1] == "help" then
@@ -142,16 +138,7 @@ ArgHandler.vnbind = function(...)
 				end
 			end
 		end
-		if args[1] == "burnnow"
-			or args[1] == "BurnNow"
-			or args[1] == "Burnnow"
-			or args[1] == "burn"
-			or args[1] == "Burn"
-		then
-			Burnnow = true
-			BurnModule.BurnRoutine()
-			Burnnow = false
-		end
+
 	end
 
 end
