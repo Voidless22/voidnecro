@@ -51,24 +51,26 @@ end
 function CombatModule.SpellHandler()
 	for priority = 1, 3 do
 		for index, spell in pairs(AbilitySet.CombatSpells) do
-			if spell.priority == priority then
-				if mq.TLO.Target.ID() == 0 then return end
-				if spell.buffRecieved then
-					if not mq.TLO.Me.Buff(spell.buffRecievedName)() or not mq.TLO.Me.Song(spell.buffRecievedName)() then
+			if spell ~= nil and mq.TLO.Target.Name() ~= nil and mq.TLO.Me.PctMana() >= Config.Damage.manaMin and mq.TLO.Target.CurrentHPs() >= Config.Damage.stopdotsat then
+				if spell.priority == priority then
+					if mq.TLO.Target.ID() == 0 then return end
+					if spell.buffRecieved then
+						if not mq.TLO.Me.Buff(spell.buffRecievedName)() or not mq.TLO.Me.Song(spell.buffRecievedName)() then
+							if mq.TLO.Spell(spell.name).Duration.TotalSeconds() > 0 and not MiscModule.hasBuff(spell.name) then
+								MiscModule.SuperCast(spell.gem)
+							else
+								if mq.TLO.Spell(spell.name).Duration.TotalSeconds() == 0 then
+									MiscModule.SuperCast(spell.gem)
+								end
+							end
+						end
+					elseif not spell.buffRecieved then
 						if mq.TLO.Spell(spell.name).Duration.TotalSeconds() > 0 and not MiscModule.hasBuff(spell.name) then
 							MiscModule.SuperCast(spell.gem)
 						else
 							if mq.TLO.Spell(spell.name).Duration.TotalSeconds() == 0 then
 								MiscModule.SuperCast(spell.gem)
 							end
-						end
-					end
-				elseif not spell.buffRecieved then
-					if mq.TLO.Spell(spell.name).Duration.TotalSeconds() > 0 and not MiscModule.hasBuff(spell.name) then
-						MiscModule.SuperCast(spell.gem)
-					else
-						if mq.TLO.Spell(spell.name).Duration.TotalSeconds() == 0 then
-							MiscModule.SuperCast(spell.gem)
 						end
 					end
 				end
@@ -106,7 +108,7 @@ function CombatModule.CombatHandler()
 			mq.cmd('/attack on')
 		end
 
-		if mq.TLO.Me.PctMana() >= Config.Damage.manaMin and mq.TLO.Target.PctHPs() > Config.Damage.stopdotsat then
+		if mq.TLO.Target.Name() ~= nil then
 			CombatModule.SpellHandler()
 		end
 		if (mq.TLO.Target.Name() ~= mq.TLO.Me.GroupAssistTarget() and Config.General.Autoassist) or mq.TLO.Group.MainAssist() == mq.TLO.Me.Name() then
